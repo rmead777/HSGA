@@ -7,7 +7,7 @@ function createTableRow(score: ScoreRecord, idx: number) {
   return (
     <tr>
       <td>{idx + 1}. </td>
-      <td>{score.name}</td>
+      <td>{score.username}</td>
       <td>{score.score}</td>
     </tr>
   );
@@ -26,7 +26,13 @@ export default function HighScoresTable({ className }: PropTypes) {
   // return <div>{JSON.stringify(data)}</div>;
 
   return (
-    <div className={cx(className, "max-w-3xl mx-auto pt-20")}>
+    <div
+      className={cx(
+        className,
+        styles["table-wrapper"],
+        "max-w-3xl mx-auto pt-20"
+      )}
+    >
       <table className={cx(styles.table, "container")}>
         {/* <thead>
         <tr>

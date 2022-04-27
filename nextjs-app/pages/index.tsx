@@ -3,6 +3,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import HomePage from "../src/templates/pages/Home";
+import Footer from "../src/templates/Footer";
 
 const Home: NextPage = () => {
   return (
@@ -24,7 +25,7 @@ const Home: NextPage = () => {
 
       <HomePage />
 
-      <footer></footer>
+      <Footer />
     </div>
   );
 };

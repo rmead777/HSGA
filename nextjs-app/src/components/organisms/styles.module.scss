@@ -1,0 +1,21 @@
+.table {
+  color: var(--primary-2);
+  font-family: "Chubby Choo";
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: left;
+
+  tr:first-of-type {
+    color: var(--primary-1);
+  }
+
+  tr td:first-of-type {
+    max-width: 1rem;
+    padding-right: 1rem;
+    text-align: left;
+  }
+
+  td + td {
+    width: auto;
+  }
+}

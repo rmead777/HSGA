@@ -27,24 +27,25 @@
   position: relative;
   width: 100%;
   height: 500px;
+  border: 2px solid var(--primary-2);
+  margin-bottom: 2rem;
 
   .game,
-  .logo {
-    position:absolute;
-    left:0;
-    right:0;
-    tope:0;
-    bottom:0;
+  .logo-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
     margin: auto;
   }
 
-  .logo {
+  .logo-wrapper {
     z-index: 1;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-
   }
 
   .game {
@@ -55,14 +56,27 @@
 .game {
   width: 100%;
   height: 100%;
+  border: 1rem solid var(--black);
 }
 
 .is-landing-page {
   .game {
-    opacity: 80%;
+    // opacity: 80%;
   }
 }
 
-.logo{
-  marging: auto;
+.logo {
+  // position: absolute;
+  // left: 0;
+  // right: 0;
+  // top: 0;
+  // bottom: 0;
+  margin: auto;
+}
+
+.logo-wrapper {
+  position: relative;
+  margin: auto;
+  width: 400px;
+  height: 400px;
 }

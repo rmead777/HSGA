@@ -1,8 +1,10 @@
-import Image from "../../../components/Image";
+import Image from "../../../components/atoms/Image";
 import cx from "classnames";
 import styles from "./styles.module.scss";
 import fonts from "../../../../styles/fonts.module.css";
 import HighScoresTable from "../../../components/organisms/HighScoresTable";
+import Link from "../../../components/atoms/Link";
+import Button from "../../../components/atoms/Button";
 
 const renderIframe = () => {
   return (
@@ -18,11 +20,15 @@ const renderIframe = () => {
   );
 };
 
+function scrollToGame() {
+  const element = document.getElementById("game");
+  element?.scrollIntoView({ behavior: "smooth" });
+}
+
 const HomePage = () => {
   return (
     <main
       className={cx(
-        styles.main,
         styles["is-landing-page"],
         "container",
         "mx-auto",
@@ -41,22 +47,25 @@ const HomePage = () => {
       <div className="mb-10 max-w-md mx-auto">
         High Score Wins Money is a place where you can play unique games made by
         indie developers. If you get the high score on the game that day,{" "}
-        <b>we will give you $100 US.</b>
+        <b className="font-black">we will give you $100 US.</b>
       </div>
       <div className="flex flex-col">
-        <button className={cx(styles.button, "mb-3 mx-auto")}>
+        <Button
+          className={cx(styles.button, "mb-3 mx-auto")}
+          onClick={scrollToGame}
+        >
           <span>{`Let's Go!`}</span>
-        </button>
-        <button
+        </Button>
+        <div
           className={cx(
             fonts.button,
             "text-primary-2 mb-5 text-lg font-size-3"
           )}
         >
-          Login/Signup
-        </button>
+          <Link href="/login">Login/Signup</Link>
+        </div>
       </div>
-      <div className={styles.gameframe}>
+      <div id="game" className={styles.gameframe}>
         <div className={styles.game}>{renderIframe()}</div>
         <div className={styles["logo-wrapper"]}></div>
       </div>

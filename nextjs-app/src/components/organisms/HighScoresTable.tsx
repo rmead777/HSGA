@@ -5,7 +5,7 @@ import styles from "./styles.module.scss";
 
 function createTableRow(score: ScoreRecord, idx: number) {
   return (
-    <tr>
+    <tr key={`${idx}${score}`}>
       <td>{idx + 1}. </td>
       <td>{score.username}</td>
       <td>{score.score}</td>

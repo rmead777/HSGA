@@ -3,8 +3,30 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import HomePage from "../src/templates/pages/Home";
+import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
+  const [data, setData] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+
+    fetch("/users/example")
+      .then((res) => res.json())
+      .catch((err) => {
+        console.error(err);
+        return [{ NewPlayer: 8833 }, { TheMan: 5010 }];
+      })
+      .then((data) => {
+        setData(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (!data) return <p>No profile data</p>;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -23,6 +45,7 @@ const Home: NextPage = () => {
       </Head>
 
       <HomePage />
+      {JSON.stringify(data)}
 
       <footer></footer>
     </div>

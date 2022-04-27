@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-css-tags */
 /* eslint-disable react/jsx-key */
 
+import RoutesService from "./services/RoutesService";
+
 const headtags = [
   <title key="title">HighScoreWinsMoney</title>,
   <meta
@@ -11,17 +13,23 @@ const headtags = [
   <link key="favicon" rel="icon" href="./favicon.ico" />,
   <link
     key="industry-font"
-    href="./assets/fonts/Industry/stylesheet.css"
+    href={RoutesService.createRelativePath(
+      "/assets/fonts/Industry/stylesheet.css"
+    )}
     rel="stylesheet"
   />,
   <link
     key="galactic-font"
-    href="./assets/fonts/galactic-vanguardian-ncv/stylesheet.css"
+    href={RoutesService.createRelativePath(
+      "/assets/fonts/galactic-vanguardian-ncv/stylesheet.css"
+    )}
     rel="stylesheet"
   />,
   <link
     key="chubby-font"
-    href="./assets/fonts/ChubbyChoo/stylesheet.css"
+    href={RoutesService.createRelativePath(
+      "/assets/fonts/ChubbyChoo/stylesheet.css"
+    )}
     rel="stylesheet"
   />,
 ];

@@ -5,6 +5,7 @@ import fonts from "../../../../styles/fonts.module.css";
 import HighScoresTable from "../../../components/organisms/HighScoresTable";
 import Link from "../../../components/atoms/Link";
 import Button from "../../../components/atoms/Button";
+import RoutesService from "../../../services/RoutesService";
 
 const renderIframe = () => {
   return (
@@ -39,7 +40,7 @@ const HomePage = () => {
       {/* <div className={styles.title}>SAMPLE TITLE FONT EXAMPLE</div> */}
       <Image
         className={styles.logo}
-        src={"./images/logo_dropshadow.png"}
+        src={RoutesService.createRelativePath("/images/logo_dropshadow.png")}
         alt="HighScoreWinsMoney Logo"
         width={120 * 3}
         height={94 * 3}
@@ -67,7 +68,6 @@ const HomePage = () => {
       </div>
       <div id="game" className={styles.gameframe}>
         <div className={styles.game}>{renderIframe()}</div>
-        <div className={styles["logo-wrapper"]}></div>
       </div>
       <HighScoresTable className="container" />
     </main>

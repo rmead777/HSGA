@@ -1,6 +1,7 @@
 import Image from "../../../components/Image";
-import styles from "./styles.module.scss";
 import cx from "classnames";
+import styles from "./styles.module.scss";
+import fonts from "../../../../styles/fonts.module.css";
 import HighScoresTable from "../../../components/organisms/HighScoresTable";
 
 const renderIframe = () => {
@@ -42,13 +43,23 @@ const HomePage = () => {
         indie developers. If you get the high score on the game that day,{" "}
         <b>we will give you $100 US.</b>
       </div>
+      <div className="flex flex-col">
+        <button className={cx(styles.button, "mb-3 mx-auto")}>
+          <span>{`Let's Go!`}</span>
+        </button>
+        <button
+          className={cx(
+            fonts.button,
+            "text-primary-2 mb-5 text-lg font-size-3"
+          )}
+        >
+          Login/Signup
+        </button>
+      </div>
       <div className={styles.gameframe}>
         <div className={styles.game}>{renderIframe()}</div>
         <div className={styles["logo-wrapper"]}></div>
       </div>
-      <button className={styles.button}>
-        <span>{`Let's Go!`}</span>
-      </button>
       <HighScoresTable className="container" />
     </main>
   );

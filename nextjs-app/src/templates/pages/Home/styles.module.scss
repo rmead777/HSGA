@@ -3,7 +3,7 @@
 }
 
 .button {
-  border: 2px solid var(--primary-2);
+  border: 2px solid var(--white);
   color: var(--primary-2);
   font-family: ChubbyChoo;
   font-size: 1rem;
@@ -19,7 +19,7 @@
 
   &:hover {
     background-color: var(--primary-2);
-    color: var(--primary-1);
+    color: var(--black);
   }
 }
 

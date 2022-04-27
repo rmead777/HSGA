@@ -53,16 +53,15 @@ build:
   artifacts:
     paths:
       - $NEXT_APP_BUILD_DIR
-  only:
-    refs:
-      - branches
-      - main
-    changes:
-      - "pages/**/*.*"
-      - "public/**/*.*"
-      - "src/**/*.*"
-      - "styles/**/*.*"
-      - "README.md"
+  # only:
+  #   refs:
+  #     - branches
+  #     - main
+  #   changes:
+  #     - "pages/**/*.*"
+  #     - "public/**/*.*"
+  #     - "src/**/*.*"
+  #     - "styles/**/*.*"
 
 deploy-to-staging:
   stage: staging
@@ -83,12 +82,12 @@ deploy-to-staging:
     - pwd
     - ls -a $NEXT_APP_BUILD_DIR
     - sshpass -e rsync -avz --exclude='.git' $NEXT_APP_BUILD_DIR $REMOTE_USERNAME@$REMOTE_HOST:$REMOTE_HOST_DIR
-  only:
-    refs:
-      # When we have a production branch, this will change
-      - main
-    changes:
-      - "pages/**/*.*"
-      - "public/**/*.*"
-      - "src/**/*.*"
-      - "styles/**/*.*"
+  # only:
+  #   refs:
+  #     # When we have a production branch, this will change
+  #     - main
+  #   changes:
+  #     - "pages/**/*.*"
+  #     - "public/**/*.*"
+  #     - "src/**/*.*"
+  #     - "styles/**/*.*"

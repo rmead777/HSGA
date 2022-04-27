@@ -13,7 +13,7 @@ const HomePage = () => {
         "mt-20"
       )}
     >
-      <div className={styles.title}>TITLE FONT EXAMPLE</div>
+      <div className={styles.title}>SAMPLE TITLE FONT EXAMPLE</div>
       <Image
         className="mx-auto"
         src={"./images/HS_reverse_portrait.png"}

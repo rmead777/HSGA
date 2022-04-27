@@ -20,7 +20,7 @@ const Login: NextPage = () => {
       >
         <Image
           className="mx-auto"
-          src={"./images/logo_dropshadow.png"}
+          src={"./images/HS_reverse_portrait.png"}
           alt="HighScoreWinsMoney Logo"
           width={120 * 3}
           height={94 * 3}

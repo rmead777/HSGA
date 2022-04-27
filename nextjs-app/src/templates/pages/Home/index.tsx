@@ -40,7 +40,7 @@ const HomePage = () => {
       {/* <div className={styles.title}>SAMPLE TITLE FONT EXAMPLE</div> */}
       <Image
         className={styles.logo}
-        src={RoutesService.createRelativePath("/images/logo_dropshadow.png")}
+        src={RoutesService.createAssetsPath("/images/HS_reverse_portrait.png")}
         alt="HighScoreWinsMoney Logo"
         width={120 * 3}
         height={94 * 3}

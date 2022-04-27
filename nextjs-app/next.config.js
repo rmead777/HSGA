@@ -6,6 +6,7 @@ console.log("IS PRODUCTION?", isProd);
 const nextConfig = {
   reactStrictMode: true,
   assetPrefix: isProd ? "./" : "",
+  basePath: isProd ? "/gitlab/out" : "",
   images: {
     loader: "custom",
   },

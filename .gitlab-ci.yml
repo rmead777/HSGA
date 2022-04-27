@@ -7,34 +7,69 @@
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 # image: ubuntu:17.10
 
+image: node:16.14.2
+
 before_script:
   - apt-get update -qq
-  - apt-get install -y -qq ssh
-  - apt-get install -y -qq rsync
-  - apt-get install -y -qq sshpass
+  - apt-get install
 
-  - mkdir ~/.ssh
-  - echo "StrictHostKeyChecking no" >> ~/.ssh/config
-
-  # - export SSHPASS=$TEST_SERVER_PASSWORD
+variables:
+  NEXT_APP_DIR: "./nextjs-app"
+  NEXT_APP_BUILD_DIR: $NEXT_APP_DIR/out
 
 stages:
   # - test
+  - install_dependencies
+  - build
   - staging
 # sast:
 #   stage: test
 # include:
 #   - template: Security/SAST.gitlab-ci.yml
 
+install_dependencies:
+  stage: install_dependencies
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - $NEXT_APP_DIR/node_modules/
+  script:
+    - cd $NEXT_APP_DIR
+    - yarn install --frozen-lockfile
+  only:
+    changes:
+      - $NEXT_APP_DIR/yarn.lock
+
+build:
+  stage: build
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - $NEXT_APP_DIR/node_modules/
+    policy: pull
+  script:
+    - cd $NEXT_APP_DIR
+    - yarn build
+  artifacts:
+    paths:
+      - $NEXT_APP_BUILD_DIR
+
 deploy-to-staging:
+  stage: staging
   variables:
     SSHPASS: $TEST_SERVER_PASSWORD
     REMOTE_USERNAME: testing2
     REMOTE_HOST: testing2.ttechr.com
     REMOTE_HOST_DIR: ./public_html/webroot/gitlab
-    BUILD_DIR: ./nextjs-app/out
-  stage: staging
+  before_script:
+    - apt-get update -qq
+    - apt-get install -y -qq ssh
+    - apt-get install -y -qq rsync
+    - apt-get install -y -qq sshpass
+
+    - mkdir ~/.ssh
+    - echo "StrictHostKeyChecking no" >> ~/.ssh/config
   script:
     - pwd
-    - ls -a $BUILD_DIR
-    - sshpass -e rsync -avz --exclude='.git' $BUILD_DIR $REMOTE_USERNAME@$REMOTE_HOST:$REMOTE_HOST_DIR
+    - ls -a $NEXT_APP_BUILD_DIR
+    - sshpass -e rsync -avz --exclude='.git' $NEXT_APP_BUILD_DIR $REMOTE_USERNAME@$REMOTE_HOST:$REMOTE_HOST_DIR

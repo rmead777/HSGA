@@ -1,8 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import logo from "../public/images/HS_reverse_portrait.png";
+// import logo from "../public/images/HS_reverse_portrait.png";
 
 const Home: NextPage = () => {
   return (
@@ -15,12 +14,17 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <span className={styles.logo}>
-          <Image
-            src={logo}
+          This is the shit
+          <img src={"images/HS_reverse_portrait.png"} />
+          {/* <Image
+            loader={({ src, width, quality }) => {
+              return `https://example.com/${src}?w=${width}&q=${quality || 75}`;
+            }}
+            src={"./images/HS_reverse_portrait.png"}
             alt="HighScoreWinsMoney Logo"
             width={120 * 2}
             height={94 * 2}
-          />
+          /> */}
         </span>
       </main>
 
@@ -30,10 +34,7 @@ const Home: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
+          Powered by <span className={styles.logo}></span>
         </a>
       </footer>
     </div>

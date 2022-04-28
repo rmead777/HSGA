@@ -14,7 +14,7 @@
 .Spotlight-V100
 .Trashes
 # Icon must end with two \r
-Icon
+Icon
 ehthumbs.db
 Thumbs.db
 .directory
@@ -43,3 +43,16 @@ nbproject/*
 .vscode
 # Sass preprocessor
 .sass-cache/
+
+
+# ignore the rest of the files in cakephp that we aren't going to touch
+bin/
+phpcs.xml
+phpstan.neon
+phpunit.xml.dist
+plugins/
+resources/
+src/Console/
+stats/
+templates/
+tests/

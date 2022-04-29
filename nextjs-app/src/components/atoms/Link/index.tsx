@@ -1,5 +1,5 @@
 import NextLink, { LinkProps } from "next/link";
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 import cx from "classnames";
 
 interface PropTypes extends React.PropsWithChildren<LinkProps> {

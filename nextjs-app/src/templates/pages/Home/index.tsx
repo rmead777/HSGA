@@ -1,6 +1,6 @@
 import Image from "../../../components/atoms/Image";
 import cx from "classnames";
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 import fonts from "../../../../styles/fonts.module.css";
 import HighScoresTable from "../../../components/organisms/HighScoresTable";
 import Link from "../../../components/atoms/Link";
@@ -30,6 +30,7 @@ const HomePage = () => {
   return (
     <main
       className={cx(
+        styles.main,
         styles["is-landing-page"],
         "container",
         "mx-auto",
@@ -37,13 +38,16 @@ const HomePage = () => {
         "mt-10"
       )}
     >
-      <Image
-        className={styles.logo}
-        src={RoutesService.createAssetsPath("/images/HS_reverse_horiz.png")}
-        alt="HighScoreWinsMoney Logo"
-        width={120 * 2}
-        height={94 * 2}
-      />
+      <div className={styles["logo-wrapper"]}>
+        <Image
+          className={styles.logo}
+          src={RoutesService.createAssetsPath("/images/HS_reverse_horiz.png")}
+          alt="HighScoreWinsMoney Logo"
+          width={120}
+          height={94}
+          zoom={3}
+        />
+      </div>
       <div id="game" className={styles.gameframe}>
         <div className={styles.game}>{renderIframe()}</div>
       </div>

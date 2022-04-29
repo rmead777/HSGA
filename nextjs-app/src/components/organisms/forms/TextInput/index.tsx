@@ -1,5 +1,5 @@
 import { DetailedHTMLProps, InputHTMLAttributes } from "react";
-import styles from "./styles.module.scss";
+import styles from "./styles.module.css";
 import cx from "classnames";
 import fonts from "@ui/styles/fonts.module.css";
 

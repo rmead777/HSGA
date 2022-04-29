@@ -7,6 +7,7 @@ import TextInput from "@ui/organisms/forms/TextInput";
 import Button from "@ui/atoms/Button/index";
 import { HSWM_API } from "@services/HSWM_API";
 import { FormEventHandler } from "react";
+import FormPageTemplate from "../FormPage/index";
 
 function SignupTemplate() {
   const registerUser: FormEventHandler<HTMLFormElement> = (event) => {
@@ -22,17 +23,8 @@ function SignupTemplate() {
   };
 
   return (
-    <main
-      className={cx("container", "mx-auto", "text-center", "mt-20 flex-col")}
-    >
-      <Image
-        className="mx-auto"
-        src={"./images/HS_reverse_portrait.png"}
-        alt="HighScoreWinsMoney Logo"
-        width={120 * 3}
-        height={94 * 3}
-      />
-      <div className="flex flex-col">
+    <FormPageTemplate
+      form={
         <Form onSubmit={registerUser} acceptCharset="utf-8">
           <TextInput
             type="text"
@@ -61,17 +53,17 @@ function SignupTemplate() {
             label="Email"
           />
           <Button type="submit">Register</Button>
+          <div
+            className={cx(
+              fonts.button,
+              "text-primary-1 mb-5 text-lg font-size-3"
+            )}
+          >
+            <Link href="/login">OR LOGIN INSTEAD</Link>
+          </div>
         </Form>
-        <div
-          className={cx(
-            fonts.button,
-            "text-primary-1 mb-5 text-lg font-size-3"
-          )}
-        >
-          <Link href="/login">OR LOGIN INSTEAD</Link>
-        </div>
-      </div>
-    </main>
+      }
+    />
   );
 }
 

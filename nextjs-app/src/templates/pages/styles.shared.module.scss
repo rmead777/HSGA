@@ -1,0 +1,9 @@
+.logo {
+  max-width: 50vw;
+}
+
+@media screen(sm) {
+  .logo {
+    max-width: 100vw;
+  }
+}

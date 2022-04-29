@@ -7,33 +7,26 @@ import TextInput from "@ui/organisms/forms/TextInput";
 import Button from "@ui/atoms/Button/index";
 import { HSWM_API } from "@services/HSWM_API";
 import { FormEventHandler } from "react";
+import FormPageTemplate from "../FormPage/index";
 
 function LoginTemplate() {
-  const registerUser: FormEventHandler<HTMLFormElement> = (event) => {
+  const loginUser: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault(); // don't redirect the page
 
     const values = {
       username: event.currentTarget.username.value,
-      email: event.currentTarget.email.value,
       password: event.currentTarget.password.value,
     };
 
-    HSWM_API.registerUser(values).then(console.log).catch(console.error);
+    console.error("Not implemented yet", {
+      values,
+    });
   };
 
   return (
-    <main
-      className={cx("container", "mx-auto", "text-center", "mt-20 flex-col")}
-    >
-      <Image
-        className="mx-auto"
-        src={"./images/HS_reverse_portrait.png"}
-        alt="HighScoreWinsMoney Logo"
-        width={120 * 3}
-        height={94 * 3}
-      />
-      <div className="flex flex-col">
-        <Form onSubmit={registerUser} acceptCharset="utf-8">
+    <FormPageTemplate
+      form={
+        <Form onSubmit={loginUser} acceptCharset="utf-8">
           <TextInput
             type="text"
             name="username"
@@ -50,19 +43,20 @@ function LoginTemplate() {
             id="password"
             aria-required="true"
             label="Password"
+            minLength={8}
           />
           <Button type="submit">Login</Button>
+          <div
+            className={cx(
+              fonts.button,
+              "text-primary-1 mb-5 text-lg font-size-3"
+            )}
+          >
+            <Link href="/signup">NOT REGISTERED? SIGNUP NOW</Link>
+          </div>
         </Form>
-        <div
-          className={cx(
-            fonts.button,
-            "text-primary-1 mb-5 text-lg font-size-3"
-          )}
-        >
-          <Link href="/signup">NOT REGISTERED? SIGNUP NOW</Link>
-        </div>
-      </div>
-    </main>
+      }
+    />
   );
 }
 

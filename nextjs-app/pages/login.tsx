@@ -3,42 +3,15 @@ import cx from "classnames";
 import NextHead from "next/head";
 import Footer from "../src/templates/Footer";
 import Header from "../src/templates/Header";
-import Image from "../src/components/atoms/Image";
-import Link from "../src/components/atoms/Link";
-import fonts from "../styles/fonts.module.css";
-import Button from "../src/components/atoms/Button";
 import headtags from "../src/_headtags";
+import LoginTemplate from "../src/templates/pages/Login";
 
 const Login: NextPage = () => {
   return (
     <>
       <NextHead>{headtags}</NextHead>
-
       <Header />
-      <main
-        className={cx("container", "mx-auto", "text-center", "mt-20 flex-col")}
-      >
-        <Image
-          className="mx-auto"
-          src={"./images/HS_reverse_portrait.png"}
-          alt="HighScoreWinsMoney Logo"
-          width={120 * 3}
-          height={94 * 3}
-        />
-        <div className="flex flex-col">
-          <Button>
-            <span>LOGIN</span>
-          </Button>
-          <div
-            className={cx(
-              fonts.button,
-              "text-primary-1 mb-5 text-lg font-size-3"
-            )}
-          >
-            <Link href="/signup">OR SIGNUP INSTEAD</Link>
-          </div>
-        </div>
-      </main>
+      <LoginTemplate />
       <Footer />
     </>
   );

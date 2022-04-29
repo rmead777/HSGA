@@ -50,7 +50,9 @@ function LoginTemplate() {
               "text-primary-1 mb-5 text-lg font-size-3"
             )}
           >
-            <Link href="/signup">NOT REGISTERED? SIGNUP NOW</Link>
+            <Link href="/signup" as="/signup.html">
+              NOT REGISTERED? SIGNUP NOW
+            </Link>
           </div>
         </Form>
       }

@@ -34,16 +34,19 @@ const HomePage = () => {
         "container",
         "mx-auto",
         "text-center",
-        "mt-20"
+        "mt-10"
       )}
     >
       <Image
         className={styles.logo}
-        src={RoutesService.createAssetsPath("/images/HS_reverse_portrait.png")}
+        src={RoutesService.createAssetsPath("/images/HS_reverse_horiz.png")}
         alt="HighScoreWinsMoney Logo"
-        width={120 * 3}
-        height={94 * 3}
+        width={120 * 2}
+        height={94 * 2}
       />
+      <div id="game" className={styles.gameframe}>
+        <div className={styles.game}>{renderIframe()}</div>
+      </div>
       <div className="mb-10 max-w-md mx-auto">
         High Score Wins Money is a place where you can play unique games made by
         indie developers. If you get the high score on the game that day,{" "}
@@ -70,9 +73,6 @@ const HomePage = () => {
             Signup
           </Link>
         </div>
-      </div>
-      <div id="game" className={styles.gameframe}>
-        <div className={styles.game}>{renderIframe()}</div>
       </div>
       <HighScoresTable className="container" />
     </main>

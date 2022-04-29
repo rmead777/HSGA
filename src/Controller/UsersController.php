@@ -48,6 +48,7 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
+//            print_r($this->request->getData());exit;
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
@@ -167,10 +168,12 @@ class UsersController extends AppController
     public function jsonsignupform(){
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
 
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+
+            if ($this->Users->save($user)) {
+                //$this->Flash->success(__('The user has been saved.'));
+//            print_r($user);exit;
                 $this->set('response', "Success");
             }
             else{
@@ -193,13 +196,15 @@ class UsersController extends AppController
      */
     public function test()
     {
-        echo "this is the test file";
+        header('Content-Type: application/json');
+//        echo "this is the test file\r\n";
+        echo json_encode($_POST);
         exit;
     }
 
     public function csrftest(){
         header('Content-Type: application/json');
-        print_r(json_encode($this->request->getAttribute('csrfToken')));
+        print_r(json_encode([0 => $this->request->getAttribute('csrfToken'), 1 => $_SESSION]));
         exit;
     }
 
@@ -223,5 +228,11 @@ class UsersController extends AppController
         // Configure the login action to not require authentication, preventing
         // the infinite redirect loop issue
         $this->Authentication->addUnauthenticatedActions(['login', 'add', 'currentuser', 'test', 'csrftest', 'jsonsignupform']);
+
+
+        //disable form tampering check for test action
+//        if($this->getAction() == 'test'){
+//            $this->FormProtection->setConfig('validate', false);
+//        }
     }
 }

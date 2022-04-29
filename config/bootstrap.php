@@ -220,3 +220,85 @@ function testingCORS(){
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Methods: GET, POST');
 }
+
+/**
+ * @param $str
+ * @param $level
+ * @param $finalVal
+ * @return array
+ */
+function parse($str, $level = 0, $finalVal = array()) {
+    if ($level === 0) {
+        $str = str_replace([" ", "\t"], '', $str);
+    }
+    $result = [];
+    while(true) {
+        $rest = strpbrk($str, '[],');
+        if (!$rest) {
+            if (strlen($str) > 0) {
+                throw new ExpectedEndOfStringException($str);
+            }
+            return $result;
+        }
+        $term = substr($rest, 0, 1);
+        $rest = substr($rest, 1);
+        $val = substr($str, 0, strpos($str, $term));
+        switch ($term) {
+            case '[':
+                if (!$val) {
+                    $val = 0;
+                } elseif (isset($result[$val])) {
+                    throw new NonUniqueKeyException($val);
+                }
+                list($a, $str) = parse($rest, $level+1, $finalVal);
+                if (is_null($a) && is_null($str)) {
+                    throw new BracketsMismatchException($rest);
+                }
+                $result = array_merge($result, [$val => $a]);
+                break;
+            case ']':
+                if ($val) {
+                    $result[$val] = $finalVal;
+                }
+                if($level < 1) {
+                    throw new BracketsMismatchException($rest);
+                }
+                if (strlen($rest) > 0 && !in_array(substr($rest, 0, 1), [',', ']'])) {
+                    throw new MalformedStringException($val.$term.$rest);
+                }
+                return [$result, ltrim($rest, ',')];
+            case ',':
+                if (!$val) {
+                    throw new UnexpectedComaException($term.$rest);
+                }
+                $result[] = $val;
+                $str = $rest;
+                break;
+            default:
+                throw new LogicException();
+        }
+    }
+}
+
+if($_SERVER['REQUEST_METHOD']=='POST' && $_SERVER['CONTENT_TYPE']=='application/json'){
+    $json = file_get_contents('php://input');
+
+    if(!empty($json)){
+        $data = json_decode($json);
+        $data = $data->data;
+        $data = (array)json_decode($data);
+        $_SERVER['CONTENT_TYPE'] = 'application/x-www-form-urlencoded';
+
+        foreach ($data as $index => $datum) {
+            $pattern = '/\[.+?\]/i';
+            if(preg_match_all($pattern, $index, $matches)>0) {
+                $datum = parse($index, 0, $datum);
+                unset($data[$index]);
+                $data = array_merge_recursive($data, $datum);
+            }
+        }
+        $_POST = $data;
+//        echo json_encode(print_r($_POST, true));exit;
+    }
+}
+

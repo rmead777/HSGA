@@ -297,6 +297,11 @@ if($_SERVER['REQUEST_METHOD']=='POST' && $_SERVER['CONTENT_TYPE']=='application/
                 $data = array_merge_recursive($data, $datum);
             }
         }
+        if(array_key_exists('_Token', $data)){
+            if(!array_key_exists('unlocked', $data['_Token'])){
+                $data['_Token']['unlocked'] = "";
+            }
+        }
         $_POST = $data;
 //        echo json_encode(print_r($_POST, true));exit;
     }

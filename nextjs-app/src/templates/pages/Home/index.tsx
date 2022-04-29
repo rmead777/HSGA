@@ -37,7 +37,6 @@ const HomePage = () => {
         "mt-20"
       )}
     >
-      {/* <div className={styles.title}>SAMPLE TITLE FONT EXAMPLE</div> */}
       <Image
         className={styles.logo}
         src={RoutesService.createAssetsPath("/images/HS_reverse_portrait.png")}
@@ -63,7 +62,7 @@ const HomePage = () => {
             "text-primary-2 mb-5 text-lg font-size-3"
           )}
         >
-          <Link href="/login">Login</Link> / <Link href="/signup">Signup</Link>
+          <Link href="/login">Login</Link> / <Link href="./signup">Signup</Link>
         </div>
       </div>
       <div id="game" className={styles.gameframe}>

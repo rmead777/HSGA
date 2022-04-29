@@ -17,4 +17,15 @@
     background-color: var(--primary-2);
     color: var(--black);
   }
+
+  &[type="submit"] {
+    background-color: var(--primary-2);
+    color: var(--white);
+    border-color: var(--primary-2);
+
+    &:hover {
+      background-color: var(--secondary-1);
+      border-color: var(--secondary-1);
+    }
+  }
 }

@@ -39,6 +39,17 @@ install_dependencies:
     changes:
       - $NEXT_APP_DIR/yarn.lock
 
+test:
+  stage: test
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - $NEXT_APP_DIR/node_modules/
+    policy: pull
+  script:
+    - cd $NEXT_APP_DIR
+    - yarn jest .
+
 build:
   stage: build
   cache:

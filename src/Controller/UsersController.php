@@ -160,17 +160,68 @@ class UsersController extends AppController
         exit;
     }
 
-    public function test(){
-        print_r($this->request->getAttribute('csrfToken'));
+    /**
+     * Return the add sign up form in json
+     * @return void
+     */
+    public function jsonsignupform(){
+        $user = $this->Users->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+
+                $this->set('response', "Success");
+            }
+            else{
+                $this->viewBuilder()->setOption('serialize', true);
+                $this->set('error', $user->getErrors());
+            }
+        }
+        $this->set(compact('user'));
+
+        $this->viewBuilder()->disableAutoLayout();
+
+//        $this->viewBuilder()->setOption('serialize', true);
+        $this->RequestHandler->renderAs($this, 'json');
+    }
+
+    /**
+     * testing stuff here
+     *
+     * @return \Cake\Http\Response|void|null
+     */
+    public function test()
+    {
+        echo "this is the test file";
         exit;
     }
 
+    public function csrftest(){
+        header('Content-Type: application/json');
+        print_r(json_encode($this->request->getAttribute('csrfToken')));
+        exit;
+    }
+
+
+    public function example()
+    {
+
+        $highscores = $this->getTableLocator()->get('Highscores');
+        $query = $highscores->find('all')->where(['game_id' => 1])->contain('Users')->order(['score' => 'DESC']);
+        $results = array();
+        foreach ($query->all() as $row) {
+            $results[] = [$row->user->username => $row->score];
+        }
+        header('Content-Type: application/json');
+        echo json_encode($results);exit;
+    }
 
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
         // Configure the login action to not require authentication, preventing
         // the infinite redirect loop issue
-        $this->Authentication->addUnauthenticatedActions(['login', 'add', 'currentuser', 'test']);
+        $this->Authentication->addUnauthenticatedActions(['login', 'add', 'currentuser', 'test', 'csrftest', 'jsonsignupform']);
     }
 }

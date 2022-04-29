@@ -27,7 +27,7 @@
   position: relative;
   width: 100%;
   height: 500px;
-  max-height: 50vh;
+  max-height: 33vh;
   border: 2px solid var(--primary-2);
   margin-bottom: 2rem;
 
@@ -78,5 +78,9 @@
 @media screen(sm) {
   .logo {
     max-width: 100vw;
+  }
+
+  .gameframe {
+    max-height: 100%;
   }
 }

@@ -34,18 +34,21 @@ const HomePage = () => {
         styles["is-landing-page"],
         "container",
         "mx-auto",
-        "text-center"
+        "text-center",
+        "max-w-7xl"
       )}
     >
       <div className={styles["logo-wrapper"]}>
-        <Image
-          className={styles.logo}
-          src={RoutesService.createAssetsPath("/images/HS_reverse_horiz.png")}
-          alt="HighScoreWinsMoney Logo"
-          width={120}
-          height={94}
-          zoom={3}
-        />
+        <Link href="/">
+          <Image
+            className={styles.logo}
+            src={RoutesService.createAssetsPath("images/HS_reverse_horiz.png")}
+            alt="HighScoreWinsMoney Logo"
+            width={120}
+            height={94}
+            zoom={3}
+          />
+        </Link>
       </div>
       <div id="game" className={styles.gameframe}>
         <div className={styles.game}>{renderIframe()}</div>
@@ -56,12 +59,19 @@ const HomePage = () => {
         <b className="font-black">we will give you $100 US.</b>
       </div>
       <div className="flex flex-col">
-        <Button
-          className={cx(styles.button, "mb-3 mx-auto")}
-          onClick={scrollToGame}
+        <Link
+          href={{
+            pathname: "/gamepage/[pid]",
+            query: { pid: 1 },
+          }}
         >
-          <span>{`Let's Go!`}</span>
-        </Button>
+          <Button
+            className={cx(styles.button, "mb-3 mx-auto")}
+            // onClick={scrollToGame}
+          >
+            <span>{`Let's Go!`}</span>
+          </Button>
+        </Link>
         <div
           className={cx(
             fonts.button,
@@ -72,7 +82,7 @@ const HomePage = () => {
             Login
           </Link>
           {` /  `}
-          <Link href="./signup" as="/signup.html">
+          <Link href="/signup" as="/signup.html">
             Signup
           </Link>
         </div>

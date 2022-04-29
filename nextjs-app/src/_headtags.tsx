@@ -14,21 +14,21 @@ const headtags = [
   <link
     key="industry-font"
     href={RoutesService.createAssetsPath(
-      "/assets/fonts/Industry/stylesheet.css"
+      "assets/fonts/Industry/stylesheet.css"
     )}
     rel="stylesheet"
   />,
   <link
     key="galactic-font"
     href={RoutesService.createAssetsPath(
-      "/assets/fonts/galactic-vanguardian-ncv/stylesheet.css"
+      "assets/fonts/galactic-vanguardian-ncv/stylesheet.css"
     )}
     rel="stylesheet"
   />,
   <link
     key="chubby-font"
     href={RoutesService.createAssetsPath(
-      "/assets/fonts/ChubbyChoo/stylesheet.css"
+      "assets/fonts/ChubbyChoo/stylesheet.css"
     )}
     rel="stylesheet"
   />,

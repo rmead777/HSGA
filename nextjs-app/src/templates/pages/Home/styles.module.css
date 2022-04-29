@@ -66,17 +66,17 @@
 }
 
 .logo {
-  margin: auto;
+  margin: 1rem auto;
   margin-bottom: 1rem;
   max-width: 50vw;
+}
+
+.main {
+  padding: 1rem;
 }
 
 @media screen(sm) {
   .logo {
     max-width: 100vw;
-  }
-
-  .main {
-    margin-top: 1rem;
   }
 }

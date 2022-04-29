@@ -34,8 +34,7 @@ const HomePage = () => {
         styles["is-landing-page"],
         "container",
         "mx-auto",
-        "text-center",
-        "mt-10"
+        "text-center"
       )}
     >
       <div className={styles["logo-wrapper"]}>

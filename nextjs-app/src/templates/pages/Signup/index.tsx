@@ -8,6 +8,7 @@ import Button from "@ui/atoms/Button/index";
 import { HSWM_API } from "@services/HSWM_API";
 import { FormEventHandler } from "react";
 import FormPageTemplate from "../FormPage/index";
+import PasswordInput from "../../../components/organisms/forms/PasswordInput/index";
 
 function SignupTemplate() {
   const registerUser: FormEventHandler<HTMLFormElement> = (event) => {
@@ -36,14 +37,6 @@ function SignupTemplate() {
             label="Username"
           />
           <TextInput
-            type="password"
-            name="password"
-            required
-            id="password"
-            aria-required="true"
-            label="Password"
-          />
-          <TextInput
             type="email"
             name="email"
             required
@@ -52,6 +45,7 @@ function SignupTemplate() {
             maxLength={255}
             label="Email"
           />
+          <PasswordInput />
           <Button type="submit">Register</Button>
           <div
             className={cx(

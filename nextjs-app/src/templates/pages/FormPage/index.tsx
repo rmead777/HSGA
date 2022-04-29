@@ -8,6 +8,7 @@ import TextInput from "@ui/organisms/forms/TextInput";
 import Button from "@ui/atoms/Button/index";
 import { HSWM_API } from "@services/HSWM_API";
 import { FormEventHandler } from "react";
+import styles from "./styles.module.css";
 
 interface PropTypes {
   form: ReactNode;
@@ -24,12 +25,12 @@ function FormPageTemplate({ form }: PropTypes) {
       )}
     >
       <Image
-        className="mx-auto"
+        className={cx("mx-auto mb-3", styles.logo)}
         src={"./images/HS_reverse_portrait.png"}
         alt="HighScoreWinsMoney Logo"
         width={120}
         height={94}
-        zoom={3}
+        zoom={2.5}
       />
       <div className="flex flex-col">{form}</div>
     </main>

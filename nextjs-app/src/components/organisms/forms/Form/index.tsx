@@ -13,7 +13,7 @@ function Form(props: PropTypes) {
     <form
       {...rest}
       className={cx(
-        "flex flex-col space-y-5 max-w-md w-full mx-auto text-black",
+        "flex flex-col space-y-5 max-w-md w-full mx-auto",
         props.className
       )}
     >

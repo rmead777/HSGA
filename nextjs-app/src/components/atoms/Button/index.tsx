@@ -1,19 +1,17 @@
 import styles from "./styles.module.scss";
 import cx from "classnames";
+import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 
-type PropTypes = {
-  className?: string;
-  onClick?: () => void;
-  children: React.ReactNode;
-};
+type PropTypes = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>;
 
 export default function Button(props: PropTypes) {
+  const { children, className, ...rest } = props;
   return (
-    <button
-      className={cx(props.className, styles.button, "mb-3 mx-auto")}
-      {...props}
-    >
-      {props.children}
+    <button className={cx(className, styles.button, "mb-3 mx-auto")} {...rest}>
+      <span>{children}</span>
     </button>
   );
 }

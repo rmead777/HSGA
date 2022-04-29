@@ -1,0 +1,78 @@
+import cx from "classnames";
+import Link from "@ui/atoms/Link";
+import Image from "@ui/atoms/Image";
+import fonts from "@ui/styles/fonts.module.css";
+import Form from "@ui/organisms/forms/Form";
+import TextInput from "@ui/organisms/forms/TextInput";
+import Button from "@ui/atoms/Button/index";
+import { HSWM_API } from "@services/HSWM_API";
+import { FormEventHandler } from "react";
+
+function SignupTemplate() {
+  const registerUser: FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault(); // don't redirect the page
+
+    const values = {
+      username: event.currentTarget.username.value,
+      email: event.currentTarget.email.value,
+      password: event.currentTarget.password.value,
+    };
+
+    HSWM_API.registerUser(values).then(console.log).catch(console.error);
+  };
+
+  return (
+    <main
+      className={cx("container", "mx-auto", "text-center", "mt-20 flex-col")}
+    >
+      <Image
+        className="mx-auto"
+        src={"./images/HS_reverse_portrait.png"}
+        alt="HighScoreWinsMoney Logo"
+        width={120 * 3}
+        height={94 * 3}
+      />
+      <div className="flex flex-col">
+        <Form onSubmit={registerUser} acceptCharset="utf-8">
+          <TextInput
+            type="text"
+            name="username"
+            required
+            id="username"
+            aria-required="true"
+            maxLength={255}
+            label="Username"
+          />
+          <TextInput
+            type="password"
+            name="password"
+            required
+            id="password"
+            aria-required="true"
+            label="Password"
+          />
+          <TextInput
+            type="email"
+            name="email"
+            required
+            id="email"
+            aria-required="true"
+            maxLength={255}
+            label="Email"
+          />
+          <Button type="submit">Register</Button>
+        </Form>
+        <div
+          className={cx(
+            fonts.button,
+            "text-primary-1 mb-5 text-lg font-size-3"
+          )}
+        >
+          <Link href="/login">OR LOGIN INSTEAD</Link>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+export default SignupTemplate;

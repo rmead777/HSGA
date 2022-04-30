@@ -75,12 +75,12 @@ class UsersTable extends Table
             ->maxLength('password', 255)
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
-
+/*
         $validator
             ->date('Date_Of_Birth')
             ->requirePresence('Date_Of_Birth', 'create')
             ->notEmptyDate('Date_Of_Birth');
-
+*/
         $validator
             ->email('email')
             ->requirePresence('email', 'create')
@@ -99,6 +99,7 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['username', 'email']), ['errorField' => 'username']);
+        $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
         $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
 
         return $rules;

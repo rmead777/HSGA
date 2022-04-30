@@ -159,12 +159,31 @@ class HighscoresController extends AppController
         }exit;
     }
 
+	public function forgame($id = null)
+    {
+
+    	if($id == null){
+        	exit;
+        }
+    	$highscores = $this->getTableLocator()->get('Highscores');
+    	$query = $highscores->find('all')->where(['game_id' => $id])->contain('Users')->order(['score' => 'DESC']);
+		$results = array();
+    	foreach ($query->all() as $row) {
+        	$result = new \stdClass;
+        	$result->username = $row->user->username;
+        	$result->score = $row->score;
+			$results[] = $result;
+        }
+    	header('Content-Type: application/json');
+    	echo json_encode($results);exit;
+    }
+
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
         // for all controllers in our application, make index and view
         // actions public, skipping the authentication check
-        $this->Authentication->addUnauthenticatedActions(['add', 'post', 'check']);
+        $this->Authentication->addUnauthenticatedActions(['add', 'post', 'check', 'forgame']);
         $this->FormProtection->setConfig('unlockedActions', ['post', 'check']);
 
     }

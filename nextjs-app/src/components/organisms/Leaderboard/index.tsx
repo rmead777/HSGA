@@ -1,7 +1,9 @@
 import useHighScores from "../../../hooks/useHighScores";
 import { ScoreRecord } from "../../../services/HSWM_API";
 import cx from "classnames";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
+import Image from "../../atoms/Image";
+import RoutesService from "../../../services/RoutesService";
 
 function createTableRow(score: ScoreRecord, idx: number) {
   return (
@@ -14,33 +16,38 @@ function createTableRow(score: ScoreRecord, idx: number) {
 }
 
 interface PropTypes {
-  className: string;
+  className?: string;
 }
 
-export default function HighScoresTable({ className }: PropTypes) {
+export default function Leaderboard({ className }: PropTypes) {
   const { data, isLoading } = useHighScores(1);
 
   if (isLoading) return <p>Loading...</p>;
   if (!data) return <div>MISSING DATA</div>;
-
-  // return <div>{JSON.stringify(data)}</div>;
 
   return (
     <div
       className={cx(
         className,
         styles["table-wrapper"],
-        "max-w-3xl mx-auto pt-20"
+        "lg:max-w-3xl mx-auto pt-20"
       )}
     >
+      <Image
+        className={styles.logo}
+        src={RoutesService.createAssetsPath("images/HS_reverse_horiz.png")}
+        alt="HighScoreWinsMoney Logo"
+        width={120}
+        height={94}
+      />
       <table className={cx(styles.table, "container")}>
         {/* <thead>
-        <tr>
-          <th>Song</th>
-          <th>Artist</th>
-          <th>Year</th>
-        </tr>
-      </thead> */}
+          <tr>
+            <th>Rank</th>
+            <th className={styles["col-name"]}>Name</th>
+            <th>Score</th>
+          </tr>
+        </thead> */}
         <tbody>{data.map(createTableRow)}</tbody>
       </table>
     </div>

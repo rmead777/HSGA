@@ -2,7 +2,7 @@ import Image from "../../../components/atoms/Image";
 import cx from "classnames";
 import styles from "./styles.module.css";
 import fonts from "../../../../styles/fonts.module.css";
-import HighScoresTable from "../../../components/organisms/HighScoresTable";
+import Leaderboard from "../../../components/organisms/Leaderboard";
 import Link from "../../../components/atoms/Link";
 import Button from "../../../components/atoms/Button";
 import RoutesService from "../../../services/RoutesService";
@@ -73,7 +73,7 @@ const HomePage = () => {
             "text-primary-2 mb-5 text-lg font-size-3"
           )}
         >
-          <Link href="/login" as="/login">
+          <Link href="/login" as="/login.html">
             Login
           </Link>
           {` /  `}
@@ -82,7 +82,7 @@ const HomePage = () => {
           </Link>
         </div>
       </div>
-      <HighScoresTable className="container" />
+      <Leaderboard className="container" />
     </main>
   );
 };

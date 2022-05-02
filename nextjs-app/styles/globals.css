@@ -17,6 +17,9 @@ body {
 
 html {
   height: 100vh;
+
+  /* Mobile sizing */
+  font-size: 12px;
 }
 
 body {
@@ -53,4 +56,10 @@ a {
   --primary-1: #f01919;
   --primary-2: #05bed6;
   --secondary-1: #ff8e06;
+}
+
+@media screen(sm) {
+  html {
+    font-size: 16px;
+  }
 }

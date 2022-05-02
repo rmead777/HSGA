@@ -35,12 +35,23 @@ install_dependencies:
   script:
     - cd $NEXT_APP_DIR
     - yarn install --frozen-lockfile
-  # only:
-  #   refs:
-  #     - branches
-  #     - main
-  #   changes:
-  #     - $NEXT_APP_DIR/yarn.lock
+  only:
+    #   refs:
+    #     - branches
+    #     - main
+    changes:
+      - $NEXT_APP_DIR/yarn.lock
+
+lint:
+  stage: test
+  cache:
+    key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+    paths:
+      - $NEXT_APP_DIR/node_modules/
+    policy: pull
+  script:
+    - cd $NEXT_APP_DIR
+    - yarn lint
 
 build:
   stage: build
@@ -76,3 +87,5 @@ deploy-to-staging:
     - pwd
     - ls -a $NEXT_APP_BUILD_DIR
     - sshpass -e rsync -avz --exclude='.git' $NEXT_APP_BUILD_DIR $REMOTE_USERNAME@$REMOTE_HOST:$REMOTE_HOST_DIR
+  only:
+    - main

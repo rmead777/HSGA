@@ -1,11 +1,9 @@
 import cx from "classnames";
 import Link from "@ui/atoms/Link";
-import Image from "@ui/atoms/Image";
 import fonts from "@ui/styles/fonts.module.css";
 import Form from "@ui/organisms/forms/Form";
 import TextInput from "@ui/organisms/forms/TextInput";
 import Button from "@ui/atoms/Button/index";
-import { HSWM_API } from "@services/HSWM_API";
 import { FormEventHandler } from "react";
 import FormPageTemplate from "../FormPage/index";
 

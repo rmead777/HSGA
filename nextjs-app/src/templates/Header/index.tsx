@@ -1,5 +1,3 @@
-import cx from "classnames";
-import styles from "./styles.module.css";
 import Link from "../../components/atoms/Link";
 
 export default function Footer() {

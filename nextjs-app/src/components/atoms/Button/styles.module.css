@@ -27,4 +27,11 @@
       border-color: var(--secondary-1);
     }
   }
+
+  &:disabled {
+    background-color: var(--neutral);
+    border-color: var(--neutral);
+    opacity: 25%;
+    color: darkgray;
+  }
 }

@@ -11,7 +11,7 @@ export type ScoreRecord = {
   score: number;
 };
 
-interface RegisterUserParams {
+export interface RegisterUserParams {
   username: string;
   email: string;
   password: string;

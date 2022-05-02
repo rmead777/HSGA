@@ -23,8 +23,7 @@ const renderIframe = () => {
 
 const HomePage = () => {
   return (
-    <main
-      className={cx(
+    <main className={cx(
         styles.main,
         styles["is-landing-page"],
         "container",

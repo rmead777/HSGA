@@ -8,9 +8,11 @@ interface PropTypes
     HTMLInputElement
   > {
   label?: string;
+  hideRules?: boolean;
 }
 
 function PasswordInput(props: PropTypes) {
+  const { hideRules, label = "Password" } = props;
   return (
     <>
       <TextInput
@@ -19,13 +21,15 @@ function PasswordInput(props: PropTypes) {
         required
         id="password"
         aria-required="true"
-        label="Password"
+        label={label}
         minLength={8}
         {...props}
       />
-      <ul className={styles.rules}>
-        <li>Must have 8 characters minimum</li>
-      </ul>
+      {!hideRules && (
+        <ul className={styles.rules}>
+          <li>Must have 8 characters minimum</li>
+        </ul>
+      )}
     </>
   );
 }

@@ -15,7 +15,7 @@ export default function Footer() {
       <span>&copy; HighScoreWinsMoney 2022</span>
       <div className={cx(styles["social-media-links"], "flex space-x-2")}>
         <a href={EXTERNAL_LINKS.twitter} target="_blank" rel="noreferrer">
-          <Image
+                <Image
             src={RoutesService.createAssetsPath("icons/icon-twitter.png")}
             alt="twitter-icon"
             width={24}

@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import cx from "classnames";
 import Image from "@ui/atoms/Image";
 import styles from "./styles.module.css";
+import RoutesService from "../../../services/RoutesService";
 
 interface PropTypes {
   form: ReactNode;
@@ -19,7 +20,7 @@ function FormPageTemplate({ form }: PropTypes) {
     >
       <Image
         className={cx("mx-auto mb-3", styles.logo)}
-        src={"./images/HS_reverse_portrait.png"}
+        src={RoutesService.createAssetsPath("images/HS_reverse_portrait.png")}
         alt="HighScoreWinsMoney Logo"
         width={120}
         height={94}

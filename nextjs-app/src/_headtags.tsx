@@ -13,22 +13,18 @@ const headtags = [
   <link key="favicon" rel="icon" href="./favicon.ico" />,
   <link
     key="industry-font"
-    href={RoutesService.createAssetsPath(
-      "assets/fonts/Industry/stylesheet.css"
-    )}
+    href={RoutesService.createAssetsPath("fonts/Industry/stylesheet.css")}
+    rel="stylesheet"
+  />,
+  <link
+    key="chubby-font"
+    href={RoutesService.createAssetsPath("fonts/ChubbyChoo/stylesheet.css")}
     rel="stylesheet"
   />,
   <link
     key="galactic-font"
     href={RoutesService.createAssetsPath(
-      "assets/fonts/galactic-vanguardian-ncv/stylesheet.css"
-    )}
-    rel="stylesheet"
-  />,
-  <link
-    key="chubby-font"
-    href={RoutesService.createAssetsPath(
-      "assets/fonts/ChubbyChoo/stylesheet.css"
+      "fonts/galactic-vanguardian-ncv/stylesheet.css"
     )}
     rel="stylesheet"
   />,

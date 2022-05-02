@@ -4,7 +4,7 @@ class RoutesService {
   static ROOT = isProd ? "/gitlab/out/" : "/";
 
   static createAssetsPath = (path: string) => {
-    return RoutesService.ROOT + path;
+    return RoutesService.ROOT + "assets/" + path;
   };
 }
 

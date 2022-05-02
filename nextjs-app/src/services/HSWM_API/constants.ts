@@ -5,3 +5,9 @@ export const PATHS: Record<string, string> = {
   csrf: "/users/csrftest",
   signup: "/signup",
 };
+
+export const EXTERNAL_LINKS = {
+  twitter: "https://twitter.com/HighScoreWM",
+  instagram: "",
+  discord: "https://discord.gg/CtjkeXSb",
+};

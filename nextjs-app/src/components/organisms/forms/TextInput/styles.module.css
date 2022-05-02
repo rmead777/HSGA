@@ -7,7 +7,7 @@
   background-color: var(--black);
   padding: 0 0.5rem;
   text-transform: uppercase;
-  font-family: ChubbyChoo;
+  font-family: "Chubby Choo";
 }
 
 .input {
@@ -16,7 +16,7 @@
   background-color: var(--black);
   border: 2px solid;
   width: 100%;
-  font-family: ChubbyChoo;
+  font-family: "Chubby Choo";
   font-weight: 100;
   font-size: 1.5rem;
 }

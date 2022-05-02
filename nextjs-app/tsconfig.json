@@ -31,6 +31,12 @@
       ],
       "@services/*": [
         "src/services/*"
+      ],
+      "@images/*": [
+        "./public/assets/images/*"
+      ],
+      "@icons/*": [
+        "./public/assets/icons/*"
       ]
     }
   },

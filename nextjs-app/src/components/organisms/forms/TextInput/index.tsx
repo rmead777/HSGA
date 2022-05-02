@@ -17,6 +17,7 @@ function TextInput(props: PropTypes) {
     <div className={cx(styles.wrapper, props.className)}>
       <label htmlFor={id} className={cx(styles.label)}>
         {label}
+        {props.required && `*`}
       </label>
       <input {...rest} className={styles.input} />
     </div>

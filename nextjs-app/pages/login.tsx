@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import cx from "classnames";
 import NextHead from "next/head";
 import Footer from "../src/templates/Footer";
 import Header from "../src/templates/Header";

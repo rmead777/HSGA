@@ -21,11 +21,6 @@ const renderIframe = () => {
   );
 };
 
-function scrollToGame() {
-  const element = document.getElementById("game");
-  element?.scrollIntoView({ behavior: "smooth" });
-}
-
 const HomePage = () => {
   return (
     <main

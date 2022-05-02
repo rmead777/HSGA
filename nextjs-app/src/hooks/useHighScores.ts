@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { HSWM_API, ScoreRecord } from "../services/HSWM_API";
 
-export default function useHighScores(gameId: number = 1) {
+export default function useHighScores(gameId = 1) {
   const [data, setData] = useState<ScoreRecord[]>([]);
   const [isLoading, setLoading] = useState(false);
 

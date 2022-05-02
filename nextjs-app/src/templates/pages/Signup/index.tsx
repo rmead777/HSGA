@@ -1,6 +1,5 @@
 import cx from "classnames";
 import Link from "@ui/atoms/Link";
-import Image from "@ui/atoms/Image";
 import fonts from "@ui/styles/fonts.module.css";
 import Form from "@ui/organisms/forms/Form";
 import TextInput from "@ui/organisms/forms/TextInput";

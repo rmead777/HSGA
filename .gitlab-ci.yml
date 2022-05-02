@@ -35,12 +35,11 @@ install_dependencies:
   script:
     - cd $NEXT_APP_DIR
     - yarn install --frozen-lockfile
-  # only:
-  #   refs:
-  #     # - branches
-  #     - main
-  #   changes:
-  #     - $NEXT_APP_DIR/yarn.lock
+  only:
+    refs:
+      - main
+    changes:
+      - $NEXT_APP_DIR/yarn.lock
 
 lint:
   stage: test

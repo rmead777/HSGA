@@ -4,27 +4,28 @@ import fonts from "@ui/styles/fonts.module.css";
 import Form from "@ui/organisms/forms/Form";
 import TextInput from "@ui/organisms/forms/TextInput";
 import Button from "@ui/atoms/Button/index";
-import { FormEventHandler } from "react";
 import FormPageTemplate from "../FormPage/index";
+import useForm from "../../../hooks/useForm";
 
 function LoginTemplate() {
-  const loginUser: FormEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault(); // don't redirect the page
-
-    const values = {
-      username: event.currentTarget.username.value,
-      password: event.currentTarget.password.value,
-    };
-
-    console.error("Not implemented yet", {
-      values,
+  const { isValid, isDirty, validateForm, handleSubmit, handleFormChange } =
+    useForm({
+      onSubmit: (values) => {
+        console.error("Not implemented yet", {
+          values,
+        });
+      },
     });
-  };
 
   return (
     <FormPageTemplate
       form={
-        <Form onSubmit={loginUser} acceptCharset="utf-8">
+        <Form
+          onSubmit={handleSubmit}
+          onChange={handleFormChange}
+          acceptCharset="utf-8"
+          showInvalidFields={isDirty}
+        >
           <TextInput
             type="text"
             name="username"
@@ -43,7 +44,9 @@ function LoginTemplate() {
             label="Password"
             minLength={8}
           />
-          <Button type="submit">Login</Button>
+          <Button disabled={!isValid} type="submit" onClick={validateForm}>
+            Login
+          </Button>
           <div
             className={cx(
               fonts.button,

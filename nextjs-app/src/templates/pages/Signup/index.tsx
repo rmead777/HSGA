@@ -1,76 +1,45 @@
 import cx from "classnames";
-import isEmpty from "lodash/isEmpty";
 import Link from "@ui/atoms/Link";
 import fonts from "@ui/styles/fonts.module.css";
 import Form from "@ui/organisms/forms/Form";
 import TextInput from "@ui/organisms/forms/TextInput";
 import Button from "@ui/atoms/Button/index";
-import { HSWM_API } from "@services/HSWM_API";
-import { FormEventHandler, useState } from "react";
+import { HSWM_API, RegisterUserParams } from "@services/HSWM_API";
+import { useState } from "react";
 import FormPageTemplate from "../FormPage/index";
 import PasswordInput from "../../../components/organisms/forms/PasswordInput/index";
 import FormErrors from "../../../components/organisms/forms/FormErrors";
+import useForm from "../../../hooks/useForm";
 
 function redirectToHome() {
   window.location.href = "/";
 }
 
-function validate(obj: Record<string, string>) {
-  const emptyValue = Object.values(obj).find((value) => isEmpty(value));
-
-  return typeof emptyValue === "undefined";
-}
-
 function SignupTemplate() {
-  const [isValid, setValid] = useState(false);
-  const [isTouched, setTouched] = useState(false);
   const [errors, setErrors] = useState<string[]>([]);
-  const registerUser: FormEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault(); // don't redirect the page
-
-    const values = {
-      username: event.currentTarget.username.value,
-      email: event.currentTarget.email.value,
-      password: event.currentTarget.password.value,
-    };
-
-    HSWM_API.registerUser(values)
-      .then((res) => {
-        console.log(res);
-        redirectToHome();
-      })
-      .catch((err) => {
-        console.error(err);
-        setErrors(["There was an error creating your account."]);
-      });
-  };
-
-  const handleValidForm = () => {
-    setTouched(true);
-    setErrors([]);
-    return false;
-  };
-
-  const handleChange: FormEventHandler<HTMLFormElement> = (event) => {
-    const values = {
-      username: event.currentTarget.username.value,
-      email: event.currentTarget.email.value,
-      password: event.currentTarget.password.value,
-    };
-
-    const _isValid = validate(values);
-
-    setValid(_isValid);
-  };
+  const { isValid, isDirty, validateForm, handleSubmit, handleFormChange } =
+    useForm({
+      onSubmit: (values) => {
+        HSWM_API.registerUser(values as unknown as RegisterUserParams)
+          .then((res) => {
+            console.log(res);
+            redirectToHome();
+          })
+          .catch((err) => {
+            console.error(err);
+            setErrors(["There was an error creating your account."]);
+          });
+      },
+    });
 
   return (
     <FormPageTemplate
       form={
         <Form
-          onSubmit={registerUser}
+          onSubmit={handleSubmit}
           acceptCharset="utf-8"
-          onChange={handleChange}
-          showInvalidFields={isTouched}
+          onChange={handleFormChange}
+          showInvalidFields={isDirty}
         >
           <>
             <TextInput
@@ -93,7 +62,7 @@ function SignupTemplate() {
             />
             <PasswordInput />
             <FormErrors errors={errors} />
-            <Button disabled={!isValid} type="submit" onClick={handleValidForm}>
+            <Button disabled={!isValid} type="submit" onClick={validateForm}>
               Register
             </Button>
             <div

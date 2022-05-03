@@ -23,7 +23,7 @@ function getInputValuesFromEvent(event: FormEvent<HTMLFormElement>) {
 }
 
 interface Params {
-  onSubmit: (values: Record<string, string>) => void;
+  onSubmit: (_values: Record<string, string>) => void;
 }
 function useForm({ onSubmit }: Params) {
   const [isValid, setValid] = useState(false);

@@ -8,8 +8,11 @@
 use Cake\Core\Configure;
 use Cake\Error\Debugger;
 
-$this->layout = 'error';
+$this->layout = 'ajax';
+$file = REACT_PATH."404.html";
+file_exists($file) ? include $file : print_r("$file.html  and $message");
 
+/*
 if (Configure::read('debug')) :
     $this->layout = 'dev_error';
 
@@ -39,3 +42,4 @@ endif;
     <strong><?= __d('cake', 'Error') ?>: </strong>
     <?= __d('cake', 'The requested address {0} was not found on this server.', "<strong>'{$url}'</strong>") ?>
 </p>
+*/

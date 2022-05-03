@@ -50,7 +50,12 @@ return static function (RouteBuilder $routes) {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+//        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+
+        /**
+         * SIKE!!! We're connecting it to our ReactJS front end, served up by Jsservs
+         */
+        $builder->connect('/', ['controller' => 'Jsservs', 'action' => 'display', 'index']);
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
@@ -58,9 +63,15 @@ return static function (RouteBuilder $routes) {
         $builder->connect('/pages/*', 'Pages::display');
 
         /*
+         * Connect 'Jsservs' controller's URLs.
+         */
+        $builder->connect('/jsservs/*', 'Jsservs::display');
+
+        /*
          * login page
          */
-        $builder->connect('/login', ['controller' => 'Users', 'action' => 'login'], ['name' => 'login']);
+//        $builder->connect('/login', ['controller' => 'Users', 'action' => 'login'], ['name' => 'login']);
+        $builder->connect('/login', ['controller' => 'Jsservs', 'action' => 'display', 'login'], ['name' => 'login']);
 
         /*
          * logout page
@@ -70,7 +81,8 @@ return static function (RouteBuilder $routes) {
         /*
          * signup page
          */
-        $builder->connect('/signup', ['controller' => 'Users', 'action' => 'add'], ['name' => 'signup']);
+//        $builder->connect('/signup', ['controller' => 'Users', 'action' => 'add'], ['name' => 'signup']);
+        $builder->connect('/signup', ['controller' => 'Jsservs', 'action' => 'display', 'signup'], ['name' => 'signup']);
 
         /*
          * games page

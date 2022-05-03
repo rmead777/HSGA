@@ -5,7 +5,6 @@
   font-size: 1.75rem;
   line-height: 1.4rem;
   padding: 0.75rem 1rem;
-  padding: 1rem;
   text-transform: uppercase;
 
   span {
@@ -29,9 +28,9 @@
   }
 
   &:disabled {
-    background-color: var(--neutral);
-    border-color: var(--neutral);
+    /* background-color: var(--neutral);
+    border-color: var(--neutral); */
     opacity: 25%;
-    color: darkgray;
+    color: var(--black);
   }
 }

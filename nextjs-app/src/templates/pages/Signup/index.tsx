@@ -7,12 +7,13 @@ import Button from "@ui/atoms/Button/index";
 import { HSWM_API, RegisterUserParams } from "@services/HSWM_API";
 import { useState } from "react";
 import FormPageTemplate from "../FormPage/index";
-import PasswordInput from "../../../components/organisms/forms/PasswordInput/index";
-import FormErrors from "../../../components/organisms/forms/FormErrors";
+import PasswordInput from "@ui/organisms/forms/PasswordInput/index";
+import FormErrors from "@ui/organisms/forms/FormErrors";
 import useForm from "../../../hooks/useForm";
+import { PATHNAME } from "../../../../pages/payment-preferences";
 
-function redirectToHome() {
-  window.location.href = "/";
+function goToPath(path: string) {
+  window.location.href = path;
 }
 
 function SignupTemplate() {
@@ -23,7 +24,7 @@ function SignupTemplate() {
         HSWM_API.registerUser(values as unknown as RegisterUserParams)
           .then((res) => {
             console.log(res);
-            redirectToHome();
+            goToPath(PATHNAME);
           })
           .catch((err) => {
             console.error(err);
@@ -71,9 +72,7 @@ function SignupTemplate() {
                 "text-primary-1 mb-5 text-lg font-size-3"
               )}
             >
-              <Link href="/login" as="/login.html">
-                OR LOGIN INSTEAD
-              </Link>
+              <Link href="/">OR LOGIN INSTEAD</Link>
             </div>
           </>
         </Form>

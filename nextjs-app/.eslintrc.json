@@ -10,6 +10,6 @@
     "out"
   ],
   "rules": {
-    "@typescript-eslint/no-var-requires": 1
+    "no-unused-vars": 0
   }
 }

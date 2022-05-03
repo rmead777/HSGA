@@ -8,6 +8,6 @@ export const PATHS: Record<string, string> = {
 
 export const EXTERNAL_LINKS = {
   twitter: "https://twitter.com/HighScoreWM",
-  instagram: "",
+  instagram: "https://www.instagram.com/highscorewm/",
   discord: "https://discord.gg/CtjkeXSb",
 };

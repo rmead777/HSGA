@@ -72,7 +72,7 @@ function SignupTemplate() {
                 "text-primary-1 mb-5 text-lg font-size-3"
               )}
             >
-              <Link href="/">OR LOGIN INSTEAD</Link>
+              <Link href="/login">OR LOGIN INSTEAD</Link>
             </div>
           </>
         </Form>

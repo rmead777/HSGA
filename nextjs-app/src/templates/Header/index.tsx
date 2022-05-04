@@ -13,7 +13,12 @@ export default function Footer() {
       )}
     >
       <Link className="chubby-choo-vertical-fix" href="/">
-        Home
+        <Image
+          src={RoutesService.getIconPath("hswm")}
+          alt="twitter-icon"
+          width={24}
+          height={24}
+        />
       </Link>
       <span className="flex space-x-2">
         <Link href="/logout" className="chubby-choo-vertical-fix">
@@ -21,7 +26,7 @@ export default function Footer() {
         </Link>
         <Link href="/settings">
           <Image
-            src={RoutesService.createAssetsPath("icons/icon-gear.svg")}
+            src={RoutesService.getIconPath("gear")}
             alt="twitter-icon"
             width={24}
             height={24}

@@ -74,9 +74,3 @@ a {
     top: -5px;
   }
 }
-
-/* Special classes */
-.chubby-choo-vertical-fix {
-  position: relative;
-  top: -5px;
-}

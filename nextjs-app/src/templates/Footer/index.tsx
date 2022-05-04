@@ -9,7 +9,7 @@ export default function Footer() {
     <footer
       className={cx(
         styles.footer,
-        "flex justify-between container p-3 max-w-7xl mx-auto"
+        "flex justify-between container p-3 max-w-7xl mx-auto text-xs"
       )}
     >
       <span>&copy; HighScoreWinsMoney 2022</span>

@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "next",
+    "prettier"
+  ],
+  "ignorePatterns": [
+    "out"
+  ],
+  "rules": {
+    "no-unused-vars": 0
+  }
+}

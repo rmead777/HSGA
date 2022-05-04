@@ -1,0 +1,36 @@
+.button {
+  border: 2px solid var(--white);
+  color: var(--primary-2);
+  font-family: "Chubby Choo";
+  font-size: 1.75rem;
+  line-height: 1.4rem;
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+
+  span {
+    vertical-align: text-top;
+  }
+
+  &:hover {
+    background-color: var(--primary-2);
+    color: var(--black);
+  }
+
+  &[type="submit"] {
+    background-color: var(--primary-2);
+    color: var(--white);
+    border-color: var(--primary-2);
+
+    &:hover {
+      background-color: var(--secondary-1);
+      border-color: var(--secondary-1);
+    }
+  }
+
+  &:disabled {
+    /* background-color: var(--neutral);
+    border-color: var(--neutral); */
+    opacity: 25%;
+    color: var(--black);
+  }
+}

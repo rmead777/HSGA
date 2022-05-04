@@ -58,9 +58,20 @@ a {
   --secondary-1: #ff8e06;
 }
 
+/* Special classes */
+.chubby-choo-vertical-fix {
+  position: relative;
+  top: -2px;
+}
+
 @media screen(sm) {
   html {
+    /* Normal font size  */
     font-size: 16px;
+  }
+
+  .chubby-choo-vertical-fix {
+    top: -5px;
   }
 }
 

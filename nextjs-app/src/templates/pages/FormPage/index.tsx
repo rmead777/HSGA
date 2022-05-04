@@ -20,7 +20,7 @@ function FormPageTemplate({ form }: PropTypes) {
     >
       <Image
         className={cx("mx-auto mb-3", styles.logo)}
-        src={RoutesService.createAssetsPath("images/HS_reverse_portrait.png")}
+        src={RoutesService.getImagePath("HS_reverse_portrait.png")}
         alt="HighScoreWinsMoney Logo"
         width={120}
         height={94}

@@ -37,7 +37,7 @@ const HomePage = () => {
         <Link href="/">
           <Image
             className={styles.logo}
-            src={RoutesService.createAssetsPath("images/HS_reverse_horiz.png")}
+            src={RoutesService.getImagePath("HS_reverse_horiz.png")}
             alt="HighScoreWinsMoney Logo"
             width={120}
             height={94}

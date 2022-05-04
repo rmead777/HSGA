@@ -11,3 +11,5 @@ export const EXTERNAL_LINKS = {
   instagram: "https://www.instagram.com/highscorewm/",
   discord: "https://discord.gg/CtjkeXSb",
 };
+
+export const IMGIX_HOST = "https://hswm.imgix.net/";

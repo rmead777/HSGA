@@ -16,7 +16,7 @@ export default function Footer() {
       <div className={cx(styles["social-media-links"], "flex space-x-2")}>
         <a href={EXTERNAL_LINKS.twitter} target="_blank" rel="noreferrer">
           <Image
-            src={RoutesService.createAssetsPath("icons/icon-twitter.png")}
+            src={RoutesService.getIconPath("twitter")}
             alt="twitter-icon"
             width={24}
             height={24}
@@ -24,7 +24,7 @@ export default function Footer() {
         </a>
         <a href={EXTERNAL_LINKS.instagram} target="_blank" rel="noreferrer">
           <Image
-            src={RoutesService.createAssetsPath("icons/icon-instagram.png")}
+            src={RoutesService.getIconPath("instagram")}
             alt="instagram-icon"
             width={24}
             height={24}
@@ -32,7 +32,7 @@ export default function Footer() {
         </a>
         <a href={EXTERNAL_LINKS.discord} target="_blank" rel="noreferrer">
           <Image
-            src={RoutesService.createAssetsPath("icons/icon-discord.png")}
+            src={RoutesService.getIconPath("discord")}
             alt="discord-icon"
             width={24}
             height={24}

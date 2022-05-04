@@ -12,7 +12,8 @@ interface PropTypes
 }
 
 function PasswordInput(props: PropTypes) {
-  const { hideRules, label = "Password" } = props;
+  const { hideRules, label = "Password", ...rest } = props;
+
   return (
     <>
       <TextInput
@@ -23,7 +24,7 @@ function PasswordInput(props: PropTypes) {
         aria-required="true"
         label={label}
         minLength={8}
-        {...props}
+        {...rest}
       />
       {!hideRules && (
         <ul className={styles.rules}>

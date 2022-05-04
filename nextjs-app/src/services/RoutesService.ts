@@ -1,6 +1,6 @@
 const isProd = process.env.NODE_ENV === "production";
 
-type ValidIcons = "discord" | "gear" | "instagram" | "twitter";
+type ValidIcons = "discord" | "gear" | "instagram" | "twitter" | "hswm";
 
 class RoutesService {
   static ROOT = isProd ? "/gitlab/out/" : "/";

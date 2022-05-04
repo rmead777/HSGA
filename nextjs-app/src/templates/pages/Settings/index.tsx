@@ -1,13 +1,11 @@
-import cx from "classnames";
 import Link from "@ui/atoms/Link";
-import fonts from "@ui/styles/fonts.module.css";
 import Form from "@ui/organisms/forms/Form";
 import TextInput from "@ui/organisms/forms/TextInput";
 import Button from "@ui/atoms/Button/index";
 import FormPageTemplate from "../FormPage/index";
-import PasswordInput from "../../../components/organisms/forms/PasswordInput/index";
-// import FormErrors from "../../../components/organisms/forms/FormErrors";
 import useForm from "../../../hooks/useForm";
+import cx from "classnames";
+import fonts from "@ui/styles/fonts.module.css";
 
 function SettingsPageTemplate() {
   const { isValid, isDirty, validateForm, handleSubmit, handleFormChange } =
@@ -45,12 +43,12 @@ function SettingsPageTemplate() {
               maxLength={255}
               label="PayPal"
             />
-            <PasswordInput label="Current password" hideRules />
-            {/* TODO: Need to make one of these required */}
-            <PasswordInput labal="New password" />
-            {/* <FormErrors errors={errors} /> */}
+            <Link
+              className={cx(fonts.button, "font-bold text-lg uppercase")}
+              href="/change-password"
+            >{`> Change password ?`}</Link>
             <Button disabled={!isValid} type="submit" onClick={validateForm}>
-              Register
+              Save Changes
             </Button>
           </>
         </Form>

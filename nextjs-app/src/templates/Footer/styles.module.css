@@ -1,9 +1,0 @@
-.footer {
-  font-size: small;
-}
-
-@media screen(sm) {
-  .footer {
-    font-size: initial;
-  }
-}

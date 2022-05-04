@@ -1,19 +1,9 @@
 import type { NextPage } from "next";
-import NextHead from "next/head";
-import Footer from "@ui/templates/Footer";
-import Header from "@ui/templates/Header";
 import SettingsPageTemplate from "@ui/templates/pages/Settings";
-import headtags from "../src/_headtags";
+import DefaultPage from "../src/Default";
 
-const Signup: NextPage = () => {
-  return (
-    <>
-      <NextHead>{headtags}</NextHead>
-      <Header />
-      <SettingsPageTemplate />
-      <Footer />
-    </>
-  );
+const Settings: NextPage = () => {
+  return <DefaultPage body={<SettingsPageTemplate />} />;
 };
 
-export default Signup;
+export default Settings;

@@ -4,6 +4,8 @@
 
 .subtitle,
 .header,
+.header *,
 .button {
   font-family: "Chubby Choo";
+  vertical-align: text-top;
 }

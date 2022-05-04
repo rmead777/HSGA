@@ -1,0 +1,12 @@
+.rules {
+  list-style-type: disc;
+  width: 65%;
+  margin: auto;
+  font-size: small;
+}
+
+@media screen(sm) {
+  .rules {
+    font-size: initial;
+  }
+}

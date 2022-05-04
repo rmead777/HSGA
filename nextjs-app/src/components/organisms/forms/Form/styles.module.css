@@ -1,0 +1,15 @@
+.show-invalid {
+  input:invalid {
+    border: 2px solid var(--primary-1);
+  }
+
+  input:required:invalid + button {
+    background-color: grey;
+  }
+}
+
+.isValid {
+  button[type="submit"] {
+    outline: 3px solid green;
+  }
+}

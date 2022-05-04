@@ -1,0 +1,77 @@
+$logo-zoom: 2;
+$logo-height: 5.875rem * $logo-zoom;
+$table-padding: 2rem;
+$name-col-max-width: 34rem;
+
+.table-wrapper {
+  margin-bottom: 5rem;
+  position: relative;
+  padding: $table-padding;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--primary-2);
+  width: 100%;
+
+  // This will account for the space needed to accomodate
+  // the logo.
+  margin-top: $logo-height / 2;
+}
+
+.logo {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 0;
+  transform: translateY(-50%);
+  background-color: var(--black);
+  width: 7.5rem * $logo-zoom;
+}
+
+.table {
+  color: var(--primary-2);
+  font-family: "Chubby Choo";
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: left;
+  table-layout: fixed;
+
+  tr:first-of-type {
+    color: var(--primary-1);
+    min-width: 1rem;
+  }
+
+  // Rank col
+  tr td:first-of-type {
+    width: 10%;
+    text-align: left;
+  }
+
+  // Name col
+  tr td:nth-of-type(2) {
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // Score col
+  tr td:last-of-type {
+    width: 30%;
+    text-align: right;
+  }
+
+  td + td {
+    width: auto;
+  }
+}
+
+@media (min-width: theme("screens.lg")) {
+  .table-wrapper {
+    // Reset
+    border-width: 0;
+    border-top-width: 2px;
+  }
+}

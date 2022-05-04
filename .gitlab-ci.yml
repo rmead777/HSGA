@@ -1,0 +1,82 @@
+# You can override the included template(s) by including variable overrides
+# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
+# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings
+# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
+# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
+# Note that environment variables can be set in several places
+# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
+# image: ubuntu:17.10
+
+image: node:16.14.2
+
+variables:
+  NEXT_APP_DIR: "./nextjs-app"
+  NEXT_APP_BUILD_DIR: $NEXT_APP_DIR/out
+
+stages:
+  - install_dependencies
+  - test
+  - build
+  - staging
+sast:
+  stage: test
+include:
+  - template: Security/SAST.gitlab-ci.yml
+
+.cache: &cache
+  cache:
+    key:
+      files:
+        - $NEXT_APP_DIR/yarn.lock
+    paths:
+      - $NEXT_APP_DIR/node_modules/
+
+install_dependencies:
+  before_script:
+    - apt-get update -qq
+    - apt-get install
+  stage: install_dependencies
+  <<: *cache
+  script:
+    - cd $NEXT_APP_DIR
+    - yarn install --frozen-lockfile
+
+lint:
+  stage: test
+  <<: *cache
+  script:
+    - cd $NEXT_APP_DIR
+    - yarn lint
+
+build:
+  stage: build
+  <<: *cache
+  script:
+    - cd $NEXT_APP_DIR
+    - yarn build
+  artifacts:
+    paths:
+      - $NEXT_APP_BUILD_DIR
+
+deploy-to-staging:
+  stage: staging
+  variables:
+    SSHPASS: $TEST_SERVER_PASSWORD
+    REMOTE_USERNAME: testing2
+    REMOTE_HOST: testing2.ttechr.com
+    REMOTE_HOST_DIR: ./public_html/webroot/gitlab
+  before_script:
+    - apt-get update -qq
+    - apt-get install
+    - apt-get install -y -qq ssh
+    - apt-get install -y -qq rsync
+    - apt-get install -y -qq sshpass
+
+    - mkdir ~/.ssh
+    - echo "StrictHostKeyChecking no" >> ~/.ssh/config
+  script:
+    - pwd
+    - ls -a $NEXT_APP_BUILD_DIR
+    - sshpass -e rsync -avz --exclude='.git' $NEXT_APP_BUILD_DIR $REMOTE_USERNAME@$REMOTE_HOST:$REMOTE_HOST_DIR
+  only:
+    - main

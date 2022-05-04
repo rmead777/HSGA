@@ -1,0 +1,26 @@
+.label {
+  color: var(--white);
+  font-size: 1.3rem;
+  position: absolute;
+  top: -1.2rem;
+  left: 0.5rem;
+  background-color: var(--black);
+  padding: 0 0.5rem;
+  text-transform: uppercase;
+  font-family: "Chubby Choo";
+}
+
+.input {
+  padding: 0.5rem 2rem 1rem;
+  color: var(--primary-2);
+  background-color: var(--black);
+  border: 2px solid;
+  width: 100%;
+  font-family: "Chubby Choo";
+  font-weight: 100;
+  font-size: 1.5rem;
+}
+
+.wrapper {
+  position: relative;
+}

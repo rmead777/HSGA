@@ -1,12 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 // import NextImage from "next/image";
+import { DetailedHTMLProps, ImgHTMLAttributes } from "react";
 
-interface PropTypes {
-  alt: string;
-  src: string;
+interface PropTypes
+  extends DetailedHTMLProps<
+    ImgHTMLAttributes<HTMLImageElement>,
+    HTMLImageElement
+  > {
   width?: number;
   height?: number;
-  className?: string;
   zoom?: number;
 }
 

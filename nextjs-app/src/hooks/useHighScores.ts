@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { HSWM_API, ScoreRecord } from "../services/HSWM_API";
+import client, { ScoreRecord } from "../clients/HSWM";
 
 export default function useHighScores(gameId = 1) {
   const [data, setData] = useState<ScoreRecord[]>([]);
@@ -8,7 +8,7 @@ export default function useHighScores(gameId = 1) {
   useEffect(() => {
     setLoading(true);
 
-    HSWM_API.fetchHighScores(gameId).then((data) => {
+    client.fetchHighScores(gameId).then((data) => {
       setData(data);
       setLoading(false);
     });

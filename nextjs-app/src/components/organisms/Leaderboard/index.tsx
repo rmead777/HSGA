@@ -1,9 +1,9 @@
 import useHighScores from "../../../hooks/useHighScores";
-import { ScoreRecord } from "../../../services/HSWM_API";
 import cx from "classnames";
 import styles from "./styles.module.scss";
 import Image from "../../atoms/Image";
 import RoutesService from "../../../services/RoutesService";
+import { ScoreRecord } from "../../../clients/HSWM";
 
 function createTableRow(score: ScoreRecord, idx: number) {
   return (

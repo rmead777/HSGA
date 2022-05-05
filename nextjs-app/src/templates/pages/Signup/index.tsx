@@ -4,33 +4,21 @@ import fonts from "@ui/styles/fonts.module.css";
 import Form from "@ui/organisms/forms/Form";
 import TextInput from "@ui/organisms/forms/TextInput";
 import Button from "@ui/atoms/Button/index";
-import { HSWM_API, RegisterUserParams } from "@services/HSWM_API";
-import { useState } from "react";
 import FormPageTemplate from "../FormPage/index";
 import PasswordInput from "@ui/organisms/forms/PasswordInput/index";
 import FormErrors from "@ui/organisms/forms/FormErrors";
 import useForm from "../../../hooks/useForm";
-import { PATHNAME } from "../../../../pages/payment-preferences";
+import { RegisterUserParams } from "../../../clients/HSWM";
 
-function goToPath(path: string) {
-  window.location.href = path;
+interface PropTypes {
+  errors: string[];
+  onSubmit(values: RegisterUserParams): void;
 }
 
-function SignupTemplate() {
-  const [errors, setErrors] = useState<string[]>([]);
+function SignupTemplate({ errors, onSubmit }: PropTypes) {
   const { isValid, isDirty, validateForm, handleSubmit, handleFormChange } =
     useForm({
-      onSubmit: (values) => {
-        HSWM_API.registerUser(values as unknown as RegisterUserParams)
-          .then((res) => {
-            console.log(res);
-            goToPath(PATHNAME);
-          })
-          .catch((err) => {
-            console.error(err);
-            setErrors(["There was an error creating your account."]);
-          });
-      },
+      onSubmit: (values) => onSubmit(values as unknown as RegisterUserParams),
     });
 
   return (

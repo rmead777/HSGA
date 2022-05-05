@@ -7,7 +7,7 @@ const nextConfig = {
   productionBrowserSourceMaps: true,
   reactStrictMode: true,
   assetPrefix: isProd ? "./" : "",
-  basePath: isProd ? "/gitlab/out" : "",
+  // basePath: isProd ? "" : "",
   images: {
     loader: "custom",
   },

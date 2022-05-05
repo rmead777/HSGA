@@ -1,2 +1,6 @@
-.header {
+.divider {
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  top: 0.125rem;
+  margin-right: 0.2rem;
 }

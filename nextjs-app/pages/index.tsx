@@ -1,16 +1,28 @@
-/* eslint-disable @next/next/no-css-tags */
 import type { NextPage } from "next";
 import Head from "next/head";
-// import styles from "../styles/Home.module.css";
 import HomePage from "../src/templates/pages/Home";
 import Footer from "../src/templates/Footer";
 import headtags from "../src/_headtags";
+import client from "../src/clients/HSWM";
+import { useEffect, useState } from "react";
+import GamePage from "./gamepage/[[...pid]]";
 
 const Home: NextPage = () => {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    client
+      .fetchCurrentUserInfo()
+      .then((data) => {
+        if (data?.email) setLoggedIn(true);
+      })
+      .catch(console.error);
+  }, [setLoggedIn]);
+
   return (
     <>
       <Head>{headtags}</Head>
-      <HomePage />
+      {isLoggedIn ? <GamePage /> : <HomePage />}
       <Footer />
     </>
   );

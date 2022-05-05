@@ -11,11 +11,11 @@ interface PropTypes
 }
 
 function TextInput(props: PropTypes) {
-  const { id, label, ...rest } = props;
+  const { label, ...rest } = props;
 
   return (
     <div className={cx(styles.wrapper, props.className)}>
-      <label htmlFor={id} className={cx(styles.label)}>
+      <label htmlFor={props.name} className={cx(styles.label)}>
         {label}
         {props.required && `*`}
       </label>

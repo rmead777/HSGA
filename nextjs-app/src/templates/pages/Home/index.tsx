@@ -6,6 +6,7 @@ import Leaderboard from "../../../components/organisms/Leaderboard";
 import Link from "../../../components/atoms/Link";
 import Button from "../../../components/atoms/Button";
 import RoutesService from "../../../services/RoutesService";
+import { useState } from "react";
 
 const renderIframe = () => {
   return (
@@ -22,6 +23,8 @@ const renderIframe = () => {
 };
 
 const HomePage = () => {
+  const [showFeaturedImage, setShowFeaturedImage] = useState(true);
+
   return (
     <main
       className={cx(
@@ -33,20 +36,22 @@ const HomePage = () => {
         "max-w-7xl"
       )}
     >
-      <div className={styles["logo-wrapper"]}>
-        <Link className="inline-block" href="/">
-          <Image
-            className={styles.logo}
-            src={RoutesService.getImagePath("HS_reverse_horiz.png")}
-            alt="HighScoreWinsMoney Logo"
-            width={120}
-            height={94}
-            zoom={3}
-          />
-        </Link>
-      </div>
       <div id="game" className={styles.gameframe}>
-        <div className={styles.game}>{renderIframe()}</div>
+        <Image
+          className={cx(
+            !showFeaturedImage && "invisible",
+            styles["featured-image"]
+          )}
+          src={RoutesService.getImagePath("featured-game-image.jpg")}
+          alt="featured-image"
+          width={1000}
+          height={1000}
+          zoom={1}
+          onClick={() => setShowFeaturedImage(false)}
+        />
+        <div className={cx(showFeaturedImage && "invisible", styles.game)}>
+          {renderIframe()}
+        </div>
       </div>
       <div className="mb-10 max-w-md mx-auto">
         High Score Wins Money is a place where you can play unique games made by

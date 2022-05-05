@@ -5,6 +5,22 @@
   font-size: small;
 }
 
+.input-wrapper {
+  position: relative;
+
+  .icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    bottom: 50%;
+    transform: translatey(-50%);
+  }
+}
+
+.icon {
+  cursor: pointer;
+}
+
 @media screen(sm) {
   .rules {
     font-size: initial;

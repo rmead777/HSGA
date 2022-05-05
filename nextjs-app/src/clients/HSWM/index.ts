@@ -23,12 +23,6 @@ export type ScoreRecord = {
   score: number;
 };
 
-export interface RegisterUserParams {
-  username: string;
-  email: string;
-  password: string;
-}
-
 function parseFormData(
   data: Record<string, string>[]
 ): Record<string, string | undefined> {
@@ -56,7 +50,11 @@ async function fetchHighScores(gameId: number): Promise<ScoreRecord[]> {
   }
 }
 
-async function loginUser(values: { password: string; email: string }) {
+export interface LoginUserParams {
+  email: string;
+  password: string;
+}
+async function loginUser(values: LoginUserParams) {
   const formData = await loginUserFormData();
 
   const data = {
@@ -64,7 +62,13 @@ async function loginUser(values: { password: string; email: string }) {
     ...parseFormData(formData),
   };
 
-  const res = await axios.post(Paths.POST_LOGIN, { data });
+  const res = await axios.post(Paths.POST_LOGIN, {
+    data: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
   return res.data;
 }
 
@@ -76,6 +80,11 @@ async function loginUserFormData() {
   return res.data;
 }
 
+export interface RegisterUserParams {
+  username: string;
+  email: string;
+  password: string;
+}
 async function registerUser(values: RegisterUserParams) {
   const formData = await fetchRegisterUserFormData();
 

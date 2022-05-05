@@ -6,15 +6,18 @@ import TextInput from "@ui/organisms/forms/TextInput";
 import Button from "@ui/atoms/Button/index";
 import FormPageTemplate from "../FormPage/index";
 import useForm from "../../../hooks/useForm";
+import { LoginUserParams } from "../../../clients/HSWM";
+import FormErrors from "../../../components/organisms/forms/FormErrors";
 
-function LoginTemplate() {
+interface PropTypes {
+  errors: string[];
+  onSubmit(values: LoginUserParams): void;
+}
+
+function LoginTemplate({ onSubmit, errors }: PropTypes) {
   const { isValid, isDirty, validateForm, handleSubmit, handleFormChange } =
     useForm({
-      onSubmit: (values) => {
-        console.error("Not implemented yet", {
-          values,
-        });
-      },
+      onSubmit: (values) => onSubmit(values as unknown as LoginUserParams),
     });
 
   return (
@@ -27,13 +30,13 @@ function LoginTemplate() {
           showInvalidFields={isDirty}
         >
           <TextInput
-            type="text"
-            name="username"
+            type="email"
+            name="email"
             required
-            id="username"
+            id="email"
             aria-required="true"
             maxLength={255}
-            label="Username"
+            label="Email"
           />
           <TextInput
             type="password"
@@ -44,6 +47,7 @@ function LoginTemplate() {
             label="Password"
             minLength={8}
           />
+          <FormErrors errors={errors} />
           <Button disabled={!isValid} type="submit" onClick={validateForm}>
             Login
           </Button>

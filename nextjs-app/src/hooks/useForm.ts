@@ -12,14 +12,14 @@ function getInputValuesFromEvent(event: FormEvent<HTMLFormElement>) {
     event.currentTarget.getElementsByTagName("input")
   ).map((el) => el.name);
 
-  console.log(names);
-
   const values = names.reduce((acc, curr) => {
     return {
       ...acc,
-      [curr]: event.currentTarget[curr].value,
+      [curr]: event.currentTarget[curr]?.value,
     };
   }, {});
+
+  console.log({ names, values });
 
   return values;
 }

@@ -61,7 +61,7 @@ a {
 /* Special classes */
 .chubby-choo-vertical-fix {
   position: relative;
-  top: -2px;
+  /* top: -2px; */
 }
 
 @media screen(sm) {

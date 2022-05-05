@@ -24,7 +24,7 @@ const HomePage = () => {
         indie developers. If you get the high score on the game that day,{" "}
         <b className="font-black">we will give you $100 US.</b>
       </div>
-      <div>
+      <div className="hidden">
         <Link
           className="inline-block"
           href={{

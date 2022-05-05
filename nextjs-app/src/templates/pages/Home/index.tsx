@@ -1,25 +1,10 @@
-import Image from "../../../components/atoms/Image";
 import cx from "classnames";
 import styles from "./styles.module.css";
 import fonts from "../../../../styles/fonts.module.css";
 import Leaderboard from "../../../components/organisms/Leaderboard";
 import Link from "../../../components/atoms/Link";
 import Button from "../../../components/atoms/Button";
-import RoutesService from "../../../services/RoutesService";
-
-const renderIframe = () => {
-  return (
-    <iframe
-      className="_3Xz9Z ui-droppable"
-      title="Embedded Content"
-      name="htmlComp-iframe"
-      width="100%"
-      height="100%"
-      data-src=""
-      src="https://gamesnacks.com/embed/games/trex_v3"
-    ></iframe>
-  );
-};
+import FeaturedImage from "../../../components/organisms/FeaturedImage";
 
 const HomePage = () => {
   return (
@@ -33,21 +18,7 @@ const HomePage = () => {
         "max-w-7xl"
       )}
     >
-      <div className={styles["logo-wrapper"]}>
-        <Link className="inline-block" href="/">
-          <Image
-            className={styles.logo}
-            src={RoutesService.getImagePath("HS_reverse_horiz.png")}
-            alt="HighScoreWinsMoney Logo"
-            width={120}
-            height={94}
-            zoom={3}
-          />
-        </Link>
-      </div>
-      <div id="game" className={styles.gameframe}>
-        <div className={styles.game}>{renderIframe()}</div>
-      </div>
+      <FeaturedImage />
       <div className="mb-10 max-w-md mx-auto">
         High Score Wins Money is a place where you can play unique games made by
         indie developers. If you get the high score on the game that day,{" "}

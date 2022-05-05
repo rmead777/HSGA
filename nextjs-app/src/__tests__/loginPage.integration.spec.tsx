@@ -2,7 +2,7 @@ import React from "react";
 import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import client from "../clients/HSWM";
-import Login from "../../pages/login";
+import Signin from "../../pages/signin";
 
 jest.mock("../clients/HSWM");
 
@@ -15,7 +15,7 @@ describe.skip("Form", () => {
       const email = "johnnybgud@sfsd.com";
       const password = "password12345";
 
-      render(<Login />);
+      render(<Signin />);
 
       fireEvent.change(screen.getByLabelText(/email/i), {
         target: { value: email },

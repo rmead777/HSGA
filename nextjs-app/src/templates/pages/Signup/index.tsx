@@ -60,7 +60,7 @@ function SignupTemplate({ errors, onSubmit }: PropTypes) {
                 "text-primary-1 mb-5 text-lg font-size-3"
               )}
             >
-              <Link href="/login">OR LOGIN INSTEAD</Link>
+              <Link href="/signin">OR LOGIN INSTEAD</Link>
             </div>
           </>
         </Form>

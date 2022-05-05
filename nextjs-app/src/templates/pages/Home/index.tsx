@@ -74,7 +74,7 @@ const HomePage = () => {
             "text-primary-2 mb-5 text-lg font-size-3"
           )}
         >
-          <Link href="/login">Login</Link>
+          <Link href="/signin">Login</Link>
           {` /  `}
           <Link href="/signup">Signup</Link>
         </div>

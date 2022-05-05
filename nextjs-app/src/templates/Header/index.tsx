@@ -39,8 +39,8 @@ export default function Footer() {
         <Image
           src={RoutesService.getIconPath("hswm")}
           alt="twitter-icon"
-          width={24}
-          height={24}
+          width={25}
+          height={29}
         />
       </Link>
       {isLoggedIn ? (

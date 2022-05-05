@@ -76,14 +76,17 @@ describe("client", () => {
       });
 
       expect(axiosPostSpy).toHaveBeenCalledWith(Paths.POST_LOGIN, {
-        data: {
-          "_Token[debug]":
-            "%5B%22%5C%2Fusers%5C%2Fjsonsignupform%22%2C%5B%22username%22%2C%22password%22%2C%22email%22%5D%2C%5B%5D%5D",
-          "_Token[fields]": "51a5b8fd1724f95296fe6e62f3c9e99ee760b831%3A",
-          _csrfToken:
-            "MNdx+5geDmwktwDla1YBcpf25GRqyvV6BgmyzmWimxEQwSWf8+e9Pbj2TLRVDixDWodppMo6Dc2EYvlthdXq2pcBcrXpd3MMocDXXVivzUI3aoKqVcCuIyjzQ/3GgYRYicZ+hmE4GyZp5QjB+Apo+g==",
+        data: JSON.stringify({
           password: "string",
           email: "string",
+          _csrfToken:
+            "MNdx+5geDmwktwDla1YBcpf25GRqyvV6BgmyzmWimxEQwSWf8+e9Pbj2TLRVDixDWodppMo6Dc2EYvlthdXq2pcBcrXpd3MMocDXXVivzUI3aoKqVcCuIyjzQ/3GgYRYicZ+hmE4GyZp5QjB+Apo+g==",
+          "_Token[fields]": "51a5b8fd1724f95296fe6e62f3c9e99ee760b831%3A",
+          "_Token[debug]":
+            "%5B%22%5C%2Fusers%5C%2Fjsonsignupform%22%2C%5B%22username%22%2C%22password%22%2C%22email%22%5D%2C%5B%5D%5D",
+        }),
+        headers: {
+          "Content-Type": "application/json",
         },
       });
     });

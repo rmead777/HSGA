@@ -2,7 +2,7 @@ import cx from "classnames";
 import Image from "../../components/atoms/Image";
 import styles from "./styles.module.css";
 import RoutesService from "../../services/RoutesService";
-import { EXTERNAL_LINKS } from "../../services/HSWM_API/constants";
+import { EXTERNAL_LINKS } from "../../constants";
 
 export default function Footer() {
   return (

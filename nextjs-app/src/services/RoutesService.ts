@@ -1,4 +1,4 @@
-import { IMGIX_HOST } from "./HSWM_API/constants";
+import { IMGIX_HOST } from "../constants";
 
 const isProd = process.env.NODE_ENV === "production";
 

@@ -14,7 +14,7 @@ function goToPath(path: string) {
 const Login: NextPage = () => {
   const [errors, setErrors] = useState<string[]>([]);
 
-  async function signin(values: { username: string; password: string }) {
+  async function signin(values: { email: string; password: string }) {
     client
       .loginUser(values)
       .then((res) => {

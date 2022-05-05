@@ -4,26 +4,22 @@ import HomePage from "../src/templates/pages/Home";
 import Footer from "../src/templates/Footer";
 import headtags from "../src/_headtags";
 import client from "../src/clients/HSWM";
-import { useEffect, useState } from "react";
-import GamePage from "./gamepage/[[...pid]]";
+import { useEffect } from "react";
 
 const Home: NextPage = () => {
-  const [isLoggedIn, setLoggedIn] = useState(false);
-
   useEffect(() => {
     client
       .fetchCurrentUserInfo()
       .then((data) => {
-        console.log(data);
-        if (data?.email) setLoggedIn(true);
+        console.log("userdata", data);
       })
       .catch(console.error);
-  }, [setLoggedIn]);
+  }, []);
 
   return (
     <>
       <Head>{headtags}</Head>
-      {isLoggedIn ? <GamePage /> : <HomePage />}
+      <HomePage />
       <Footer />
     </>
   );

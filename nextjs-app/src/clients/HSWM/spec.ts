@@ -72,13 +72,13 @@ describe("client", () => {
 
       await client.loginUser({
         password: "string",
-        username: "string",
+        email: "string",
       });
 
       expect(axiosPostSpy).toHaveBeenCalledWith(Paths.POST_LOGIN, {
         data: JSON.stringify({
           password: "string",
-          username: "string",
+          email: "string",
           _csrfToken:
             "MNdx+5geDmwktwDla1YBcpf25GRqyvV6BgmyzmWimxEQwSWf8+e9Pbj2TLRVDixDWodppMo6Dc2EYvlthdXq2pcBcrXpd3MMocDXXVivzUI3aoKqVcCuIyjzQ/3GgYRYicZ+hmE4GyZp5QjB+Apo+g==",
           "_Token[fields]": "51a5b8fd1724f95296fe6e62f3c9e99ee760b831%3A",

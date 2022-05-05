@@ -31,13 +31,12 @@ function LoginTemplate({ onSubmit, errors }: PropTypes) {
           showInvalidFields={isDirty}
         >
           <TextInput
-            type="username"
-            name="username"
+            type="email"
+            name="email"
             required
-            id="username"
+            id="email"
             aria-required="true"
-            maxLength={255}
-            label="Username"
+            label="Email"
           />
           <PasswordInput />
           <FormErrors errors={errors} />

@@ -14,6 +14,7 @@ const Home: NextPage = () => {
     client
       .fetchCurrentUserInfo()
       .then((data) => {
+        console.log(data);
         if (data?.email) setLoggedIn(true);
       })
       .catch(console.error);

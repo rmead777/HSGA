@@ -34,7 +34,7 @@ const HomePage = () => {
       )}
     >
       <div className={styles["logo-wrapper"]}>
-        <Link href="/">
+        <Link className="inline-block" href="/">
           <Image
             className={styles.logo}
             src={RoutesService.getImagePath("HS_reverse_horiz.png")}
@@ -53,8 +53,9 @@ const HomePage = () => {
         indie developers. If you get the high score on the game that day,{" "}
         <b className="font-black">we will give you $100 US.</b>
       </div>
-      <div className="flex flex-col">
+      <div>
         <Link
+          className="inline-block"
           href={{
             pathname: "/gamepage/[pid]",
             query: { pid: 1 },

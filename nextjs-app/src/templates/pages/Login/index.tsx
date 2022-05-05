@@ -8,6 +8,7 @@ import FormPageTemplate from "../FormPage/index";
 import useForm from "../../../hooks/useForm";
 import { LoginUserParams } from "../../../clients/HSWM";
 import FormErrors from "../../../components/organisms/forms/FormErrors";
+import PasswordInput from "../../../components/organisms/forms/PasswordInput";
 
 interface PropTypes {
   errors: string[];
@@ -30,23 +31,15 @@ function LoginTemplate({ onSubmit, errors }: PropTypes) {
           showInvalidFields={isDirty}
         >
           <TextInput
-            type="email"
-            name="email"
+            type="username"
+            name="username"
             required
-            id="email"
+            id="username"
             aria-required="true"
             maxLength={255}
-            label="Email"
+            label="Username"
           />
-          <TextInput
-            type="password"
-            name="password"
-            required
-            id="password"
-            aria-required="true"
-            label="Password"
-            minLength={8}
-          />
+          <PasswordInput />
           <FormErrors errors={errors} />
           <Button disabled={!isValid} type="submit" onClick={validateForm}>
             Login

@@ -3,7 +3,7 @@ import defaultHighscores from "./defaultData/highscores.json";
 
 export enum Paths {
   // This endpoint takes a slug
-  GET_HIGHSCORES = "/highscores",
+  GET_HIGHSCORES = "/highscores/forgame",
 
   // Gets the info needed for the form
   GET_LOGIN_FORMDATA = "/users/jsonloginform",
@@ -84,7 +84,12 @@ async function registerUser(values: RegisterUserParams) {
     ...parseFormData(formData),
   };
 
-  const res = await axios.post(Paths.POST_SIGNUP, { data });
+  const res = await axios.post(Paths.POST_SIGNUP, {
+    data: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
   return res.data;
 }
 

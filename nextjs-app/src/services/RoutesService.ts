@@ -1,12 +1,12 @@
 import { IMGIX_HOST } from "../constants";
 
-const isProd = process.env.NODE_ENV === "production";
+// const isProd = process.env.NODE_ENV === "production";
 
 type ValidIcons = "discord" | "gear" | "instagram" | "twitter" | "hswm";
 type ValidImages = "HS_reverse_horiz.png" | "HS_reverse_portrait.png";
 
 class RoutesService {
-  static ROOT = isProd ? "/gitlab/out/" : "/";
+  static ROOT = "/";
 
   static createAssetsPath = (path: string) => {
     return RoutesService.ROOT + "assets/" + path;

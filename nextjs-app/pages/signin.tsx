@@ -13,12 +13,19 @@ function goToPath(path: string) {
 
 const Login: NextPage = () => {
   const [errors, setErrors] = useState<string[]>([]);
-  async function signin(values: { email: string; password: string }) {
+
+  async function signin(values: { username: string; password: string }) {
     client
       .loginUser(values)
       .then((res) => {
         console.log(res);
-        goToPath("/");
+        if (res.error) {
+          setErrors([
+            "Username or password is incorrect. Please check and try again.",
+          ]);
+        } else {
+          goToPath("/");
+        }
       })
       .catch((err) => {
         console.error(err);

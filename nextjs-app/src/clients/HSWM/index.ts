@@ -51,7 +51,7 @@ async function fetchHighScores(gameId: number): Promise<ScoreRecord[]> {
 }
 
 export interface LoginUserParams {
-  email: string;
+  username: string;
   password: string;
 }
 async function loginUser(values: LoginUserParams) {

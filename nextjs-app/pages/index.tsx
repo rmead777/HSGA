@@ -1,10 +1,8 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import HomePage from "../src/templates/pages/Home";
-import Footer from "../src/templates/Footer";
-import headtags from "../src/_headtags";
 import client from "../src/clients/HSWM";
 import { useEffect } from "react";
+import DefaultPage from "../src/Default";
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -16,13 +14,7 @@ const Home: NextPage = () => {
       .catch(console.error);
   }, []);
 
-  return (
-    <>
-      <Head>{headtags}</Head>
-      <HomePage />
-      <Footer />
-    </>
-  );
+  return <DefaultPage body={<HomePage />} />;
 };
 
 export default Home;

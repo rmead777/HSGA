@@ -26,8 +26,9 @@ $name-col-max-width: 34rem;
   text-align: center;
   top: 0;
   transform: translateY(-50%);
-  background-color: var(--black);
+  color: var(--black);
   width: 7.5rem * $logo-zoom;
+  background-color: var(--black);
 }
 
 .table {
@@ -41,6 +42,7 @@ $name-col-max-width: 34rem;
   tr:first-of-type {
     color: var(--primary-1);
     min-width: 1rem;
+    animation: flashy 1.5s infinite;
   }
 
   // Rank col
@@ -73,5 +75,23 @@ $name-col-max-width: 34rem;
     // Reset
     border-width: 0;
     border-top-width: 2px;
+  }
+}
+
+@keyframes flashy {
+  from {
+    color: red;
+  }
+  25% {
+    color: orange;
+  }
+  50% {
+    color: green;
+  }
+  75% {
+    color: rgb(10, 10, 108);
+  }
+  to {
+    color: violet;
   }
 }

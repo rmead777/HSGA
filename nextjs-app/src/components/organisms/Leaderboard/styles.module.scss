@@ -42,7 +42,7 @@ $name-col-max-width: 34rem;
   tr:first-of-type {
     color: var(--primary-1);
     min-width: 1rem;
-    animation: flashy 1.5s infinite;
+    animation: flashy 1s infinite;
   }
 
   // Rank col
@@ -80,18 +80,15 @@ $name-col-max-width: 34rem;
 
 @keyframes flashy {
   from {
-    color: red;
+    color: var(--primary-1);
   }
-  25% {
-    color: orange;
+  33% {
+    color: blue;
   }
-  50% {
-    color: green;
-  }
-  75% {
-    color: rgb(10, 10, 108);
+  66% {
+    color: var(--white);
   }
   to {
-    color: violet;
+    color: var(--secondary-1);
   }
 }

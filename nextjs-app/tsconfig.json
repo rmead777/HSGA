@@ -43,7 +43,9 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "src/newrelic/browser_monitoring_tag.tsx",
+    "src/newrelic/raw_script_tag.js"
   ],
   "exclude": [
     "node_modules"

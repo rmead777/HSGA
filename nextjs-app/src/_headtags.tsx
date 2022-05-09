@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-css-tags */
 /* eslint-disable react/jsx-key */
 
+import browser_monitoring_tag from "./newrelic/browser_monitoring_tag";
 import RoutesService from "./services/RoutesService";
 
 const headtags = [
@@ -15,6 +16,7 @@ const headtags = [
     rel="icon"
     href={RoutesService.createAssetsPath("favicon.ico")}
   />,
+  browser_monitoring_tag,
   <link
     key="industry-font"
     href={RoutesService.createAssetsPath("fonts/Industry/stylesheet.css")}

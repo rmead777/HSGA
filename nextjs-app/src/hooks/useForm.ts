@@ -19,8 +19,6 @@ function getInputValuesFromEvent(event: FormEvent<HTMLFormElement>) {
     };
   }, {});
 
-  console.log({ names, values });
-
   return values;
 }
 
@@ -30,7 +28,6 @@ interface Params {
 function useForm({ onSubmit }: Params) {
   const [isValid, setValid] = useState(false);
   const [isDirty, setDirty] = useState(false);
-  // const [errors, setErrors] = useState<string[]>([]);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault(); // don't redirect the page
@@ -40,7 +37,6 @@ function useForm({ onSubmit }: Params) {
 
   const validateForm = () => {
     setDirty(true);
-    // setErrors([]);
     return isValid;
   };
 

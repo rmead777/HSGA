@@ -3,7 +3,8 @@ import cx from "classnames";
 import styles from "./styles.module.scss";
 import Image from "../../atoms/Image";
 import RoutesService from "../../../services/RoutesService";
-import { ScoreRecord } from "../../../clients/HSWM";
+import { ScoreRecord } from "../../../clients/HSWM/types";
+import FormErrors from "../forms/FormErrors";
 
 function createTableRow(score: ScoreRecord, idx: number) {
   return (
@@ -20,10 +21,9 @@ interface PropTypes {
 }
 
 export default function Leaderboard({ className }: PropTypes) {
-  const { data, isLoading } = useHighScores(1);
+  const { data, isLoading, errors } = useHighScores(1);
 
   if (isLoading) return <p>Loading...</p>;
-  if (!data) return <div>MISSING DATA</div>;
 
   return (
     <div
@@ -40,7 +40,7 @@ export default function Leaderboard({ className }: PropTypes) {
         width={120}
         height={94}
       />
-      <table className={cx(styles.table, "container")}>
+      <table className={cx(styles.table, "container mb-5")}>
         {/* <thead>
           <tr>
             <th>Rank</th>
@@ -50,6 +50,8 @@ export default function Leaderboard({ className }: PropTypes) {
         </thead> */}
         <tbody>{data.map(createTableRow)}</tbody>
       </table>
+
+      <FormErrors errors={errors} />
     </div>
   );
 }

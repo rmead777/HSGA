@@ -1,26 +1,30 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import NextHead from "next/head";
-import Footer from "@ui/templates/Footer";
-import Header from "@ui/templates/Header";
 import SignupTemplate from "@ui/templates/pages/Signup";
-import headtags from "../src/_headtags";
-import { PATHNAME } from "./payment-preferences";
+import { PAYMENT_PREFERENCES_PATHNAME } from "./payment-preferences";
 import client, { RegisterUserParams } from "../src/clients/HSWM/index";
+import DefaultPage from "../src/Default";
+import FormSubmitSuccessTemplate from "../src/templates/pages/FormSubmitSuccess";
 
-function goToPath(path: string) {
-  window.location.href = path + ".html";
+export const PATH = "signup";
+
+function goNext() {
+  window.location.href = PAYMENT_PREFERENCES_PATHNAME;
 }
 
 const Signup: NextPage = () => {
   const [errors, setErrors] = useState<string[]>([]);
+  const [isSuccessful, setSuccess] = useState(false);
 
   function onSubmit(values: RegisterUserParams) {
     client
       .registerUser(values)
       .then((res) => {
-        console.log(res);
-        goToPath(PATHNAME);
+        if (res.errors?.length) {
+          setErrors(res.errors);
+        } else {
+          setSuccess(true);
+        }
       })
       .catch((err) => {
         console.error(err);
@@ -29,12 +33,18 @@ const Signup: NextPage = () => {
   }
 
   return (
-    <>
-      <NextHead>{headtags}</NextHead>
-      <Header />
-      <SignupTemplate onSubmit={onSubmit} errors={errors} />
-      <Footer />
-    </>
+    <DefaultPage
+      body={
+        isSuccessful ? (
+          <FormSubmitSuccessTemplate
+            onClick={goNext}
+            title="Payment Method Saved"
+          />
+        ) : (
+          <SignupTemplate onSubmit={onSubmit} errors={errors} />
+        )
+      }
+    />
   );
 };
 

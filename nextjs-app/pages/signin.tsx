@@ -1,30 +1,29 @@
 import type { NextPage } from "next";
-import NextHead from "next/head";
-import Footer from "../src/templates/Footer";
-import Header from "../src/templates/Header";
-import headtags from "../src/_headtags";
 import LoginTemplate from "../src/templates/pages/Login";
 import client from "../src/clients/HSWM";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import DefaultPage from "../src/Default";
+import { useRouter } from "next/router";
 
-function goToPath(path: string) {
-  window.location.href = path;
+function goNext() {
+  window.location.href = "/";
 }
 
 const Login: NextPage = () => {
+  const router = useRouter();
   const [errors, setErrors] = useState<string[]>([]);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   async function signin(values: { email: string; password: string }) {
     client
       .loginUser(values)
       .then((res) => {
-        console.log(res);
-        if (res.error) {
+        if (res.errors?.length) {
           setErrors([
             "Username or password is incorrect. Please check and try again.",
           ]);
         } else {
-          goToPath("/");
+          goNext();
         }
       })
       .catch((err) => {
@@ -33,13 +32,38 @@ const Login: NextPage = () => {
       });
   }
 
+  useEffect(() => {
+    client
+      .fetchCurrentUserInfo()
+      .then((result) => {
+        if (result.data?.username) {
+          setLoggedIn(true);
+        } else {
+          setLoggedIn(false);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [router]);
+
+  useEffect(() => {
+    // User should not get to this page if logged in. If they do, redirect them.
+    if (isLoggedIn) {
+      setTimeout(() => {
+        router.replace("/");
+      }, 3000);
+    }
+  });
+
+  if (isLoggedIn) {
+    return (
+      <div className="text-center">{`You're already logged in. Redirecting..`}</div>
+    );
+  }
+
   return (
-    <>
-      <NextHead>{headtags}</NextHead>
-      <Header />
-      <LoginTemplate onSubmit={signin} errors={errors} />
-      <Footer />
-    </>
+    <DefaultPage body={<LoginTemplate onSubmit={signin} errors={errors} />} />
   );
 };
 

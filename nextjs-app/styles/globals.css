@@ -58,6 +58,14 @@ a {
   --secondary-1: #ff8e06;
 }
 
+.title {
+  font-family: GALACTIC VANGUARDIAN NCV;
+}
+
+.subtitle {
+  font-family: "ChubbyChoo";
+}
+
 /* Special classes */
 .chubby-choo-vertical-fix {
   position: relative;

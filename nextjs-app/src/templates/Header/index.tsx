@@ -13,10 +13,8 @@ export default function Footer() {
   useEffect(() => {
     client
       .fetchCurrentUserInfo()
-      .then((data) => {
-        console.log("userdata", data);
-
-        if (data.username) {
+      .then((result) => {
+        if (result.data?.username) {
           setLoggedIn(true);
         } else {
           setLoggedIn(false);

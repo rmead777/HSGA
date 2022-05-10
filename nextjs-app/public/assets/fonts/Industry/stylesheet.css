@@ -3,8 +3,8 @@
   src: url("Industry-DemiItalic.eot");
   src: local("Industry Demi Italic"), local("Industry-DemiItalic"),
     url("Industry-DemiItalic.eot?#iefix") format("embedded-opentype"),
-    /* url("Industry-DemiItalic.woff2") format("woff2"), */
-      url("Industry-DemiItalic.woff") format("woff"),
+    url("Industry-DemiItalic.woff2") format("woff2"),
+    url("Industry-DemiItalic.woff") format("woff"),
     url("Industry-DemiItalic.ttf") format("truetype");
   font-weight: normal;
   font-style: italic;
@@ -15,8 +15,8 @@
   src: url("Industry-Bold.eot");
   src: local("Industry Bold"), local("Industry-Bold"),
     url("Industry-Bold.eot?#iefix") format("embedded-opentype"),
-    /* url("Industry-Bold.woff2") format("woff2"), */ url("Industry-Bold.woff")
-      format("woff"),
+    url("Industry-Bold.woff2") format("woff2"),
+    url("Industry-Bold.woff") format("woff"),
     url("Industry-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;

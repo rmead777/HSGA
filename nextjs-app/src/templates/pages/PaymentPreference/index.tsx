@@ -6,17 +6,15 @@ import TextInput from "@ui/organisms/forms/TextInput";
 import Button from "@ui/atoms/Button/index";
 import FormPageTemplate from "../FormPage/index";
 import useForm from "../../../hooks/useForm";
-import { UpdatePaypalParams } from "../../../clients/HSWM";
-import FormErrors from "../../../components/organisms/forms/FormErrors";
 
-interface PropTypes {
-  errors: string[];
-  onSubmit(values: UpdatePaypalParams): void;
-}
-function PaymentPreferenceTemplate({ onSubmit, errors }: PropTypes) {
+function PaymentPreferenceTemplate() {
   const { isValid, isDirty, validateForm, handleSubmit, handleFormChange } =
     useForm({
-      onSubmit: (values) => onSubmit(values as unknown as UpdatePaypalParams),
+      onSubmit: (values) => {
+        console.error("Not implemented yet", {
+          values,
+        });
+      },
     });
 
   return (
@@ -29,16 +27,14 @@ function PaymentPreferenceTemplate({ onSubmit, errors }: PropTypes) {
           showInvalidFields={isDirty}
         >
           <TextInput
-            type="email"
-            name="paypalemail"
+            type="text"
+            name="paypal"
             required
-            id="paypalemail"
+            id="username"
             aria-required="true"
             maxLength={255}
             label="PayPal Email Address"
           />
-
-          <FormErrors errors={errors} />
 
           <div className="text-left mb-4">
             <b>Why do we need this?</b>

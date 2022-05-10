@@ -16,10 +16,6 @@ export enum Paths {
   // Gets the info needed for the form
   GET_SIGNUP_FORMDATA = "/users/jsonsignupform",
   POST_SIGNUP = "/users/jsonsignupform",
-
-  // Paypal
-  GET_UPDATE_PAYPAL_FORMDATA = "/accounts/jsonupdatepaypal",
-  POST_UPDATE_PAYPAL_FORMDATA = "/accounts/jsonupdatepaypal",
 }
 
 export type ScoreRecord = {
@@ -120,39 +116,11 @@ async function fetchCurrentUserInfo(): Promise<{
   return res.data;
 }
 
-export interface UpdatePaypalParams {
-  paypalemail: string;
-}
-async function updatePaypal(values: UpdatePaypalParams) {
-  // TODO: This needs to handle errors ( error: " " )
-  const formData = await fetchUpdatePaypalFormData();
-
-  const data = {
-    ...values,
-    ...parseFormData(formData),
-  };
-
-  const res = await axios.post(Paths.POST_UPDATE_PAYPAL_FORMDATA, {
-    data: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  return res.data;
-}
-
-async function fetchUpdatePaypalFormData() {
-  const res = await axios.get(Paths.GET_UPDATE_PAYPAL_FORMDATA);
-  return res.data;
-}
-
 const client = {
   fetchHighScores,
   fetchCurrentUserInfo,
   registerUser,
   loginUser,
-  updatePaypal,
 };
 
 export default client;

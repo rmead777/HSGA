@@ -3,6 +3,7 @@ import cx from "classnames";
 import Image from "../../atoms/Image";
 import styles from "./styles.module.css";
 import RoutesService from "../../../services/RoutesService";
+import Logger, { LoggableEvents } from "../../../services/Logger";
 
 const renderIframe = () => {
   return (
@@ -20,6 +21,15 @@ const renderIframe = () => {
 
 function FeaturedImage() {
   const [showFeaturedImage, setShowFeaturedImage] = useState(true);
+
+  function handleImageClick() {
+    // We only want to do this once
+    if (showFeaturedImage) {
+      Logger.logEvent(LoggableEvents.CLICKED_HOMEPAGE_FEATURED_IMAGE);
+      setShowFeaturedImage(false);
+    }
+  }
+
   return (
     <div
       id="game"
@@ -35,7 +45,7 @@ function FeaturedImage() {
         width={1000}
         height={1000}
         zoom={1}
-        onClick={() => setShowFeaturedImage(false)}
+        onClick={handleImageClick}
       />
       <div className={cx(showFeaturedImage && "invisible", styles.game)}>
         {renderIframe()}

@@ -1,6 +1,7 @@
-import client, { Paths } from ".";
+import client from ".";
 import axios from "axios";
 import mockResponses from "./mockResponses.json";
+import { Paths } from "./types";
 
 jest.mock("axios");
 
@@ -30,8 +31,8 @@ describe("client", () => {
 
     it("should return highscores", async () => {
       jest.spyOn(axios, "get").mockResolvedValue({ data: value });
-      const highscores = await client.fetchHighScores(1);
-      expect(highscores).toBe(value);
+      const result = await client.fetchHighScores(1);
+      expect(result.data).toBe(value);
     });
   });
 
@@ -92,19 +93,6 @@ describe("client", () => {
     });
   });
 
-  describe("#fetchAllGameInfo", () => {
-    const path = Paths.GET_ALL_GAMES_INFO;
-
-    beforeEach(() => {
-      jest.spyOn(axios, "get").mockResolvedValue({ data: mockResponses[path] });
-    });
-
-    it("should return the game info", async () => {
-      const gamesInfo = await client.fetchHighScores(1);
-      expect(gamesInfo).toBe(mockResponses[path]);
-    });
-  });
-
   describe("#fetchUserInfo", () => {
     const path = Paths.GET_USER_INFO;
 
@@ -112,9 +100,42 @@ describe("client", () => {
       jest.spyOn(axios, "get").mockResolvedValue({ data: mockResponses[path] });
     });
 
-    it("should return the game info", async () => {
+    it("should return the user info", async () => {
       const userInfo = await client.fetchCurrentUserInfo();
-      expect(userInfo).toBe(mockResponses[path]);
+      expect(userInfo.data).toBe(mockResponses[path]);
+    });
+  });
+
+  describe("#updatePaypal", () => {
+    const path = Paths.POST_UPDATE_PAYPAL_FORMDATA;
+
+    beforeEach(() => {
+      jest.spyOn(axios, "get").mockResolvedValue({ data: mockResponses[path] });
+    });
+
+    it("should POST with the correct information", async () => {
+      const axiosPostSpy = jest.spyOn(axios, "post");
+
+      await client.updatePaypal({
+        paypalemail: "string",
+      });
+
+      expect(axiosPostSpy).toHaveBeenCalledWith(
+        Paths.POST_UPDATE_PAYPAL_FORMDATA,
+        {
+          data: JSON.stringify({
+            paypalemail: "string",
+            _csrfToken:
+              "MNdx+5geDmwktwDla1YBcpf25GRqyvV6BgmyzmWimxEQwSWf8+e9Pbj2TLRVDixDWodppMo6Dc2EYvlthdXq2pcBcrXpd3MMocDXXVivzUI3aoKqVcCuIyjzQ/3GgYRYicZ+hmE4GyZp5QjB+Apo+g==",
+            "_Token[fields]": "51a5b8fd1724f95296fe6e62f3c9e99ee760b831%3A",
+            "_Token[debug]":
+              "%5B%22%5C%2Fusers%5C%2Fjsonsignupform%22%2C%5B%22username%22%2C%22password%22%2C%22email%22%5D%2C%5B%5D%5D",
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
     });
   });
 });

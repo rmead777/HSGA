@@ -1,17 +1,33 @@
 import type { NextPage } from "next";
 import LoginTemplate from "../src/templates/pages/Login";
 import client from "../src/clients/HSWM";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DefaultPage from "../src/Default";
 import FormSubmitSuccessTemplate from "../src/templates/pages/FormSubmitSuccess";
+import { useRouter } from "next/router";
 
 function goNext() {
   window.location.href = "/";
 }
 
 const Login: NextPage = () => {
+  const router = useRouter();
   const [errors, setErrors] = useState<string[]>([]);
   const [isSuccessful, setSuccess] = useState(false);
+
+  useEffect(() => {
+    client
+      .fetchCurrentUserInfo()
+      .then((result) => {
+        if (result.data?.username) {
+          // Logged in. Redirect
+          router.replace("/");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [router]);
 
   async function signin(values: { email: string; password: string }) {
     client

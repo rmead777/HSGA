@@ -1,30 +1,28 @@
 import type { NextPage } from "next";
-import NextHead from "next/head";
-import Footer from "../src/templates/Footer";
-import Header from "../src/templates/Header";
-import headtags from "../src/_headtags";
 import LoginTemplate from "../src/templates/pages/Login";
 import client from "../src/clients/HSWM";
 import { useState } from "react";
+import DefaultPage from "../src/Default";
+import FormSubmitSuccessTemplate from "../src/templates/pages/FormSubmitSuccess";
 
-function goToPath(path: string) {
-  window.location.href = path;
+function goNext() {
+  window.location.href = "/";
 }
 
 const Login: NextPage = () => {
   const [errors, setErrors] = useState<string[]>([]);
+  const [isSuccessful, setSuccess] = useState(false);
 
   async function signin(values: { email: string; password: string }) {
     client
       .loginUser(values)
       .then((res) => {
-        console.log(res);
-        if (res.error) {
+        if (res.errors?.length) {
           setErrors([
             "Username or password is incorrect. Please check and try again.",
           ]);
         } else {
-          goToPath("/");
+          setSuccess(true);
         }
       })
       .catch((err) => {
@@ -34,12 +32,18 @@ const Login: NextPage = () => {
   }
 
   return (
-    <>
-      <NextHead>{headtags}</NextHead>
-      <Header />
-      <LoginTemplate onSubmit={signin} errors={errors} />
-      <Footer />
-    </>
+    <DefaultPage
+      body={
+        !isSuccessful ? (
+          <FormSubmitSuccessTemplate
+            onClick={goNext}
+            title="Payment Method Saved"
+          />
+        ) : (
+          <LoginTemplate onSubmit={signin} errors={errors} />
+        )
+      }
+    />
   );
 };
 

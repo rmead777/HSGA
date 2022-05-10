@@ -8,16 +8,25 @@ import FormPageTemplate from "../FormPage/index";
 import useForm from "../../../hooks/useForm";
 import { UpdatePaypalParams } from "../../../clients/HSWM";
 import FormErrors from "../../../components/organisms/forms/FormErrors";
+import { useState } from "react";
 
 interface PropTypes {
   errors: string[];
-  onSubmit(values: UpdatePaypalParams): void;
+  onSubmit(values: UpdatePaypalParams): Promise<void>;
 }
 function PaymentPreferenceTemplate({ onSubmit, errors }: PropTypes) {
+  const [isSubmitting, setSubmitting] = useState(false);
+
   const { isValid, isDirty, validateForm, handleSubmit, handleFormChange } =
     useForm({
-      onSubmit: (values) => onSubmit(values as unknown as UpdatePaypalParams),
+      onSubmit: async (values) => {
+        setSubmitting(true);
+        await onSubmit(values as unknown as UpdatePaypalParams);
+        setSubmitting(false);
+      },
     });
+
+  console.log(isDirty);
 
   return (
     <FormPageTemplate
@@ -49,8 +58,12 @@ function PaymentPreferenceTemplate({ onSubmit, errors }: PropTypes) {
           </div>
 
           <div>
-            <Button disabled={!isValid} type="submit" onClick={validateForm}>
-              Save
+            <Button
+              disabled={!isValid || isSubmitting}
+              type="submit"
+              onClick={validateForm}
+            >
+              {isSubmitting ? "Submitting.." : "Save"}
             </Button>
 
             <div

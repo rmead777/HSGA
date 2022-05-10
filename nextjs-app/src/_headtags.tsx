@@ -1,9 +1,7 @@
-/* eslint-disable @next/next/no-css-tags */
-/* eslint-disable react/jsx-key */
-
 import browser_monitoring_tag from "./newrelic/browser_monitoring_tag";
 import RoutesService from "./services/RoutesService";
 
+// TODO: Manage prefetch fonts
 const headtags = [
   <title key="title">HighScoreWinsMoney</title>,
   <meta

@@ -3,27 +3,31 @@ import { useState } from "react";
 import DefaultPage from "../src/Default";
 import PaymentPreferenceTemplate from "../src/templates/pages/PaymentPreference/index";
 import client from "../src/clients/HSWM/index";
+import FormSubmitSuccessTemplate from "../src/templates/pages/FormSubmitSuccess";
+import { PATH as SIGNUP_PATH } from "./signup";
 
-export const PATHNAME = "payment-preferences";
+export const PAYMENT_PREFERENCES_PATHNAME = "/payment-preferences";
 
-function goToPath(path: string) {
-  window.location.href = path;
+function goNext() {
+  if (document.referrer.includes(SIGNUP_PATH)) {
+    window.location.href = "/";
+  } else {
+    window.location.href = "/settings";
+  }
 }
 
-const Login: NextPage = () => {
+const PaymentPreferences: NextPage = () => {
   const [errors, setErrors] = useState<string[]>([]);
+  const [isSuccessful, setSuccess] = useState(false);
 
   async function updatePaypal(values: { paypalemail: string }) {
     client
       .updatePaypal(values)
       .then((res) => {
-        console.log(res);
-        if (res.error) {
-          console.error(res.error);
-
-          setErrors([res.error]);
+        if (res.errors?.length) {
+          setErrors(res.errors);
         } else {
-          goToPath("/");
+          setSuccess(true);
         }
       })
       .catch((err) => {
@@ -35,10 +39,17 @@ const Login: NextPage = () => {
   return (
     <DefaultPage
       body={
-        <PaymentPreferenceTemplate onSubmit={updatePaypal} errors={errors} />
+        isSuccessful ? (
+          <FormSubmitSuccessTemplate
+            onClick={goNext}
+            title="Payment Method Saved"
+          />
+        ) : (
+          <PaymentPreferenceTemplate onSubmit={updatePaypal} errors={errors} />
+        )
       }
     />
   );
 };
 
-export default Login;
+export default PaymentPreferences;

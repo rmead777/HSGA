@@ -8,6 +8,8 @@ import headtags from "../src/_headtags";
 import { PATHNAME } from "./payment-preferences";
 import client, { RegisterUserParams } from "../src/clients/HSWM/index";
 
+export const PATH = "signup";
+
 function goToPath(path: string) {
   window.location.href = path + ".html";
 }

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { map } from "lodash";
 import { RequiredFormData, ApiResult } from "./types";
 
 function parseFormData(
@@ -24,10 +25,26 @@ export function handleSuccess<T>(response: {
 
   // @ts-expect-error data is unknown
   if (data?.error) {
-    return {
-      // @ts-expect-error data is unknown
-      errors: [data?.error],
-    };
+    // @ts-expect-error data is unknown
+    const error = data?.error;
+
+    if (typeof error === "string") {
+      return {
+        // @ts-expect-error data is unknown
+        errors: [data?.error],
+      };
+    } else {
+      const errors = map(error, (value, key) => {
+        const reason =
+          typeof value === "string" ? value : Object.values(value)[0];
+
+        return `${key}: ${reason}`;
+      });
+
+      return {
+        errors,
+      };
+    }
   }
 
   return {

@@ -39,12 +39,26 @@ async function updatePaypal(values: UpdatePaypalParams) {
   );
 }
 
+export type UpdatePasswordParams = {
+  "password-old": string;
+  password: string;
+  "password-check": string;
+};
+async function updatePassword(values: UpdatePasswordParams) {
+  return complexFormSubmit(
+    values,
+    Paths.GET_UPDATE_PASSWORD_FORMDATA,
+    Paths.POST_UPDATE_PASSWORD
+  );
+}
+
 const client = {
   fetchHighScores,
   fetchCurrentUserInfo,
   registerUser,
   loginUser,
   updatePaypal,
+  updatePassword,
 };
 
 export default client;

@@ -17,6 +17,10 @@ export enum Paths {
   // Paypal
   GET_UPDATE_PAYPAL_FORMDATA = "/accounts/jsonupdatepaypal",
   POST_UPDATE_PAYPAL_FORMDATA = "/accounts/jsonupdatepaypal",
+
+  // Password
+  GET_UPDATE_PASSWORD_FORMDATA = "/users/jsonchangepw",
+  POST_UPDATE_PASSWORD = "/users/jsonchangepw",
 }
 
 export type ScoreRecord = {

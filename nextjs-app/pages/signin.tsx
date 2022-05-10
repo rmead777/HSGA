@@ -3,7 +3,6 @@ import LoginTemplate from "../src/templates/pages/Login";
 import client from "../src/clients/HSWM";
 import { useState, useEffect } from "react";
 import DefaultPage from "../src/Default";
-import FormSubmitSuccessTemplate from "../src/templates/pages/FormSubmitSuccess";
 import { useRouter } from "next/router";
 
 function goNext() {
@@ -13,21 +12,7 @@ function goNext() {
 const Login: NextPage = () => {
   const router = useRouter();
   const [errors, setErrors] = useState<string[]>([]);
-  const [isSuccessful, setSuccess] = useState(false);
-
-  useEffect(() => {
-    client
-      .fetchCurrentUserInfo()
-      .then((result) => {
-        if (result.data?.username) {
-          // Logged in. Redirect
-          router.replace("/");
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [router]);
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
   async function signin(values: { email: string; password: string }) {
     client
@@ -38,7 +23,7 @@ const Login: NextPage = () => {
             "Username or password is incorrect. Please check and try again.",
           ]);
         } else {
-          setSuccess(true);
+          goNext();
         }
       })
       .catch((err) => {
@@ -47,19 +32,38 @@ const Login: NextPage = () => {
       });
   }
 
+  useEffect(() => {
+    client
+      .fetchCurrentUserInfo()
+      .then((result) => {
+        if (result.data?.username) {
+          setLoggedIn(true);
+        } else {
+          setLoggedIn(false);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [router]);
+
+  useEffect(() => {
+    // User should not get to this page if logged in. If they do, redirect them.
+    if (isLoggedIn) {
+      setTimeout(() => {
+        router.replace("/");
+      }, 3000);
+    }
+  });
+
+  if (isLoggedIn) {
+    return (
+      <div className="text-center">{`You're already logged in. Redirecting..`}</div>
+    );
+  }
+
   return (
-    <DefaultPage
-      body={
-        isSuccessful ? (
-          <FormSubmitSuccessTemplate
-            onClick={goNext}
-            title="Payment Method Saved"
-          />
-        ) : (
-          <LoginTemplate onSubmit={signin} errors={errors} />
-        )
-      }
-    />
+    <DefaultPage body={<LoginTemplate onSubmit={signin} errors={errors} />} />
   );
 };
 

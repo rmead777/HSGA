@@ -24,7 +24,7 @@ export type ScoreRecord = {
   score: number;
 };
 
-export type Result<T = undefined> = {
+export type ApiResult<T = undefined> = {
   data?: T;
   errors?: string[];
 };

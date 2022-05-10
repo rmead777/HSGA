@@ -34,7 +34,7 @@ const Login: NextPage = () => {
   return (
     <DefaultPage
       body={
-        !isSuccessful ? (
+        isSuccessful ? (
           <FormSubmitSuccessTemplate
             onClick={goNext}
             title="Payment Method Saved"

@@ -39,7 +39,7 @@ const PaymentPreferences: NextPage = () => {
   return (
     <DefaultPage
       body={
-        !isSuccessful ? (
+        isSuccessful ? (
           <FormSubmitSuccessTemplate
             onClick={goNext}
             title="Payment Method Saved"

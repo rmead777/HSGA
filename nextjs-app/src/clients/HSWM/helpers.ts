@@ -1,5 +1,5 @@
 import axios from "axios";
-import { RequiredFormData, Result } from "./types";
+import { RequiredFormData, ApiResult } from "./types";
 
 function parseFormData(
   data: Record<string, string>[]
@@ -19,7 +19,7 @@ function parseFormData(
 
 export function handleSuccess<T>(response: {
   data: unknown | { error: string };
-}): Result<T> {
+}): ApiResult<T> {
   const { data } = response;
 
   // @ts-expect-error data is unknown

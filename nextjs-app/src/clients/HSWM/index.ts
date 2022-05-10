@@ -1,12 +1,11 @@
-import axios from "axios";
-import { complexFormSubmit, handleSuccess, myGet } from "./helpers";
-import { Paths, Result, ScoreRecord, UserInfo } from "./types";
+import { complexFormSubmit, myGet } from "./helpers";
+import { Paths, ApiResult, ScoreRecord, UserInfo } from "./types";
 
-async function fetchHighScores(gameId: number): Promise<Result<ScoreRecord[]>> {
+async function fetchHighScores(
+  gameId: number
+): Promise<ApiResult<ScoreRecord[]>> {
   const path = `${Paths.GET_HIGHSCORES}/${gameId}`;
-  return await axios
-    .get<ScoreRecord[] | { error: string }>(path)
-    .then((data) => handleSuccess(data));
+  return myGet<ScoreRecord[]>(path);
 }
 
 export type LoginUserParams = { email: string; password: string };

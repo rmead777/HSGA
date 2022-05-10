@@ -1,150 +1,43 @@
 import axios from "axios";
-import defaultHighscores from "./defaultData/highscores.json";
+import { complexFormSubmit, handleSuccess, myGet } from "./helpers";
+import { Paths, Result, ScoreRecord, UserInfo } from "./types";
 
-export enum Paths {
-  // This endpoint takes a slug
-  GET_HIGHSCORES = "/highscores/forgame",
-
-  // Gets the info needed for the form
-  GET_LOGIN_FORMDATA = "/users/jsonloginform",
-  POST_LOGIN = "/users/jsonloginform",
-
-  GET_ALL_GAMES_INFO = "/games/jsongames",
-
-  GET_USER_INFO = "/users/jsoncurrentuserinfo",
-
-  // Gets the info needed for the form
-  GET_SIGNUP_FORMDATA = "/users/jsonsignupform",
-  POST_SIGNUP = "/users/jsonsignupform",
-
-  // Paypal
-  GET_UPDATE_PAYPAL_FORMDATA = "/accounts/jsonupdatepaypal",
-  POST_UPDATE_PAYPAL_FORMDATA = "/accounts/jsonupdatepaypal",
-}
-
-export type ScoreRecord = {
-  username: string;
-  score: number;
-};
-
-function parseFormData(
-  data: Record<string, string>[]
-): Record<string, string | undefined> {
-  const _csrfToken = data.find((obj) => obj.name === "_csrfToken")?.value;
-  const _Token_fields = data.find(
-    (obj) => obj.name === "_Token[fields]"
-  )?.value;
-  const _Token_debug = data.find((obj) => obj.name === "_Token[debug]")?.value;
-
-  return {
-    _csrfToken,
-    "_Token[fields]": _Token_fields,
-    "_Token[debug]": _Token_debug,
-  };
-}
-
-async function fetchHighScores(gameId: number): Promise<ScoreRecord[]> {
+async function fetchHighScores(gameId: number): Promise<Result<ScoreRecord[]>> {
   const path = `${Paths.GET_HIGHSCORES}/${gameId}`;
-  try {
-    const res = await axios.get(path);
-    return res.data;
-  } catch (err) {
-    console.error("Failed to fetch highscores");
-    return defaultHighscores;
-  }
+  return await axios
+    .get<ScoreRecord[] | { error: string }>(path)
+    .then((data) => handleSuccess(data));
 }
 
-export interface LoginUserParams {
-  email: string;
-  password: string;
-}
+export type LoginUserParams = { email: string; password: string };
 async function loginUser(values: LoginUserParams) {
-  const formData = await loginUserFormData();
-
-  const data = {
-    ...values,
-    ...parseFormData(formData),
-  };
-
-  const res = await axios.post(Paths.POST_LOGIN, {
-    data: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  return res.data;
+  return complexFormSubmit(values, Paths.GET_LOGIN_FORMDATA, Paths.POST_LOGIN);
 }
 
-async function loginUserFormData() {
-  const res = await axios.get<Record<string, string>[]>(
-    Paths.GET_LOGIN_FORMDATA
-  );
-
-  return res.data;
-}
-
-export interface RegisterUserParams {
+export type RegisterUserParams = {
   username: string;
   email: string;
   password: string;
-}
+};
 async function registerUser(values: RegisterUserParams) {
-  const formData = await fetchRegisterUserFormData();
-
-  const data = {
-    ...values,
-    ...parseFormData(formData),
-  };
-
-  const res = await axios.post(Paths.POST_SIGNUP, {
-    data: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  return res.data;
+  return complexFormSubmit(
+    values,
+    Paths.GET_SIGNUP_FORMDATA,
+    Paths.POST_SIGNUP
+  );
 }
 
-async function fetchRegisterUserFormData() {
-  const res = await axios.get(Paths.GET_SIGNUP_FORMDATA);
-  return res.data;
+async function fetchCurrentUserInfo() {
+  return myGet<UserInfo>(Paths.GET_USER_INFO);
 }
 
-async function fetchCurrentUserInfo(): Promise<{
-  username: string;
-  email: string;
-  paypal_email: string;
-}> {
-  const res = await axios.get(Paths.GET_USER_INFO);
-  return res.data;
-}
-
-export interface UpdatePaypalParams {
-  paypalemail: string;
-}
+export type UpdatePaypalParams = { paypalemail: string };
 async function updatePaypal(values: UpdatePaypalParams) {
-  // TODO: This needs to handle errors ( error: " " )
-  const formData = await fetchUpdatePaypalFormData();
-
-  const data = {
-    ...values,
-    ...parseFormData(formData),
-  };
-
-  const res = await axios.post(Paths.POST_UPDATE_PAYPAL_FORMDATA, {
-    data: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  return res.data;
-}
-
-async function fetchUpdatePaypalFormData() {
-  const res = await axios.get(Paths.GET_UPDATE_PAYPAL_FORMDATA);
-  return res.data;
+  return complexFormSubmit(
+    values,
+    Paths.GET_UPDATE_PAYPAL_FORMDATA,
+    Paths.POST_UPDATE_PAYPAL_FORMDATA
+  );
 }
 
 const client = {

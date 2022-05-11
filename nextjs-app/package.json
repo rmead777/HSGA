@@ -7,6 +7,7 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "yarn tsc --noemit && yarn eslint .",
+    "test": "yarn jest",
     "open": "open out/index.html",
     "deploy": "yarn build && rsync -avz --exclude='.git' ./out testing2@testing2.ttechr.com:./public_html/webroot/gitlab"
   },

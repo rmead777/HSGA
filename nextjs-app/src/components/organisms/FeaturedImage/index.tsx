@@ -40,7 +40,9 @@ function FeaturedImage() {
           !showFeaturedImage && "invisible",
           styles["featured-image"]
         )}
-        src={RoutesService.getImagePath("featured-game-image.jpg")}
+        src={RoutesService.getImagePath(
+          "featured_game_image--point_the_points.png"
+        )}
         alt="featured-image"
         width={1000}
         height={1000}

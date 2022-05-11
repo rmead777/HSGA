@@ -4,7 +4,6 @@ import SignupTemplate from "@ui/templates/pages/Signup";
 import { PAYMENT_PREFERENCES_PATHNAME } from "./payment-preferences";
 import client, { RegisterUserParams } from "../src/clients/HSWM/index";
 import DefaultPage from "../src/Default";
-import FormSubmitSuccessTemplate from "../src/templates/pages/FormSubmitSuccess";
 
 export const PATH = "signup";
 
@@ -14,7 +13,6 @@ function goNext() {
 
 const Signup: NextPage = () => {
   const [errors, setErrors] = useState<string[]>([]);
-  const [isSuccessful, setSuccess] = useState(false);
 
   function onSubmit(values: RegisterUserParams) {
     client
@@ -23,7 +21,7 @@ const Signup: NextPage = () => {
         if (res.errors?.length) {
           setErrors(res.errors);
         } else {
-          setSuccess(true);
+          goNext();
         }
       })
       .catch((err) => {
@@ -34,16 +32,7 @@ const Signup: NextPage = () => {
 
   return (
     <DefaultPage
-      body={
-        isSuccessful ? (
-          <FormSubmitSuccessTemplate
-            onClick={goNext}
-            title="Payment Method Saved"
-          />
-        ) : (
-          <SignupTemplate onSubmit={onSubmit} errors={errors} />
-        )
-      }
+      body={<SignupTemplate onSubmit={onSubmit} errors={errors} />}
     />
   );
 };

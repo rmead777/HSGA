@@ -22,6 +22,10 @@ export enum Paths {
   GET_UPDATE_PASSWORD_FORMDATA = "/users/jsonchangepw",
   POST_UPDATE_PASSWORD = "/users/jsonchangepw",
 
+  // Reset Password
+  GET_RESET_PASSWORD_FORMDATA = "/users/jsonresetpw",
+  POST_RESET_PASSWORD = "/users/jsonresetpw",
+
   // Featured game info
   GET_FEATURED_GAME_INFO = "/games/jsonfeature",
 }

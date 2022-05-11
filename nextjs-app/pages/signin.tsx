@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import DefaultPage from "../src/Default";
 import { useRouter } from "next/router";
 
+export const SIGNIN_PATHNAME = "/signin";
+
 function goNext() {
   window.location.href = "/";
 }

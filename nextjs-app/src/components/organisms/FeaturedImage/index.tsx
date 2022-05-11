@@ -4,22 +4,13 @@ import Image from "../../atoms/Image";
 import styles from "./styles.module.css";
 import RoutesService from "../../../services/RoutesService";
 import Logger, { LoggableEvents } from "../../../services/Logger";
+import { GameInfo } from "../../../clients/HSWM/types";
 
-const renderIframe = () => {
-  return (
-    <iframe
-      className="_3Xz9Z ui-droppable"
-      title="Embedded Content"
-      name="htmlComp-iframe"
-      width="100%"
-      height="100%"
-      data-src=""
-      src="https://gamesnacks.com/embed/games/trex_v3"
-    ></iframe>
-  );
+type PropTypes = {
+  gameInfo?: GameInfo;
 };
-
-function FeaturedImage() {
+function FeaturedImage(props: PropTypes) {
+  const { gameInfo } = props;
   const [showFeaturedImage, setShowFeaturedImage] = useState(true);
 
   function handleImageClick() {
@@ -50,7 +41,15 @@ function FeaturedImage() {
         onClick={handleImageClick}
       />
       <div className={cx(showFeaturedImage && "invisible", styles.game)}>
-        {renderIframe()}
+        <iframe
+          // className="_3Xz9Z ui-droppable"
+          // title="Embedded Content"
+          // name="htmlComp-iframe"
+          width="100%"
+          height="100%"
+          // data-src=""
+          src={gameInfo?.uri}
+        ></iframe>
       </div>
     </div>
   );

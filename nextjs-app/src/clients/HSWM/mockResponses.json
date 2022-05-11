@@ -172,5 +172,12 @@
       "autocomplete": "off",
       "value": "%5B%22%5C%2Fusers%5C%2Fjsonsignupform%22%2C%5B%22username%22%2C%22password%22%2C%22email%22%5D%2C%5B%5D%5D"
     }
+  ],
+  "/games/jsonfeature": [
+    {
+      "id": "11ecd0ce-d22f-8553-ab4d-6aaca1cbf7ce",
+      "title": "Test Game",
+      "uri": "/thegames/11ecd0ce-d22f-8553-ab4d-6aaca1cbf7ce/index.html"
+    }
   ]
 }

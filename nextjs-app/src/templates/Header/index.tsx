@@ -8,21 +8,19 @@ import client from "../../clients/HSWM";
 import styles from "./styles.module.css";
 
 export default function Footer() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     client
       .fetchCurrentUserInfo()
       .then((result) => {
-        if (result.data?.username) {
-          setLoggedIn(true);
-        } else {
-          setLoggedIn(false);
+        if (result.data) {
+          setUsername(result.data?.username);
         }
       })
       .catch((err) => {
         console.error(err);
-        setLoggedIn(false);
+        setUsername("");
       });
   }, []);
 
@@ -41,8 +39,9 @@ export default function Footer() {
           height={29}
         />
       </Link>
-      {isLoggedIn ? (
+      {username ? (
         <span className="flex space-x-2">
+          <span className="chubby-choo-vertical-fix">{username}</span>
           <Link href="/logout" className="chubby-choo-vertical-fix">
             Logout
           </Link>

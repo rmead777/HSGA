@@ -5,8 +5,13 @@ import Leaderboard from "../../../components/organisms/Leaderboard";
 import Link from "../../../components/atoms/Link";
 import Button from "../../../components/atoms/Button";
 import FeaturedImage from "../../../components/organisms/FeaturedImage";
+import { GameInfo } from "../../../clients/HSWM/types";
 
-const HomePage = () => {
+type PropTypes = {
+  featuredGameInfo?: GameInfo;
+};
+const HomePage = (props: PropTypes) => {
+  const { featuredGameInfo } = props;
   return (
     <main
       className={cx(
@@ -18,7 +23,7 @@ const HomePage = () => {
         "max-w-7xl"
       )}
     >
-      <FeaturedImage />
+      <FeaturedImage gameInfo={featuredGameInfo} />
       <div className="mb-10 max-w-md mx-auto">
         High Score Wins Money is a place where you can play unique games made by
         indie developers. If you get the high score on the game that day,{" "}

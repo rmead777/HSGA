@@ -1,5 +1,5 @@
 import { complexFormSubmit, myGet } from "./helpers";
-import { Paths, ApiResult, ScoreRecord, UserInfo } from "./types";
+import { Paths, ApiResult, ScoreRecord, UserInfo, GameInfo } from "./types";
 
 async function fetchHighScores(
   gameId: number
@@ -52,6 +52,10 @@ async function updatePassword(values: UpdatePasswordParams) {
   );
 }
 
+async function fetchFeaturedGameInfo() {
+  return myGet<Array<GameInfo>>(Paths.GET_FEATURED_GAME_INFO);
+}
+
 const client = {
   fetchHighScores,
   fetchCurrentUserInfo,
@@ -59,6 +63,7 @@ const client = {
   loginUser,
   updatePaypal,
   updatePassword,
+  fetchFeaturedGameInfo,
 };
 
 export default client;

@@ -21,6 +21,9 @@ export enum Paths {
   // Password
   GET_UPDATE_PASSWORD_FORMDATA = "/users/jsonchangepw",
   POST_UPDATE_PASSWORD = "/users/jsonchangepw",
+
+  // Featured game info
+  GET_FEATURED_GAME_INFO = "/games/jsonfeature",
 }
 
 export type ScoreRecord = {
@@ -39,4 +42,10 @@ export type UserInfo = {
   username: string;
   email: string;
   paypal_email: string;
+};
+
+export type GameInfo = {
+  id: string;
+  title: string;
+  uri: string;
 };

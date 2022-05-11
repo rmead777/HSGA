@@ -131,5 +131,46 @@
       "autocomplete": "off",
       "value": "%5B%22%5C%2Fusers%5C%2Fjsonsignupform%22%2C%5B%22username%22%2C%22password%22%2C%22email%22%5D%2C%5B%5D%5D"
     }
+  ],
+  "/users/jsonchangepw": [
+    {
+      "type": "hidden",
+      "name": "_csrfToken",
+      "autocomplete": "off",
+      "value": "MNdx+5geDmwktwDla1YBcpf25GRqyvV6BgmyzmWimxEQwSWf8+e9Pbj2TLRVDixDWodppMo6Dc2EYvlthdXq2pcBcrXpd3MMocDXXVivzUI3aoKqVcCuIyjzQ/3GgYRYicZ+hmE4GyZp5QjB+Apo+g=="
+    },
+    {
+      "type": "password",
+      "name": "old-password",
+      "required": "true",
+      "message": "This field cannot be left empty",
+      "oninvalid": "this.setCustomValidity(&#039;&#039;); if (!this.value) this.setCustomValidity(this.dataset.validityMessage)",
+      "oninput": "this.setCustomValidity(&#039;&#039;)",
+      "id": "old-password",
+      "maxlength": "255"
+    },
+    {
+      "type": "password",
+      "name": "new-password",
+      "required": "true",
+      "message": "This field cannot be left empty",
+      "oninvalid": "this.setCustomValidity(&#039;&#039;); if (!this.value) this.setCustomValidity(this.dataset.validityMessage)",
+      "oninput": "this.setCustomValidity(&#039;&#039;)",
+      "id": "new-password",
+      "maxlength": "255"
+    },
+    {
+      "type": "hidden",
+      "name": "_Token[fields]",
+      "autocomplete": "off",
+      "value": "51a5b8fd1724f95296fe6e62f3c9e99ee760b831%3A"
+    },
+    { "type": "hidden", "name": "_Token[unlocked]", "autocomplete": "off" },
+    {
+      "type": "hidden",
+      "name": "_Token[debug]",
+      "autocomplete": "off",
+      "value": "%5B%22%5C%2Fusers%5C%2Fjsonsignupform%22%2C%5B%22username%22%2C%22password%22%2C%22email%22%5D%2C%5B%5D%5D"
+    }
   ]
 }

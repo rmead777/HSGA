@@ -3,15 +3,17 @@ import Button from "@ui/atoms/Button/index";
 import PasswordInput from "@ui/organisms/forms/PasswordInput/index";
 import FormPageTemplate from "../FormPage/index";
 import useForm from "../../../hooks/useForm";
+import { UpdatePasswordParams } from "../../../clients/HSWM/index";
+import FormErrors from "../../../components/organisms/forms/FormErrors";
 
-function ChangePasswordTemplate() {
+interface PropTypes {
+  errors: string[];
+  onSubmit(values: UpdatePasswordParams): void;
+}
+function ChangePasswordTemplate({ errors, onSubmit }: PropTypes) {
   const { isValid, isDirty, validateForm, handleSubmit, handleFormChange } =
     useForm({
-      onSubmit: (values) => {
-        console.error("Not implemented yet", {
-          values,
-        });
-      },
+      onSubmit: (values) => onSubmit(values as unknown as UpdatePasswordParams),
     });
 
   return (
@@ -25,16 +27,23 @@ function ChangePasswordTemplate() {
         >
           <>
             <PasswordInput
-              id="old-password"
-              name="old-password"
+              id="password-old"
+              name="password-old"
               label="Current password"
               hideRules
             />
             <PasswordInput
-              id="new-password"
-              name="new-password"
+              id="password"
+              name="password"
               label="New password"
+              hideRules
             />
+            <PasswordInput
+              id="password-check"
+              name="password-check"
+              label="Retype New Password"
+            />
+            <FormErrors errors={errors} />
             <Button disabled={!isValid} type="submit" onClick={validateForm}>
               Save New Password
             </Button>

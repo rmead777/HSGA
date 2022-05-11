@@ -56,6 +56,17 @@ async function fetchFeaturedGameInfo() {
   return myGet<Array<GameInfo>>(Paths.GET_FEATURED_GAME_INFO);
 }
 
+export type ResetPasswordParams = {
+  email: string;
+};
+async function resetPassword(values: ResetPasswordParams) {
+  return complexFormSubmit(
+    values,
+    Paths.GET_RESET_PASSWORD_FORMDATA,
+    Paths.POST_RESET_PASSWORD
+  );
+}
+
 const client = {
   fetchHighScores,
   fetchCurrentUserInfo,
@@ -64,6 +75,7 @@ const client = {
   updatePaypal,
   updatePassword,
   fetchFeaturedGameInfo,
+  resetPassword,
 };
 
 export default client;

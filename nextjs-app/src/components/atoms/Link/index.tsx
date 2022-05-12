@@ -12,7 +12,7 @@ export default function Link(props: PropTypes) {
 
   return (
     <NextLink {...rest}>
-      <a className={cx(className, styles.link)}>{children}</a>
+      <a className={cx(className, styles.link, "text-primary-2")}>{children}</a>
     </NextLink>
   );
 }

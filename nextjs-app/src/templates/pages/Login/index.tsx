@@ -46,11 +46,14 @@ function LoginTemplate({ onSubmit, errors }: PropTypes) {
           <div
             className={cx(
               fonts.button,
-              "text-primary-1 mb-5 text-lg font-size-3"
+              "mb-5 text-lg font-size-3 flex-col flex"
             )}
           >
-            <Link href="/signup" as="/signup.html">
+            <Link className="text-secondary-1" href="/signup" as="/signup.html">
               NOT REGISTERED? SIGNUP NOW
+            </Link>
+            <Link href="/reset-password" as="/signup.html">
+              {`> RESET YOUR PASSWORD`}
             </Link>
           </div>
         </Form>

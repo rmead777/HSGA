@@ -4,3 +4,20 @@
   top: 0.125rem;
   margin-right: 0.2rem;
 }
+
+.warning {
+  height: 0;
+  transition: height 0.5s ease;
+  transition-delay: 1s;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.show {
+    height: 2rem;
+    width: 100%;
+    background: var(--primary-1);
+  }
+}

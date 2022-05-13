@@ -13,7 +13,9 @@ export default function useHighScores(gameId = 1) {
     client
       .fetchHighScores(gameId)
       .then((result) => {
-        if (result.data) setData(result.data);
+        if (result.data?.length) setData(result.data);
+        else throw new Error("Bad data");
+
         if (result.errors) setErrors(result.errors);
       })
       .catch(() => {

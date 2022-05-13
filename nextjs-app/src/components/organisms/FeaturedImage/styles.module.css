@@ -7,7 +7,8 @@
   margin-bottom: 2rem;
 
   .game,
-  .logo-wrapper {
+  .logo-wrapper,
+  .loading {
     position: absolute;
     left: 0;
     right: 0;
@@ -24,9 +25,18 @@
     bottom: 0;
   }
 
-  .game {
-    z-index: 0;
+  .loading {
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 10s;
   }
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
 }
 
 .game {
@@ -36,7 +46,11 @@
 }
 
 .featured-image {
+  z-index: 1;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 5s;
+  height: 100%;
 }
 
 @media screen(sm) {
@@ -57,5 +71,21 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.game-visible {
+  &.gameframe {
+    border: 0;
+  }
+
+  .featured-image,
+  .loading {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  iframe {
+    border: 2px solid var(--primary-2);
   }
 }

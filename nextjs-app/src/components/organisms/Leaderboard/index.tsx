@@ -21,17 +21,13 @@ interface PropTypes {
 }
 
 export default function Leaderboard({ className }: PropTypes) {
-  const { data, isLoading, errors } = useHighScores(1);
+  const { highscores, isLoading, errors } = useHighScores(1);
 
   if (isLoading) return <p>Loading...</p>;
 
   return (
     <div
-      className={cx(
-        className,
-        styles["table-wrapper"],
-        "lg:max-w-3xl mx-auto pt-20"
-      )}
+      className={cx(className, styles["table-wrapper"], "lg:max-w-3xl mx-auto")}
     >
       <Image
         className={styles.logo}
@@ -40,16 +36,9 @@ export default function Leaderboard({ className }: PropTypes) {
         width={120}
         height={94}
       />
-      {data && (
+      {highscores && (
         <table className={cx(styles.table, "container mb-5")}>
-          {/* <thead>
-          <tr>
-            <th>Rank</th>
-            <th className={styles["col-name"]}>Name</th>
-            <th>Score</th>
-          </tr>
-        </thead> */}
-          <tbody>{data.map(createTableRow)}</tbody>
+          <tbody>{highscores.map(createTableRow)}</tbody>
         </table>
       )}
 

@@ -2,7 +2,7 @@ import { complexFormSubmit, myGet } from "./helpers";
 import { Paths, ApiResult, ScoreRecord, UserInfo, GameInfo } from "./types";
 
 async function fetchHighScores(
-  gameId: number
+  gameId: string
 ): Promise<ApiResult<ScoreRecord[]>> {
   const path = `${Paths.GET_HIGHSCORES}/${gameId}`;
   return myGet<ScoreRecord[]>(path);

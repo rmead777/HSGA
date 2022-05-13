@@ -9,7 +9,7 @@ function validateData(data?: ScoreRecord[]) {
   }
 }
 
-export default function useHighScores(gameId = 1) {
+export default function useHighScores(gameId = "1") {
   const [errors, setErrors] = useState<string[]>([]);
   const {
     isLoading,
@@ -32,7 +32,7 @@ export default function useHighScores(gameId = 1) {
 
   return {
     errors,
-    data: result?.data,
+    highscores: result?.data,
     isLoading,
   };
 }

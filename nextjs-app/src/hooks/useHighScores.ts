@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import client from "../clients/HSWM";
 import { ScoreRecord } from "../clients/HSWM/types";
 
+function validateData(data?: ScoreRecord[]) {
+  if (!Array.isArray(data) || data[0].username !== "string") {
+    throw new Error("Invalid highscores");
+  }
+}
+
 export default function useHighScores(gameId = 1) {
   const [data, setData] = useState<ScoreRecord[]>([]);
   const [errors, setErrors] = useState<string[]>([]);
@@ -13,8 +19,14 @@ export default function useHighScores(gameId = 1) {
     client
       .fetchHighScores(gameId)
       .then((result) => {
-        if (result.data) setData(result.data);
-        if (result.errors) setErrors(result.errors);
+        const { data } = result;
+        if (result.errors) {
+          setErrors(result.errors);
+          return;
+        } else {
+          validateData(data);
+          setData(data as ScoreRecord[]);
+        }
       })
       .catch(() => {
         setErrors([

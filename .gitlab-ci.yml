@@ -40,8 +40,8 @@ install_dependencies:
   script:
     - cd $NEXT_APP_DIR
     - yarn install --frozen-lockfile
-  only:
-    - main
+  # only:
+  #   - main
 
 lint:
   stage: test
@@ -49,8 +49,8 @@ lint:
   script:
     - cd $NEXT_APP_DIR
     - yarn lint
-  only:
-    - main
+  # only:
+  #   - main
 
 build:
   stage: build
@@ -61,8 +61,8 @@ build:
   artifacts:
     paths:
       - $NEXT_APP_BUILD_DIR
-  only:
-    - main
+  # only:
+  #   - main
 
 deploy-to-staging:
   stage: staging

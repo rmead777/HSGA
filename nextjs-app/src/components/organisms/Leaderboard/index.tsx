@@ -40,18 +40,20 @@ export default function Leaderboard({ className }: PropTypes) {
         width={120}
         height={94}
       />
-      <table className={cx(styles.table, "container mb-5")}>
-        {/* <thead>
+      {data && (
+        <table className={cx(styles.table, "container mb-5")}>
+          {/* <thead>
           <tr>
             <th>Rank</th>
             <th className={styles["col-name"]}>Name</th>
             <th>Score</th>
           </tr>
         </thead> */}
-        <tbody>{data.map(createTableRow)}</tbody>
-      </table>
+          <tbody>{data.map(createTableRow)}</tbody>
+        </table>
+      )}
 
-      <FormErrors errors={errors} />
+      {errors && <FormErrors errors={errors} />}
     </div>
   );
 }

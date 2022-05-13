@@ -7,6 +7,7 @@ import { GameInfo } from "../src/clients/HSWM/types";
 
 const Home: NextPage = () => {
   const [featuredGameInfo, setGameInfo] = useState<GameInfo>();
+  const [username, setUsername] = useState("");
 
   useEffect(() => {
     client
@@ -22,8 +23,25 @@ const Home: NextPage = () => {
       });
   }, []);
 
+  useEffect(() => {
+    client
+      .fetchCurrentUserInfo()
+      .then((result) => {
+        if (result.data?.username) {
+          setUsername(result.data?.username);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setUsername("");
+      });
+  }, []);
+
   return (
-    <DefaultPage body={<HomePage featuredGameInfo={featuredGameInfo} />} />
+    <DefaultPage
+      currentUserInfo={{ username }}
+      body={<HomePage featuredGameInfo={featuredGameInfo} />}
+    />
   );
 };
 

@@ -4,12 +4,15 @@ import { ReactNode } from "react";
 
 interface PropTypes {
   body: ReactNode;
+  currentUserInfo?: {
+    username: string;
+  };
 }
 
-const DefaultPage = ({ body }: PropTypes) => {
+const DefaultPage = ({ body, currentUserInfo }: PropTypes) => {
   return (
     <>
-      <Header />
+      <Header username={currentUserInfo?.username} />
       {body}
       <Footer />
     </>

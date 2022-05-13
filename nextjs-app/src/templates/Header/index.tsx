@@ -4,29 +4,19 @@ import fonts from "@ui/styles/fonts.module.css";
 import Image from "../../components/atoms/Image";
 import Link from "../../components/atoms/Link";
 import RoutesService from "../../services/RoutesService";
-import client from "../../clients/HSWM";
 import styles from "./styles.module.css";
 
-export default function Footer() {
-  const [username, setUsername] = useState("");
+type PropTypes = {
+  username?: string;
+};
+export default function Header({ username }: PropTypes) {
   const [showWarning, setShowWarning] = useState(false);
 
   useEffect(() => {
-    client
-      .fetchCurrentUserInfo()
-      .then((result) => {
-        if (result.data?.username) {
-          setUsername(result.data?.username);
-        } else {
-          setShowWarning(true);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        setUsername("");
-        setShowWarning(true);
-      });
-  }, []);
+    if (!username) {
+      setTimeout(() => setShowWarning(true), 500);
+    }
+  }, [username]);
 
   return (
     <div>

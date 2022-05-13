@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useQuery } from "react-query";
 import client from "../clients/HSWM";
 import { ScoreRecord } from "../clients/HSWM/types";
 
@@ -9,38 +10,29 @@ function validateData(data?: ScoreRecord[]) {
 }
 
 export default function useHighScores(gameId = 1) {
-  const [data, setData] = useState<ScoreRecord[]>([]);
   const [errors, setErrors] = useState<string[]>([]);
-  const [isLoading, setLoading] = useState(false);
+  const {
+    isLoading,
+    error,
+    data: result,
+  } = useQuery("highscores", () => client.fetchHighScores(gameId));
 
   useEffect(() => {
-    setLoading(true);
-
-    client
-      .fetchHighScores(gameId)
-      .then((result) => {
-        const { data } = result;
-        if (result.errors) {
-          setErrors(result.errors);
-          return;
-        } else {
-          validateData(data);
-          setData(data as ScoreRecord[]);
-        }
-      })
-      .catch(() => {
-        setErrors([
-          "Failed to load highscores. Please check your internet connection.",
-        ]);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [gameId]);
+    if (error || !result) {
+      setErrors([
+        "Failed to load highscores. Please check your internet connection.",
+      ]);
+    } else if (result.errors) {
+      setErrors(result.errors);
+      return;
+    } else {
+      validateData(result.data);
+    }
+  }, [error, result]);
 
   return {
     errors,
-    data,
+    data: result?.data,
     isLoading,
   };
 }

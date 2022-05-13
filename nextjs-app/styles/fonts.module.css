@@ -5,6 +5,9 @@
 .subtitle,
 .header,
 .header *,
+.tagline,
 .button {
   font-family: "ChubbyChoo";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

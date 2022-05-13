@@ -5,14 +5,16 @@ import Leaderboard from "../../../components/organisms/Leaderboard";
 import Link from "../../../components/atoms/Link";
 import Button from "../../../components/atoms/Button";
 import FeaturedImage from "../../../components/organisms/FeaturedImage";
-import { GameInfo } from "../../../clients/HSWM/types";
+import { GameInfo, UserInfo } from "../../../clients/HSWM/types";
 import Countdown from "../../../components/organisms/Countdown";
+import CurrentHighScoreBlock from "../../../components/organisms/CurrentHighScoreBlock";
 
 type PropTypes = {
   featuredGameInfo?: GameInfo;
+  currentUserInfo?: UserInfo;
 };
 const HomePage = (props: PropTypes) => {
-  const { featuredGameInfo } = props;
+  const { featuredGameInfo, currentUserInfo } = props;
   return (
     <main
       className={cx(
@@ -56,7 +58,12 @@ const HomePage = (props: PropTypes) => {
           <Link href="/signup">Signup</Link>
         </div>
       </div>
-      <Countdown />
+      <div className="mb-7">
+        <Countdown />
+      </div>
+      {currentUserInfo && (
+        <CurrentHighScoreBlock {...currentUserInfo.user_rank} />
+      )}
       <Leaderboard className="container" />
     </main>
   );

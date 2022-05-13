@@ -15,8 +15,9 @@ export default function Footer() {
     client
       .fetchCurrentUserInfo()
       .then((result) => {
-        if (result.data?.username) {
-          setUsername(result.data?.username);
+        const { data } = result;
+        if (typeof data !== "string" && data?.username) {
+          setUsername(data.username);
         } else {
           setShowWarning(true);
         }

@@ -23,8 +23,6 @@ interface PropTypes {
 export default function Leaderboard({ className }: PropTypes) {
   const { data, isLoading, errors } = useHighScores(1);
 
-  if (isLoading) return <p>Loading...</p>;
-
   return (
     <div
       className={cx(
@@ -40,16 +38,20 @@ export default function Leaderboard({ className }: PropTypes) {
         width={120}
         height={94}
       />
-      <table className={cx(styles.table, "container mb-5")}>
-        {/* <thead>
+      {!isLoading ? (
+        <table className={cx(styles.table, "container mb-5")}>
+          {/* <thead>
           <tr>
             <th>Rank</th>
             <th className={styles["col-name"]}>Name</th>
             <th>Score</th>
           </tr>
         </thead> */}
-        <tbody>{data.map(createTableRow)}</tbody>
-      </table>
+          <tbody>{data.map(createTableRow)}</tbody>
+        </table>
+      ) : (
+        <p className="mt-5">Loading...</p>
+      )}
 
       <FormErrors errors={errors} />
     </div>

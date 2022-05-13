@@ -27,7 +27,7 @@ async function registerUser(values: RegisterUserParams) {
 }
 
 async function fetchCurrentUserInfo() {
-  return myGet<UserInfo>(Paths.GET_USER_INFO);
+  return myGet<UserInfo | "false">(Paths.GET_USER_INFO);
 }
 
 export type UpdatePaypalParams = { paypalemail: string };

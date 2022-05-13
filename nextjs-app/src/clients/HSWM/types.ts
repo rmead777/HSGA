@@ -46,6 +46,12 @@ export type UserInfo = {
   username: string;
   email: string;
   paypal_email: string;
+  id: string;
+  paypalemail: string;
+  user_rank: {
+    place: number;
+    score: number;
+  };
 };
 
 export type GameInfo = {

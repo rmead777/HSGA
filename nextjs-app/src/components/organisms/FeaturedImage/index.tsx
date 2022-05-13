@@ -27,7 +27,10 @@ function FeaturedImage(props: PropTypes) {
       className={cx(styles.gameframe, !showFeaturedImage && styles.spin)}
     >
       <Image
-        className={cx(!showFeaturedImage && "hidden", styles["featured-image"])}
+        className={cx(
+          !showFeaturedImage && "invisible",
+          styles["featured-image"]
+        )}
         src={RoutesService.getImagePath(
           "featured_game_image--point_the_points.png"
         )}

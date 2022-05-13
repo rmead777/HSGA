@@ -6,6 +6,7 @@ import Link from "../../../components/atoms/Link";
 import Button from "../../../components/atoms/Button";
 import FeaturedImage from "../../../components/organisms/FeaturedImage";
 import { GameInfo } from "../../../clients/HSWM/types";
+import Countdown from "../../../components/organisms/Countdown";
 
 type PropTypes = {
   featuredGameInfo?: GameInfo;
@@ -55,6 +56,7 @@ const HomePage = (props: PropTypes) => {
           <Link href="/signup">Signup</Link>
         </div>
       </div>
+      <Countdown />
       <Leaderboard className="container" />
     </main>
   );

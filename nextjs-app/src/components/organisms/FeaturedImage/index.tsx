@@ -27,10 +27,7 @@ function FeaturedImage(props: PropTypes) {
       className={cx(styles.gameframe, !showFeaturedImage && styles.spin)}
     >
       <Image
-        className={cx(
-          !showFeaturedImage && "invisible",
-          styles["featured-image"]
-        )}
+        className={cx(!showFeaturedImage && "hidden", styles["featured-image"])}
         src={RoutesService.getImagePath(
           "featured_game_image--point_the_points.png"
         )}
@@ -41,15 +38,7 @@ function FeaturedImage(props: PropTypes) {
         onClick={handleImageClick}
       />
       <div className={cx(showFeaturedImage && "invisible", styles.game)}>
-        <iframe
-          // className="_3Xz9Z ui-droppable"
-          // title="Embedded Content"
-          // name="htmlComp-iframe"
-          width="100%"
-          height="100%"
-          // data-src=""
-          src={gameInfo?.uri}
-        ></iframe>
+        <iframe width="100%" height="100%" src={gameInfo?.uri}></iframe>
       </div>
     </div>
   );

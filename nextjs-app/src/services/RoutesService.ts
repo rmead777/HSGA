@@ -34,7 +34,7 @@ function getIconPath(name: ValidIcons) {
     return "/assets/icons/" + filename;
   }
 
-  return IMGIX_HOST + "icons/" + filename;
+  return createImgixPath("icons/" + filename);
 }
 
 function getImagePath(filename: ValidImages) {
@@ -42,7 +42,11 @@ function getImagePath(filename: ValidImages) {
     return "/assets/images/" + filename;
   }
 
-  return IMGIX_HOST + "images/" + filename;
+  return createImgixPath("images/" + filename);
+}
+
+function createImgixPath(path: string) {
+  return IMGIX_HOST + path + "?auto=format&auto=compress";
 }
 
 const RoutesService = {

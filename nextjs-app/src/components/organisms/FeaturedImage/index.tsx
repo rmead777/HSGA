@@ -38,7 +38,10 @@ function FeaturedImage(props: PropTypes) {
   };
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", () => {
+      if (showFeaturedImage) return;
+      handleResize();
+    });
   });
 
   return (

@@ -5,6 +5,7 @@ import ContactUsTemplate from "@ui/templates/pages/ContactUs";
 import { PAYMENT_PREFERENCES_PATHNAME } from "./payment-preferences";
 import client, { ContactUsParams } from "../src/clients/HSWM/index";
 import DefaultPage from "../src/Default";
+import { useRouter } from "next/router";
 
 export const PATH = "signup";
 
@@ -13,6 +14,7 @@ function goNext() {
 }
 
 const Signup: NextPage = () => {
+  const router = useRouter()
   const [errors, setErrors] = useState<string[]>([]);
   const [success, setSuccess] = useState<string[]>([]);
 
@@ -26,7 +28,10 @@ const Signup: NextPage = () => {
           setErrors(res.errors);
         } else {
           // goNext();
-          setSuccess(["Data Submitted Successfully"])
+          setSuccess(["Your message has been sent"])
+          setTimeout(() => {
+            router.replace("/");
+          }, 4000);
         }
       })
       .catch((err) => {

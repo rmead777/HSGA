@@ -14,16 +14,19 @@ function goNext() {
 
 const Signup: NextPage = () => {
   const [errors, setErrors] = useState<string[]>([]);
+  const [success, setSuccess] = useState<string[]>([]);
 
   function onSubmit(values: ContactUsParams) {
     client.contactUs(values)
       .then((res) => {
         console.log(res);
+       
         
         if (res.errors?.length) {
           setErrors(res.errors);
         } else {
           // goNext();
+          setSuccess(["Data Submitted Successfully"])
         }
       })
       .catch((err) => {
@@ -34,7 +37,7 @@ const Signup: NextPage = () => {
 
   return (
     <DefaultPage
-      body={<ContactUsTemplate onSubmit={onSubmit} errors={errors} />}
+      body={<ContactUsTemplate onSubmit={onSubmit} errors={errors} success={success} />}
     />
   );
 };

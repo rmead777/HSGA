@@ -8,15 +8,17 @@ import Button from "@ui/atoms/Button/index";
 import FormPageTemplate from "../FormPage/index";
 import PasswordInput from "@ui/organisms/forms/PasswordInput/index";
 import FormErrors from "@ui/organisms/forms/FormErrors";
+import FormSuccess from "@ui/organisms/forms/FormSuccess"
 import useForm from "../../../hooks/useForm";
 import { ContactUsParams } from "../../../clients/HSWM";
 
 interface PropTypes {
   errors: string[];
+  success: string[];
   onSubmit(values: ContactUsParams): void;
 }
 
-function ContactUsTemplate({ errors, onSubmit }: PropTypes) {
+function ContactUsTemplate({ errors, onSubmit, success }: PropTypes) {
   const { isValid, isDirty, validateForm, handleSubmit, handleFormChange } =
     useForm({
       onSubmit: (values) => onSubmit(values as unknown as ContactUsParams),
@@ -58,6 +60,7 @@ function ContactUsTemplate({ errors, onSubmit }: PropTypes) {
              label="Message" 
               />
             <FormErrors errors={errors} />
+            <FormSuccess success={success} />
             <Button disabled={!isValid} type="submit" onClick={validateForm}>
               Submit
             </Button>

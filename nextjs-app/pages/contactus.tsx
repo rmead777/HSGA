@@ -18,6 +18,8 @@ const Signup: NextPage = () => {
   function onSubmit(values: ContactUsParams) {
     client.contactUs(values)
       .then((res) => {
+        console.log(res);
+        
         if (res.errors?.length) {
           setErrors(res.errors);
         } else {

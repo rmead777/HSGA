@@ -42,7 +42,7 @@ function useForm({ onSubmit }: Params) {
 
   const handleFormChange: FormEventHandler<HTMLFormElement> = (event) => {
     const values = getInputValuesFromEvent(event);
-console.log(values)
+// console.log(values)
     const _isValid = validate(values);
 
     setValid(_isValid);

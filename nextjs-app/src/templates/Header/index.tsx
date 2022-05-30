@@ -21,7 +21,7 @@ export default function Footer() {
       .then((result) => {
         const { data } = result;
         if (typeof data !== "string" && data?.username) {
-          console.log("User Dataaaaa", data)
+          // console.log("User Dataaaaa", data)
           setUsername(data.username);
           setUserRank(data.user_rank)
         } else {

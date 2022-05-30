@@ -92,3 +92,19 @@ $name-col-max-width: 34rem;
     color: var(--secondary-1);
   }
 }
+
+
+.allStars{
+  color: #8f7322 !important;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+.borderStyle{
+  border-color: #05bed6;
+    border-width: 1px;
+    width: 75%;
+    margin-left: 10%;
+    position: absolute;
+    // margin-right: auto;
+    // font-weight: bold;
+}

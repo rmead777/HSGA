@@ -61,9 +61,9 @@ const HomePage = (props: PropTypes) => {
       <div className="mb-7">
         <Countdown />
       </div>
-      {currentUserInfo && (
+      {/* {currentUserInfo && (
         <CurrentHighScoreBlock {...currentUserInfo.user_rank} />
-      )}
+      )} */}
       <Leaderboard className="container" />
     </main>
   );

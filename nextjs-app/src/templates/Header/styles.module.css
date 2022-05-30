@@ -4,6 +4,19 @@
   top: 0.125rem;
   margin-right: 0.2rem;
 }
+.bg_blue{
+  background-color: #09bfd5;
+}
+.hwWidth{
+  height: 24px;
+  width: 24px;
+}
+.h30{
+  height: 30px;
+}
+.mt_29{
+  margin-top: -29px;
+}
 
 .warning {
   height: 0;

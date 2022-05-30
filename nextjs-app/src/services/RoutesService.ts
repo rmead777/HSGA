@@ -19,7 +19,8 @@ type ValidImages =
   | "HS_reverse_horiz.png"
   | "HS_reverse_portrait.png"
   | "featured_game_image--point_the_points.png"
-  | "featured-game-image.jpg";
+  | "featured-game-image.jpg"
+  | "HS_logo.png";
 
 const ROOT = "/";
 
@@ -38,7 +39,7 @@ function getIconPath(name: ValidIcons) {
 }
 
 function getImagePath(filename: ValidImages) {
-  if (TURN_OFF_IMGIX) {
+  if (!TURN_OFF_IMGIX) {
     return "/assets/images/" + filename;
   }
 

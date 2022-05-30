@@ -3,6 +3,8 @@ import Image from "../../components/atoms/Image";
 import styles from "./styles.module.css";
 import RoutesService from "../../services/RoutesService";
 import { EXTERNAL_LINKS } from "../../constants";
+import Link from "../../components/atoms/Link";
+
 
 export default function Footer() {
   return (
@@ -13,7 +15,11 @@ export default function Footer() {
       )}
     >
       <span>&copy; HighScoreWinsMoney 2022</span>
-      <div className={cx(styles["social-media-links"], "flex space-x-2")}>
+      <div>
+      <Link className="text-white text-uppercase font-bold text-lg " href="/terms">TERMS AND CONDITIONS</Link>
+
+      </div>
+      {/* <div className={cx(styles["social-media-links"], "flex space-x-2")}>
         <a href={EXTERNAL_LINKS.twitter} target="_blank" rel="noreferrer">
           <Image
             src={RoutesService.getIconPath("twitter")}
@@ -38,7 +44,7 @@ export default function Footer() {
             height={24}
           />
         </a>
-      </div>
+      </div> */}
     </footer>
   );
 }

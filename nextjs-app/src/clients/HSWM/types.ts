@@ -1,5 +1,10 @@
 export enum Paths {
   // This endpoint takes a slug
+  CONTACT_FORM = "/users/jsoncontactform",
+  POST_CONTACT_FORM = "/users/jsoncontactform",
+  GET_CONTACT_FORM = "/users/jsoncontactform",
+  GET_FIRST_HIGHSCORE = "/highscores/jsonchampionsforgame/1",
+
   GET_HIGHSCORES = "/highscores/forgame",
 
   // Gets the info needed for the form
@@ -11,7 +16,7 @@ export enum Paths {
   GET_USER_INFO = "/users/jsoncurrentuserinfo",
 
   // Gets the info needed for the form
-  GET_SIGNUP_FORMDATA = "/users/jsonsignupform",
+  GET_SIGNUP_FORMDATA = "test.ttechr.com/users/jsonsignupform",
   POST_SIGNUP = "/users/jsonsignupform",
 
   // Paypal
@@ -53,6 +58,7 @@ export type UserInfo = {
     score: number;
   };
 };
+export type FirstHighScore = {}
 
 export type GameInfo = {
   id: string;

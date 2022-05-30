@@ -7,6 +7,12 @@ async function fetchHighScores(
   const path = `${Paths.GET_HIGHSCORES}/${gameId}`;
   return myGet<ScoreRecord[]>(path);
 }
+async function fetchFirstHighScore(
+  gameId: number
+): Promise<ApiResult<ScoreRecord[]>> {
+  const path = `${Paths.GET_FIRST_HIGHSCORE}`;
+  return myGet<ScoreRecord[]>(path);
+}
 
 export type LoginUserParams = { email: string; password: string };
 async function loginUser(values: LoginUserParams) {
@@ -23,6 +29,18 @@ async function registerUser(values: RegisterUserParams) {
     values,
     Paths.GET_SIGNUP_FORMDATA,
     Paths.POST_SIGNUP
+  );
+}
+export type ContactUsParams = {
+  email: string;
+  subject: string;
+  message:string;
+};
+async function contactUs(values: ContactUsParams) {
+  return complexFormSubmit(
+    values,
+    Paths.GET_CONTACT_FORM,
+    Paths.POST_CONTACT_FORM
   );
 }
 
@@ -76,6 +94,8 @@ const client = {
   updatePassword,
   fetchFeaturedGameInfo,
   resetPassword,
+  contactUs,
+  fetchFirstHighScore
 };
 
 export default client;

@@ -60,9 +60,7 @@ function FeaturedImage(props: PropTypes) {
           !showFeaturedImage && "invisible",
           styles["featured-image"]
         )}
-        src={RoutesService.getImagePath(
-          "featured_game_image--point_the_points.png"
-        )}
+        src={"https://hswm.imgix.net/images/featured_game_image--point_the_points.png?auto=format&auto=compress"}
         alt="featured-image"
         width={1000}
         zoom={1}

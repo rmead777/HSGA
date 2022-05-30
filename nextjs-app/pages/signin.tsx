@@ -39,7 +39,7 @@ const Login: NextPage = () => {
       .fetchCurrentUserInfo()
       .then((result) => {
         const { data } = result;
-
+console.log(data)
         if (typeof data !== "string" && data?.username) {
           setLoggedIn(true);
         } else {

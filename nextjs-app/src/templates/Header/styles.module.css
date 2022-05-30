@@ -25,6 +25,11 @@
     margin-left: 4.5em !important;
   }
 }
+@media screen and (max-width: 600px) {
+  .ml_45{
+    margin-left: 5em !important;
+  }
+}
 
 .warning {
   height: 0;

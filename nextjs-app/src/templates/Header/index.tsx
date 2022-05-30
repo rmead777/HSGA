@@ -51,7 +51,7 @@ export default function Footer() {
         )}
       >
         
-        <div className={cx(styles["social-media-links"], "flex space-x-2 ml-5 pl-5")}>
+        <div className={cx(styles["social-media-links"],styles.ml_45, "flex space-x-2  ")}>
         <a href={EXTERNAL_LINKS.twitter} target="_blank" rel="noreferrer">
           <Image
             src={RoutesService.getIconPath("twitter")}

@@ -81,7 +81,7 @@ export default function Leaderboard({ className }: PropTypes) {
           <tbody>
             {allStars.map(createTableRow1)}
           </tbody>
-          <div className={cx("w-100")}>
+          <div className={cx("w-100", styles.mt_5)}>
 
         <hr className={styles.borderStyle} />
           </div>

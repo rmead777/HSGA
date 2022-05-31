@@ -109,7 +109,7 @@ export default function Footer() {
       {/* Secondary Header */}
       <header
         className={cx(
-          fonts.header, styles.bg_blue, styles.h30,
+          fonts.header, styles.bg_blue, styles.h30, styles.mb5,
           "flex justify-between px-5   w-100  font-bold text-lg uppercase"
         )}
       >

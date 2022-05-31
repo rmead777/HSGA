@@ -21,14 +21,16 @@ const GamePageTemplate = () => {
     <main
       className={cx(
         styles.main,
-        styles["is-landing-page"],
+        styles.mt5,
+        styles["is-landing-page, mt_5"],
         "container",
         "mx-auto",
         "text-center",
-        "max-w-7xl"
+        "max-w-7xl",
+        "mt_5"
       )}
     >
-      <div id="game" className={styles.gameframe}>
+      <div id="game" className={cx(styles.gameframe, styles.mt5)}>
         <div className={styles.game}>{renderIframe()}</div>
       </div>
       <Leaderboard />

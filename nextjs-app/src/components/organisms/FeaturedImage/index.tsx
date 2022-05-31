@@ -4,7 +4,7 @@ import Image from "../../atoms/Image";
 import styles from "./styles.module.css";
 import RoutesService from "../../../services/RoutesService";
 import Logger, { LoggableEvents } from "../../../services/Logger";
-import { GameInfo,  } from "../../../clients/HSWM/types";
+import { GameInfo, RatioType,  } from "../../../clients/HSWM/types";
 import client from "src/clients/HSWM";
 
 // We'll get this ratio from the server in the future
@@ -15,26 +15,31 @@ type PropTypes = {
   gameInfo?: GameInfo;
 };
 function FeaturedImage(props: PropTypes) {
-let ratio = 447.743 / 764.01
+  const [ratio, setRatio] = useState<number>()
+// let ratio = 1/1;
   useEffect(() => {
     client.getRatio(1).then(res=>{
       const {data} = res
+      console.log(data);
       
       if(res.data){
         
                switch (Number(data)) {
           case 0:
-            ratio =  447.743 / 764.01 
+           setRatio(447.743 / 764.01) 
+           break;
+           case 1:
+            setRatio( 764.01/447.743) 
+            // ratio =    
             break;
-          case 1:
-            ratio =   764.01/447.743 
-            break;
-          case 2:
-            ratio =  1000 / 1000
-            break;
-        
-          default:
-            ratio =   1000/1000
+            case 2:
+              // ratio =  1000 / 1000
+              setRatio( 1000/1000) 
+              break;
+              
+              default:
+            setRatio( 1000/1000) 
+            // ratio =   1000 / 1000
             break;
         }
 
@@ -54,7 +59,7 @@ let ratio = 447.743 / 764.01
     const gameFrameWidth = gameFrameRef.current?.clientWidth;
     if (!gameFrameWidth) return;
 
-    const newHeight = gameFrameWidth * ratio;
+    const newHeight = gameFrameWidth * Number(ratio);
     setHeight(newHeight);
   };
 

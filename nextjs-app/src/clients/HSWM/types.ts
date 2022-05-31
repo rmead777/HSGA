@@ -3,6 +3,9 @@ export enum Paths {
   CONTACT_FORM = "/users/jsoncontactform",
   POST_CONTACT_FORM = "/users/jsoncontactform",
   GET_CONTACT_FORM = "/users/jsoncontactform",
+  GET_PLAYERS_COUNT = "/games/jsonnumplayersforgame/1",
+  POST_PLAYERS_COUNT = "/games/jsonnumplayersforgame/1",
+  GET_RATIO = "/games/jsonaspectratio",
   GET_FIRST_HIGHSCORE = "/highscores/jsonchampionsforgame/1",
 
   GET_HIGHSCORES = "/highscores/forgame",
@@ -38,6 +41,9 @@ export enum Paths {
 export type ScoreRecord = {
   username: string;
   score: number;
+};
+export type RatioType = {
+  data: number;
 };
 
 export type ApiResult<T = undefined> = {

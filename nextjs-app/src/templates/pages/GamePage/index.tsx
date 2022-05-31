@@ -30,6 +30,8 @@ const GamePageTemplate = () => {
         "mt_5"
       )}
     >
+                 <div className={styles.highScoreTitle } >355 Players</div>
+
       <div id="game" className={cx(styles.gameframe, styles.mt5)}>
         <div className={styles.game}>{renderIframe()}</div>
       </div>

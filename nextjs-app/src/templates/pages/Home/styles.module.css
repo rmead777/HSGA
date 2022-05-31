@@ -103,3 +103,13 @@
     transform: rotate(360deg);
   }
 }
+
+.playersCount{
+  color: #05bed6 !important;
+  font-weight: bold;
+ text-align: right;
+ width: 800px;
+ margin: auto;
+ margin-bottom: 0.25rem;
+ max-width: 100%;
+}

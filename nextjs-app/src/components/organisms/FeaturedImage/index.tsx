@@ -4,15 +4,46 @@ import Image from "../../atoms/Image";
 import styles from "./styles.module.css";
 import RoutesService from "../../../services/RoutesService";
 import Logger, { LoggableEvents } from "../../../services/Logger";
-import { GameInfo } from "../../../clients/HSWM/types";
+import { GameInfo,  } from "../../../clients/HSWM/types";
+import client from "src/clients/HSWM";
 
 // We'll get this ratio from the server in the future
-const RATIO = 447.743 / 764.01;
+// const RATIO = 447.743 / 764.01;   // 16:9
+// const RATIO =   764.01/447.743;
 
 type PropTypes = {
   gameInfo?: GameInfo;
 };
 function FeaturedImage(props: PropTypes) {
+let ratio = 447.743 / 764.01
+  useEffect(() => {
+    client.getRatio(1).then(res=>{
+      const {data} = res
+      
+      if(res.data){
+        
+               switch (Number(data)) {
+          case 0:
+            ratio =  447.743 / 764.01 
+            break;
+          case 1:
+            ratio =   764.01/447.743 
+            break;
+          case 2:
+            ratio =  1000 / 1000
+            break;
+        
+          default:
+            ratio =   1000/1000
+            break;
+        }
+
+      }
+ 
+    })
+  
+   
+  }, [])
   const { gameInfo } = props;
   const [showFeaturedImage, setShowFeaturedImage] = useState(true);
 
@@ -23,7 +54,7 @@ function FeaturedImage(props: PropTypes) {
     const gameFrameWidth = gameFrameRef.current?.clientWidth;
     if (!gameFrameWidth) return;
 
-    const newHeight = gameFrameWidth * RATIO;
+    const newHeight = gameFrameWidth * ratio;
     setHeight(newHeight);
   };
 
@@ -55,6 +86,7 @@ function FeaturedImage(props: PropTypes) {
       )}
       style={{ height }}
     >
+
       <Image
         className={cx(
           !showFeaturedImage && "invisible",

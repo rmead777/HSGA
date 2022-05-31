@@ -17,10 +17,10 @@ function createTableRow(score: ScoreRecord, idx: number) {
     </tr>
   );
 }
-function createTableRow1(score: ScoreRecord) {
+function createTableRow1(score: ScoreRecord,idx: number) {
   return (
     <tr className={styles.allStars} key={`${score}`}>
-      <td> </td>
+      <td>{idx + 1}. </td>
       <td>{score.username}</td>
       <td>{score.score}</td>
     </tr>
@@ -85,6 +85,10 @@ export default function Leaderboard({ className }: PropTypes) {
 
         <hr className={styles.borderStyle} />
           </div>
+          </table>
+          <div className={styles.highScoreTitle } >Daily High Scores</div>
+          <table className={cx(styles.table, "container mb-5")}>
+
           <tbody>{data.map(createTableRow)}</tbody>
         </table>
         </>

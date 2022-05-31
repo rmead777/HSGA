@@ -1,5 +1,5 @@
 import { complexFormSubmit, myGet } from "./helpers";
-import { Paths, ApiResult, ScoreRecord, UserInfo, GameInfo } from "./types";
+import { Paths, ApiResult, ScoreRecord, UserInfo, GameInfo, RatioType } from "./types";
 
 async function fetchHighScores(
   gameId: number
@@ -12,6 +12,18 @@ async function fetchFirstHighScore(
 ): Promise<ApiResult<ScoreRecord[]>> {
   const path = `${Paths.GET_FIRST_HIGHSCORE}`;
   return myGet<ScoreRecord[]>(path);
+}
+async function getPlayersCount(
+  gameId: number
+): Promise<ApiResult<ScoreRecord[]>> {
+  const path = `${Paths.GET_PLAYERS_COUNT}`;
+  return myGet<ScoreRecord[]>(path);
+}
+async function getRatio(
+  gameId: number
+): Promise<ApiResult<RatioType[]>> {
+  const path = `${Paths.GET_RATIO}`;
+  return myGet<RatioType[]>(path);
 }
 
 export type LoginUserParams = { email: string; password: string };
@@ -95,7 +107,10 @@ const client = {
   fetchFeaturedGameInfo,
   resetPassword,
   contactUs,
-  fetchFirstHighScore
+  fetchFirstHighScore,
+  getPlayersCount,
+  getRatio
+  
 };
 
 export default client;

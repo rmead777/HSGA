@@ -5,9 +5,11 @@ import Leaderboard from "../../../components/organisms/Leaderboard";
 import Link from "../../../components/atoms/Link";
 import Button from "../../../components/atoms/Button";
 import FeaturedImage from "../../../components/organisms/FeaturedImage";
-import { GameInfo, UserInfo } from "../../../clients/HSWM/types";
+import { GameInfo, ScoreRecord, UserInfo } from "../../../clients/HSWM/types";
 import Countdown from "../../../components/organisms/Countdown";
 import CurrentHighScoreBlock from "../../../components/organisms/CurrentHighScoreBlock";
+import { useEffect, useState } from "react";
+import client from "src/clients/HSWM";
 
 type PropTypes = {
   featuredGameInfo?: GameInfo;
@@ -15,6 +17,23 @@ type PropTypes = {
 };
 const HomePage = (props: PropTypes) => {
   const { featuredGameInfo, currentUserInfo } = props;
+  const [count, setCount] = useState<ScoreRecord[]>([])
+ // const [allStars, setAllStars] = useState<ScoreRecord[]>([])
+
+  useEffect(() => {
+    client.getPlayersCount(1).then(res=>{
+    //  console.log(res)
+      const {data} = res
+      if(res.data){
+
+        setCount(res.data); 
+      }
+// console.log(res);
+// 
+    })
+  
+   
+  }, [])
   return (
     <main
       className={cx(
@@ -26,6 +45,8 @@ const HomePage = (props: PropTypes) => {
         "max-w-7xl"
       )}
     >
+      <div className={styles.playersCount } >{`${count} Players`}</div>
+
       <FeaturedImage gameInfo={featuredGameInfo} />
       <div className="mb-10 max-w-md mx-auto">
         High Score Wins Money is a place where you can play unique games made by

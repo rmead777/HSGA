@@ -11,6 +11,7 @@ const GamePage: NextPage = () => {
     <>
       <Head>{headtags}</Head>
       <Header />
+
       <GamePageTemplate />
       <Footer />
     </>

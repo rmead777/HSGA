@@ -8,54 +8,52 @@ import { GameInfo, UserInfo } from "../src/clients/HSWM/types";
 const POLL_FREQUENCY = 5 * 1000;
 
 const Home: NextPage = () => {
-  const [featuredGameInfo, setGameInfo] = useState<GameInfo>();
-  const [userInfo, setUserInfo] = useState<UserInfo>();
-  const [pollCount, setPollCount] = useState(0);
+	const [featuredGameInfo, setGameInfo] = useState<GameInfo>();
+	const [userInfo, setUserInfo] = useState<UserInfo>();
+	const [pollCount, setPollCount] = useState(0);
 
-  useEffect(() => {
-    client
-      .fetchFeaturedGameInfo()
-      .then((result) => {
-        if (result.data?.length) {
-          const { data } = result;
-          setGameInfo(data[0]);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+	useEffect(() => {
+		client
+			.fetchFeaturedGameInfo()
+			.then((result) => {
+				if (result.data?.length) {
+					const { data } = result;
+					setGameInfo(data[0]);
+				}
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	}, []);
 
-  useEffect(() => {
-    client
-      .fetchCurrentUserInfo()
-      .then((result) => {
-        const { data } = result;
+	useEffect(() => {
+		client
+			.fetchCurrentUserInfo()
+			.then((result) => {
+				const { data } = result;
 
-        if (typeof data !== "string" && data?.id) {
-          setUserInfo(data);
-        } else {
-          setUserInfo(undefined);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        setUserInfo(undefined);
-      });
+				if (typeof data !== "string" && data?.id) {
+					setUserInfo(data);
+				} else {
+					setUserInfo(undefined);
+				}
+			})
+			.catch((err) => {
+				console.error(err);
+				setUserInfo(undefined);
+			});
+	}, [pollCount]);
 
-    setTimeout(() => setPollCount(pollCount + 1), POLL_FREQUENCY);
-  }, [pollCount]);
-
-  return (
-    <DefaultPage
-      body={
-        <HomePage
-          featuredGameInfo={featuredGameInfo}
-          currentUserInfo={userInfo}
-        />
-      }
-    />
-  );
+	return (
+		<DefaultPage
+			body={
+				<HomePage
+					featuredGameInfo={featuredGameInfo}
+					currentUserInfo={userInfo}
+				/>
+			}
+		/>
+	);
 };
 
 export default Home;

@@ -3,10 +3,10 @@ export enum Paths {
 	CONTACT_FORM = "/users/jsoncontactform",
 	POST_CONTACT_FORM = "/users/jsoncontactform",
 	GET_CONTACT_FORM = "/users/jsoncontactform",
-	GET_PLAYERS_COUNT = "/games/jsonnumplayersforgame/1",
-	POST_PLAYERS_COUNT = "/games/jsonnumplayersforgame/1",
+	GET_PLAYERS_COUNT = "/games/jsonnumplayersforgame",
+	POST_PLAYERS_COUNT = "/games/jsonnumplayersforgame",
 	GET_RATIO = "/games/jsonaspectratio",
-	GET_FIRST_HIGHSCORE = "/highscores/jsonchampionsforgame/1",
+	GET_FIRST_HIGHSCORE = "/highscores/jsonchampionsforgame",
 
 	GET_HIGHSCORES = "/highscores/forgame",
 

@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
 import client from "../clients/HSWM";
-import { ScoreRecord } from "../clients/HSWM/types";
+import { GameInfo, ScoreRecord } from "../clients/HSWM/types";
 
 const POLL_FREQUENCY = 5 * 1000;
-
-export default function useHighScores(gameId = 1) {
+interface PropTypes {
+  gameInfo?: GameInfo;
+  id?: string;
+ 
+}
+export default function useHighScores({gameInfo}:PropTypes) {
   const [data, setData] = useState<ScoreRecord[]>([]);
   const [errors, setErrors] = useState<string[]>([]);
   const [isLoading, setLoading] = useState(false);
@@ -15,9 +19,10 @@ export default function useHighScores(gameId = 1) {
     if (!data?.length) {
       setLoading(true);
     }
+console.log("Game Info fetchHighScore", gameInfo);
 
-    client
-      .fetchHighScores(gameId)
+  gameInfo?.id &&  client
+      .fetchHighScores(gameInfo?.id || "")
       .then((result) => {
         if (result.data) setData(result.data);
         if (result.errors) setErrors(result.errors);
@@ -31,7 +36,8 @@ export default function useHighScores(gameId = 1) {
         setLoading(false);
         setTimeout(() => setPollCount(pollCount + 1), POLL_FREQUENCY);
       });
-  }, [gameId, pollCount, data?.length]);
+    }, [gameInfo?.id, pollCount, data?.length]);
+    //  }, []);
 
   return {
     errors,

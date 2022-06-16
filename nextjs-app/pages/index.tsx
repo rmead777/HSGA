@@ -18,6 +18,8 @@ const Home: NextPage = () => {
 			.then((result) => {
 				if (result.data?.length) {
 					const { data } = result;
+					//console.log("Featured Game Data", data);
+					
 					setGameInfo(data[0]);
 				}
 			})

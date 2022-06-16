@@ -39,8 +39,8 @@ $name-col-max-width: 34rem;
   text-align: left;
   table-layout: fixed;
 
-  tr:first-of-type {
-    color: var(--primary-1);
+  tr:not(first-child):first-of-type {
+    // color: var(--primary-1);
     min-width: 1rem;
     animation: flashy 1s infinite;
   }

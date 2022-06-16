@@ -9,24 +9,24 @@ import {
 } from "./types";
 
 async function fetchHighScores(
-	gameId: number
+	gameId: string
 ): Promise<ApiResult<ScoreRecord[]>> {
 	const path = `${Paths.GET_HIGHSCORES}/${gameId}`;
 	return myGet<ScoreRecord[]>(path);
 }
 async function fetchFirstHighScore(
-	gameId: number
+	gameId: string
 ): Promise<ApiResult<ScoreRecord[]>> {
-	const path = `${Paths.GET_FIRST_HIGHSCORE}`;
+	const path = `${Paths.GET_FIRST_HIGHSCORE}/${gameId}`;
 	return myGet<ScoreRecord[]>(path);
 }
 async function getPlayersCount(
-	gameId: number
+	gameId: string
 ): Promise<ApiResult<ScoreRecord[]>> {
-	const path = `${Paths.GET_PLAYERS_COUNT}`;
+	const path = `${Paths.GET_PLAYERS_COUNT}/${gameId}`;
 	return myGet<ScoreRecord[]>(path);
 }
-async function getRatio(gameId: number): Promise<ApiResult<RatioType[]>> {
+async function getRatio(gameId: string): Promise<ApiResult<RatioType[]>> {
 	const path = `${Paths.GET_RATIO}`;
 	return myGet<RatioType[]>(path);
 }

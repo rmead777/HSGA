@@ -32,6 +32,11 @@
     margin-left: -15px;
   }
 }
+@media screen and (max-width: 1375px) {
+  .ml_45{
+    margin-left: 5.25em !important;
+  }
+}
 @media screen and (max-width: 600px) {
   .ml_45{
     margin-left: 4.75em !important;

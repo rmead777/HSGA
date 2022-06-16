@@ -71,6 +71,79 @@ a {
   position: relative;
   /* top: -2px; */
 }
+.hover-white:hover{
+  color: white !important;
+}
+.fwbold{
+  font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: bold;
+}
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow:
+      0 0 1px #fff,
+      0 0 2px #fff,
+      0 0 4px #fff,
+      0 0 6px rgb(224, 244, 1),
+      0 0 8px rgb(225, 255, 0),
+      0 0 12px rgb(234, 255, 0),
+      0 0 14px rgb(255, 200, 0),
+      0 0 16px #ff8e06;
+  }
+  20%, 24%, 55% {       
+    text-shadow: none;
+  }
+}
+@keyframes flashy {
+ 
+  from {
+    color: white;
+  }
+  to {
+    color: #ff8e06;
+  }
+ 
+}
+
+/* .neonText {
+  animation: flashy 1s infinite  !important;
+  color: white;
+} */
+
+@keyframes blink-animation {
+  from {
+    color: #ff8e06 ;
+  }
+  to {
+    color: white ;
+  }
+}
+@-webkit-keyframes blink-animation {
+  from {
+    color: #ff8e06 ;
+  }
+  to {
+    color: white ;
+  }
+}
+.textwhite{
+  color: white!important;
+}
+.textyellow{
+  color: #ff8e06 !important;
+}
+/* .neonText{
+  color: #ff8e06 ;
+          animation: blink-animation 1s steps(2, end) infinite !important;
+          -webkit-animation: blink-animation 1s steps(2, end) infinite !important;
+        } */
+
+
+
+
+
+
 
 @media screen(sm) {
   html {

@@ -3,7 +3,8 @@ import cx from "classnames";
 import styles from "./styles.module.scss";
 import Image from "../../atoms/Image";
 import RoutesService from "../../../services/RoutesService";
-import { FirstHighScore, ScoreRecord } from "../../../clients/HSWM/types";
+import { FirstHighScore, GameInfo, ScoreRecord } from "../../../clients/HSWM/types";
+import $ from 'jquery';
 import FormErrors from "../forms/FormErrors";
 import client from "src/clients/HSWM";
 import { useEffect, useState } from "react";
@@ -19,7 +20,7 @@ function createTableRow(score: ScoreRecord, idx: number) {
 }
 function createTableRow1(score: ScoreRecord,idx: number) {
   return (
-    <tr className={styles.allStars} key={`${score}`}>
+    <tr className={cx( (idx ==0) ? "neonText textyellow" : styles.allStars)} key={`${score}`}>
       <td>{idx + 1}. </td>
       <td>{score.username}</td>
       <td>{score.score}</td>
@@ -29,16 +30,28 @@ function createTableRow1(score: ScoreRecord,idx: number) {
 
 interface PropTypes {
   className?: string;
+  gameInfo?: GameInfo;
+  id?: string
 }
 
-export default function Leaderboard({ className }: PropTypes) {
-  const { data, isLoading, errors } = useHighScores(1);
+export default function Leaderboard({ className, gameInfo }: PropTypes) {
+  // const {id} = gameInfo || ""
+  const { data, isLoading, errors } = useHighScores({gameInfo} );
   const [allStars, setAllStars] = useState<ScoreRecord[]>([])
 
+useEffect(() => {
+  setInterval(function(){ 
+    // toggle the class every five second
+    $('.neonText').toggleClass('textwhite');  
+    $('.neonText').toggleClass('textyellow');  
+   
+ 
+ },1000);
+}, [])
 
   useEffect(() => {
-    client
-    .fetchFirstHighScore(1).then(res=>{
+  gameInfo?.id &&  client
+    .fetchFirstHighScore(gameInfo?.id || "").then(res=>{
       const {data} = res
       if(res.data){
 
@@ -49,7 +62,7 @@ export default function Leaderboard({ className }: PropTypes) {
     })
   
    
-  }, [])
+  }, [gameInfo])
   
   return (
     <div

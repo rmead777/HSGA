@@ -12,16 +12,18 @@ import { useEffect, useState } from "react";
 import client from "src/clients/HSWM";
 
 type PropTypes = {
-  featuredGameInfo?: GameInfo;
+  featuredGameInfo?: GameInfo ;
   currentUserInfo?: UserInfo;
 };
 const HomePage = (props: PropTypes) => {
   const { featuredGameInfo, currentUserInfo } = props;
-  const [count, setCount] = useState<ScoreRecord[]>([])
+  
+    const [count, setCount] = useState<ScoreRecord[]>([])
+
  // const [allStars, setAllStars] = useState<ScoreRecord[]>([])
 
   useEffect(() => {
-    client.getPlayersCount(1).then(res=>{
+   featuredGameInfo?.id && client.getPlayersCount(featuredGameInfo?.id ).then(res=>{
     //  console.log(res)
       const {data} = res
       if(res.data){
@@ -33,7 +35,7 @@ const HomePage = (props: PropTypes) => {
     })
   
    
-  }, [])
+  }, [featuredGameInfo])
   return (
     <main
       className={cx(
@@ -85,7 +87,7 @@ const HomePage = (props: PropTypes) => {
       {/* {currentUserInfo && (
         <CurrentHighScoreBlock {...currentUserInfo.user_rank} />
       )} */}
-      <Leaderboard className="container" />
+      <Leaderboard gameInfo={featuredGameInfo} className="container" />
     </main>
   );
 };

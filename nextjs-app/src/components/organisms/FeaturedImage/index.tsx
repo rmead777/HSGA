@@ -15,12 +15,13 @@ type PropTypes = {
   gameInfo?: GameInfo;
 };
 function FeaturedImage(props: PropTypes) {
+  const { gameInfo } = props;
   const [ratio, setRatio] = useState<number>()
 // let ratio = 1/1;
   useEffect(() => {
-    client.getRatio(1).then(res=>{
+   gameInfo?.id && client.getRatio(gameInfo?.id || "").then(res=>{
       const {data} = res
-      console.log(data);
+   //   console.log(data);
       
       if(res.data){
         
@@ -48,8 +49,7 @@ function FeaturedImage(props: PropTypes) {
     })
   
    
-  }, [])
-  const { gameInfo } = props;
+  }, [gameInfo])
   const [showFeaturedImage, setShowFeaturedImage] = useState(true);
 
   const [height, setHeight] = useState<string | number>("100%");

@@ -156,7 +156,7 @@ export default function Footer() {
 					"flex justify-between px-5   w-100  font-bold text-lg uppercase"
 				)}
 			>
-				<Link className="chubby-choo-vertical-fix" href="/">
+				<button className="chubby-choo-vertical-fix" onClick={()=>location.reload()}>
 					<Image
 						className={cx(styles.mt_29, "img-fluid")}
 						src={
@@ -166,7 +166,7 @@ export default function Footer() {
 						width={80}
 						height={80}
 					/>
-				</Link>
+				</button>
 
 				<div
 					className={cx(
@@ -174,11 +174,15 @@ export default function Footer() {
 						"text-primary-2 mr-5 pr-5  text-lg font-size-3"
 					)}
 				>
-					<Link className="text-white" href="/about">
+					<button type="button" onClick={()=>location.reload()} className="text-lg fwbold text-black hover-white fs-1 " >
+						HOME
+					</button>
+					<span>&nbsp; &nbsp;</span>
+					<Link className="text-black hover-white" href="/about">
 						About
 					</Link>
 					<span className={styles.divider}>{` / `}</span>
-					<Link className="text-black" href="/contactus">
+					<Link className="text-black hover-white" href="/contactus">
 						Contact Us
 					</Link>
 				</div>

@@ -20,6 +20,8 @@ const Login: NextPage = () => {
     client
       .loginUser(values)
       .then((res) => {
+     //   console.log("Log in Response",res);
+        
         if (res.errors?.length) {
           setErrors([
             "Username or password is incorrect. Please check and try again.",

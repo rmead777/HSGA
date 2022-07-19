@@ -5,7 +5,7 @@ import Image from "../../components/atoms/Image";
 import Link from "../../components/atoms/Link";
 import RoutesService from "../../services/RoutesService";
 import { EXTERNAL_LINKS } from "../../constants";
-
+import { useRouter } from "next/router";
 import client from "../../clients/HSWM";
 import styles from "./styles.module.css";
 import { builtinModules } from "module";
@@ -13,6 +13,8 @@ import { builtinModules } from "module";
 const POLL_FREQUENCY = 5000;
 
 export default function Footer() {
+	const router = useRouter()
+
 	const [username, setUsername] = useState("");
 	const [showWarning, setShowWarning] = useState(false);
 	const [userRank, setUserRank] = useState({ score: 0, place: 0 });
@@ -141,7 +143,7 @@ export default function Footer() {
 						)}
 					>
 						<Link href="/signin">sign in</Link>
-						<span className={styles.divider}>{` / `}</span>
+						<span className={styles.divider}>{` | `}</span>
 						<Link href="/signup">register</Link>
 					</div>
 				)}
@@ -153,10 +155,11 @@ export default function Footer() {
 					styles.bg_blue,
 					styles.h30,
 					styles.mb5,
-					"flex justify-between px-5   w-100  font-bold text-lg uppercase"
+					styles.px5,
+					"flex justify-between    w-100  font-bold text-lg uppercase"
 				)}
 			>
-				<button className="chubby-choo-vertical-fix" onClick={()=>location.reload()}>
+				<Link className="chubby-choo-vertical-fix" href="/">
 					<Image
 						className={cx(styles.mt_29, "img-fluid")}
 						src={
@@ -166,24 +169,32 @@ export default function Footer() {
 						width={80}
 						height={80}
 					/>
-				</button>
+				</Link>
 
 				<div
 					className={cx(
 						fonts.button,
-						"text-primary-2 mr-5 pr-5  text-lg font-size-3"
+						"text-primary-2  pr-md-5 pr-sm-1  text-lg font-size-3"
 					)}
 				>
-					<button type="button" onClick={()=>location.reload()} className="text-lg fwbold text-black hover-white fs-1 " >
+					<Link href="/"  className="text-lg fwbold text-black hover-white  " >
 						HOME
-					</button>
-					<span>&nbsp; &nbsp;</span>
-					<Link className="text-black hover-white" href="/about">
+					</Link>
+					<span className={styles.divider}>{` | `}</span>
+					<Link href="/allgames" className="text-lg fwbold text-black hover-white  " >
+						GAMES
+					</Link>
+					<span className={styles.divider}>{` | `}</span>
+					<a href="https://www.store.highscorewm.com/" className="text-lg fwbold text-black hover-white  " >
+						STORE
+					</a>
+					<span className={styles.divider}>{` | `}</span>
+					<Link className="text-black hover-white fwbold" href="/about">
 						About
 					</Link>
-					<span className={styles.divider}>{` / `}</span>
-					<Link className="text-black hover-white" href="/contactus">
-						Contact Us
+					<span className={styles.divider}>{` | `}</span>
+					<Link className="text-black hover-white fwbold" href="/contactus">
+						Contact <span className="d_sm_none" >Us</span>
 					</Link>
 				</div>
 			</header>

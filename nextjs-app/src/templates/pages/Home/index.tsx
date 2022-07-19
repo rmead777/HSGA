@@ -10,12 +10,14 @@ import Countdown from "../../../components/organisms/Countdown";
 import CurrentHighScoreBlock from "../../../components/organisms/CurrentHighScoreBlock";
 import { useEffect, useState } from "react";
 import client from "src/clients/HSWM";
-
+import MultiCarousel from '../../../components/MultiCarousel';
+import { useRouter } from 'next/router'
 type PropTypes = {
   featuredGameInfo?: GameInfo ;
   currentUserInfo?: UserInfo;
 };
 const HomePage = (props: PropTypes) => {
+  const router = useRouter()
   const { featuredGameInfo, currentUserInfo } = props;
   
     const [count, setCount] = useState<ScoreRecord[]>([])
@@ -36,6 +38,7 @@ const HomePage = (props: PropTypes) => {
   
    
   }, [featuredGameInfo])
+  console.log("Game info From Home Index", featuredGameInfo)
   return (
     <main
       className={cx(
@@ -47,9 +50,23 @@ const HomePage = (props: PropTypes) => {
         "max-w-7xl"
       )}
     >
+      <div className={styles.upperGame}>
+      <a href={`${router.basePath + featuredGameInfo?.uri}`} className={styles.playersCount } >FULL SCREEN</a>
       <div className={styles.playersCount } >{`${count} Players`}</div>
+      </div>
 
       <FeaturedImage gameInfo={featuredGameInfo} />
+
+      {/* HERE will be Carousel */}
+      <div className="carouselContainer">
+
+      <p className="moreGames" >
+          <Link href="/allgames">MORE GAMES</Link>
+        </p>
+<MultiCarousel  />
+      </div>
+
+
       <div className="mb-10 max-w-md mx-auto">
         High Score Wins Money is a place where you can play unique games made by
         indie developers. If you get the high score on the game that day,{" "}

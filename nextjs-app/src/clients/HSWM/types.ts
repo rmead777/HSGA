@@ -6,6 +6,8 @@ export enum Paths {
 	GET_PLAYERS_COUNT = "/games/jsonnumplayersforgame",
 	POST_PLAYERS_COUNT = "/games/jsonnumplayersforgame",
 	GET_RATIO = "/games/jsonaspectratio",
+	GET_CAROUSEL_DATA = "/games/jsongamescarousel",
+	GET_ALL_GAMES = "/games/jsongames",
 	GET_FIRST_HIGHSCORE = "/highscores/jsonchampionsforgame",
 
 	GET_HIGHSCORES = "/highscores/forgame",
@@ -69,5 +71,6 @@ export type FirstHighScore = {};
 export type GameInfo = {
 	id: string;
 	title: string;
+	image: string;
 	uri: string;
 };

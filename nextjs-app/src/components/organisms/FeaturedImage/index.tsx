@@ -6,6 +6,7 @@ import RoutesService from "../../../services/RoutesService";
 import Logger, { LoggableEvents } from "../../../services/Logger";
 import { GameInfo, RatioType,  } from "../../../clients/HSWM/types";
 import client from "src/clients/HSWM";
+import { useRouter } from "next/router";
 
 // We'll get this ratio from the server in the future
 // const RATIO = 447.743 / 764.01;   // 16:9
@@ -15,8 +16,12 @@ type PropTypes = {
   gameInfo?: GameInfo;
 };
 function FeaturedImage(props: PropTypes) {
+  const router = useRouter()
+  console.log("RRRRRRRR",router)
   const { gameInfo } = props;
   const [ratio, setRatio] = useState<number>()
+  const [pathName, setPathName] = useState("");
+  console.log("Game Info", gameInfo)
 // let ratio = 1/1;
   useEffect(() => {
    gameInfo?.id && client.getRatio(gameInfo?.id || "").then(res=>{
@@ -50,6 +55,13 @@ function FeaturedImage(props: PropTypes) {
   
    
   }, [gameInfo])
+
+  useEffect(() => {
+    console.log("Path Name From Featured Game", window.location.pathname);
+    
+  setPathName(window.location.pathname);
+  }, [])
+  console.log("Game Info FRom Featured Game", gameInfo)
   const [showFeaturedImage, setShowFeaturedImage] = useState(true);
 
   const [height, setHeight] = useState<string | number>("100%");
@@ -92,15 +104,16 @@ function FeaturedImage(props: PropTypes) {
       style={{ height }}
     >
 
-      <Image
+      <img
         className={cx(
           !showFeaturedImage && "invisible",
           styles["featured-image"]
         )}
-        src={"https://hswm.imgix.net/images/featured_game_image--point_the_points.png?auto=format&auto=compress"}
+        src={router.pathname == "/"?  "https://hswm.imgix.net/images/featured_game_image--point_the_points.png?auto=format&auto=compress" :  gameInfo?.image }
+        // src={gameInfo?.image}
         alt="featured-image"
-        width={1000}
-        zoom={1}
+        // width={1000}
+        // zoom={1}
         onClick={handleImageClick}
       />
       <div className={cx(styles.loading, showFeaturedImage && "invisible")}>

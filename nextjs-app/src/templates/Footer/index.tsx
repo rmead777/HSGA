@@ -19,32 +19,7 @@ export default function Footer() {
       <Link className="text-white text-uppercase font-bold text-lg " href="/terms">TERMS AND CONDITIONS</Link>
 
       </div>
-      {/* <div className={cx(styles["social-media-links"], "flex space-x-2")}>
-        <a href={EXTERNAL_LINKS.twitter} target="_blank" rel="noreferrer">
-          <Image
-            src={RoutesService.getIconPath("twitter")}
-            alt="twitter-icon"
-            width={24}
-            height={24}
-          />
-        </a>
-        <a href={EXTERNAL_LINKS.instagram} target="_blank" rel="noreferrer">
-          <Image
-            src={RoutesService.getIconPath("instagram")}
-            alt="instagram-icon"
-            width={24}
-            height={24}
-          />
-        </a>
-        <a href={EXTERNAL_LINKS.discord} target="_blank" rel="noreferrer">
-          <Image
-            src={RoutesService.getIconPath("discord")}
-            alt="discord-icon"
-            width={24}
-            height={24}
-          />
-        </a>
-      </div> */}
+      
     </footer>
   );
 }

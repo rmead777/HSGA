@@ -1,19 +1,15 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import SignupTemplate from "@ui/templates/pages/Signup";
 import ContactUsTemplate from "@ui/templates/pages/ContactUs";
-import { PAYMENT_PREFERENCES_PATHNAME } from "./payment-preferences";
 import client, { ContactUsParams } from "../src/clients/HSWM/index";
 import DefaultPage from "../src/Default";
 import { useRouter } from "next/router";
 
-export const PATH = "signup";
+export const PATH = "contactus";
 
-function goNext() {
-	window.location.href = PAYMENT_PREFERENCES_PATHNAME;
-}
 
-const Signup: NextPage = () => {
+
+const ContactUs: NextPage = () => {
 	const router = useRouter();
 	const [errors, setErrors] = useState<string[]>([]);
 	const [success, setSuccess] = useState<string[]>([]);
@@ -55,4 +51,4 @@ const Signup: NextPage = () => {
 	);
 };
 
-export default Signup;
+export default ContactUs;

@@ -30,6 +30,14 @@ async function getRatio(gameId: string): Promise<ApiResult<RatioType[]>> {
 	const path = `${Paths.GET_RATIO}`;
 	return myGet<RatioType[]>(path);
 }
+async function getCarouselData(): Promise<ApiResult<RatioType[]>> {
+	const path = `${Paths.GET_CAROUSEL_DATA}`;
+	return myGet<[]>(path);
+}
+async function getAllGames(): Promise<ApiResult<RatioType[]>> {
+	const path = `${Paths.GET_ALL_GAMES}`;
+	return myGet<[]>(path);
+}
 
 export type LoginUserParams = { email: string; password: string };
 async function loginUser(values: LoginUserParams) {
@@ -94,6 +102,9 @@ async function updatePassword(values: UpdatePasswordParams) {
 async function fetchFeaturedGameInfo() {
 	return myGet<Array<GameInfo>>(Paths.GET_FEATURED_GAME_INFO);
 }
+async function fetchGameInfo(id:string) {
+	return myGet<Array<GameInfo>>(`${Paths.GET_FEATURED_GAME_INFO}/${JSON.parse(id)}`);
+}
 
 export type ResetPasswordParams = {
 	email: string;
@@ -114,11 +125,14 @@ const client = {
 	updatePaypal,
 	updatePassword,
 	fetchFeaturedGameInfo,
+	fetchGameInfo,
 	resetPassword,
 	contactUs,
 	fetchFirstHighScore,
 	getPlayersCount,
 	getRatio,
+	getCarouselData,
+	getAllGames,
 };
 
 export default client;

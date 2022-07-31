@@ -3,6 +3,7 @@ import cx from "classnames";
 import Image from "@ui/atoms/Image";
 import styles from "./styles.module.css";
 import RoutesService from "../../../services/RoutesService";
+import { IMGIX_HOST } from "../../../constants";
 
 interface PropTypes {
   form: ReactNode;
@@ -20,7 +21,7 @@ function FormPageTemplate({ form }: PropTypes) {
     >
       <Image
         className={cx("mx-auto mb-3", styles.logo)}
-        src={"https://hswm.imgix.net/images/HS_reverse_portrait.png?auto=format&auto=compress"}
+        src={IMGIX_HOST+"images/HS_reverse_portrait.png?auto=format&auto=compress"}
         alt="HighScoreWinsMoney Logo"
         width={120}
         height={94}

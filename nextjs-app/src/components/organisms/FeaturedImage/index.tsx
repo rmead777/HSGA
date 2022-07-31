@@ -24,13 +24,10 @@ function FeaturedImage(props: PropTypes) {
   console.log("Game Info", gameInfo)
 // let ratio = 1/1;
   useEffect(() => {
-   gameInfo?.id && client.getRatio(gameInfo?.id || "").then(res=>{
-      const {data} = res
-   //   console.log(data);
-      
-      if(res.data){
+      setRatio( 447.743 / 764.01);
+      if(gameInfo?.aspect_ratio){
         
-               switch (Number(data)) {
+               switch (Number(gameInfo?.aspect_ratio)) {
           case 0:
            setRatio(447.743 / 764.01) 
            break;
@@ -51,7 +48,7 @@ function FeaturedImage(props: PropTypes) {
 
       }
  
-    })
+    // })
   
    
   }, [gameInfo])
@@ -109,7 +106,7 @@ function FeaturedImage(props: PropTypes) {
           !showFeaturedImage && "invisible",
           styles["featured-image"]
         )}
-        src={router.pathname == "/"?  "https://hswm.imgix.net/images/featured_game_image--point_the_points.png?auto=format&auto=compress" :  gameInfo?.image }
+        src={ gameInfo?.image }
         // src={gameInfo?.image}
         alt="featured-image"
         // width={1000}

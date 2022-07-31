@@ -222,8 +222,8 @@ function AllGamesTemplate() {
     let filt = e
       ? data.filter((character) => {
           return (
-            character["title"] &&
-            character["title"].toLowerCase().includes(e && e.toLowerCase())
+            character["author"] + character["title"] + character["descrtiption"] &&
+            (character["author"] + character["title"] + character["descrtiption"]).toLowerCase().includes(e && e.toLowerCase())
           );
         })
       : data;
@@ -294,7 +294,9 @@ function AllGamesTemplate() {
                 <div className="mx-3 mb-5">
                   <p className="allGameTitle">{item.title}</p>
                   <p>By {item.author}</p>
-                  <p>By {item.description}</p>
+                    <p>{item.description}</p>
+                    <p>Prize: {item.prize}</p>
+                    <p>Interval: {item.interval}</p>
                 </div>
               </button>
             </div>

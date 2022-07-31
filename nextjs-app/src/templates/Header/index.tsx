@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import client from "../../clients/HSWM";
 import styles from "./styles.module.css";
 import { builtinModules } from "module";
+import { IMGIX_HOST } from "../../constants";
 
 const POLL_FREQUENCY = 5000;
 
@@ -163,7 +164,7 @@ export default function Footer() {
 					<Image
 						className={cx(styles.mt_29, "img-fluid")}
 						src={
-							"https://hswm.imgix.net/images/HS_logo.png?auto=format&auto=compress"
+                            IMGIX_HOST+"images/HS_logo.png?auto=format&auto=compress"
 						}
 						alt="HS"
 						width={80}

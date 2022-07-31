@@ -67,37 +67,20 @@ const HomePage = (props: PropTypes) => {
       </div>
 
 
-      <div className="mb-10 max-w-md mx-auto">
-        High Score Wins Money is a place where you can play unique games made by
+        <div className="mb-10 max-w-md mx-auto">
+            <b className="font-black">Title:</b> {featuredGameInfo?.title}<br />
+            <b className="font-black">Author:</b> {featuredGameInfo?.author}<br />
+            <b className="font-black">Description:</b> {featuredGameInfo?.description}<br />
+            <b className="font-black">Interval:</b> {featuredGameInfo?.interval}<br />
+            <b className="font-black">Prize:</b> {featuredGameInfo?.prize}<br />
+        </div>
+
+      {/*<div className="mb-10 max-w-md mx-auto">
+          {featuredGameInfo?.description}High Score Wins Money is a place where you can play unique games made by
         indie developers. If you get the high score on the game that day,{" "}
         <b className="font-black">we will give you $100 US.</b>
-      </div>
-      <div className="hidden">
-        <Link
-          className="inline-block"
-          href={{
-            pathname: "/gamepage/[pid]",
-            query: { pid: 1 },
-          }}
-        >
-          <Button
-            className={cx(styles.button, "mb-3 mx-auto")}
-            // onClick={scrollToGame}
-          >
-            <span>{`Let's Go!`}</span>
-          </Button>
-        </Link>
-        <div
-          className={cx(
-            fonts.button,
-            "text-primary-2 mb-5 text-lg font-size-3"
-          )}
-        >
-          <Link href="/signin">Login</Link>
-          {` /  `}
-          <Link href="/signup">Signup</Link>
-        </div>
-      </div>
+      </div>*/}
+
       <div className="mb-7">
         <Countdown />
       </div>

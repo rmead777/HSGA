@@ -7,16 +7,19 @@ export enum Paths {
 	POST_PLAYERS_COUNT = "/games/jsonnumplayersforgame",
 	GET_RATIO = "/games/jsonaspectratio",
 	GET_CAROUSEL_DATA = "/games/jsongamescarousel",
-	GET_ALL_GAMES = "/games/jsongames",
+    GET_ALL_GAMES = "/games/jsongames",
+    // GET_ALL_GAMES = "https://test.ttechr.com/games/jsongames",
 	GET_FIRST_HIGHSCORE = "/highscores/jsonchampionsforgame",
 
 	GET_HIGHSCORES = "/highscores/forgame",
+	// GET_HIGHSCORES = "https://test.ttechr.com//highscores/forgame",
 
 	// Gets the info needed for the form
 	GET_LOGIN_FORMDATA = "/users/jsonloginform",
 	POST_LOGIN = "/users/jsonloginform",
 
 	GET_ALL_GAMES_INFO = "/games/jsongames",
+	// GET_ALL_GAMES_INFO = "https://test.ttechr.com/games/jsongames",
 
 	GET_USER_INFO = "/users/jsoncurrentuserinfo",
 
@@ -37,6 +40,7 @@ export enum Paths {
 	POST_RESET_PASSWORD = "/users/jsonresetpw",
 
 	// Featured game info
+	// GET_FEATURED_GAME_INFO = "https://test.ttechr.com/games/jsonfeature",
 	GET_FEATURED_GAME_INFO = "/games/jsonfeature",
 }
 
@@ -73,4 +77,9 @@ export type GameInfo = {
 	title: string;
 	image: string;
 	uri: string;
+    description: string;
+    author: string;
+    aspect_ratio: string;
+    prize: string;
+    interval: string;
 };

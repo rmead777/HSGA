@@ -3745,10 +3745,10 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-18.1.0.tgz"
   "version" "18.1.0"
 
-"react-simply-carousel@^8.3.0":
-  "integrity" "sha512-T2J4zEtUQ1oQcpRi/gAY1lCjF04RkpDfiilELvOG7uFzp4/TfIruBwKYnn0Rhr6GtdMSTZjX6zEcFQuDvYjLyQ=="
-  "resolved" "https://registry.npmjs.org/react-simply-carousel/-/react-simply-carousel-8.3.0.tgz"
-  "version" "8.3.0"
+"react-simply-carousel@^8.3.5":
+  "integrity" "sha512-90f8nHnHkAT/NjsRqlW3koYnVCzew2tvTkh72U9lxndxQRxxROmT7QM6I1mnboRQcAxUjDpDvtOBtkXxGMrNEQ=="
+  "resolved" "https://registry.npmjs.org/react-simply-carousel/-/react-simply-carousel-8.3.5.tgz"
+  "version" "8.3.5"
   dependencies:
     "core-js" "^3.8.1"
 

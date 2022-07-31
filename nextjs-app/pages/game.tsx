@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
-import HomePage from "../../src/templates/pages/Home";
-import DefaultPage from "../../src/Default";
+import HomePage from "../src/templates/pages/Home/index";
+import DefaultPage from "../src/Default";
 import { useEffect, useState } from "react";
-import client from "../../src/clients/HSWM";
-import { GameInfo, UserInfo } from "../../src/clients/HSWM/types";
+import client from "../src/clients/HSWM/index";
+import { GameInfo, UserInfo } from "../src/clients/HSWM/types";
 import { useRouter } from 'next/router'
 
 const POLL_FREQUENCY = 5 * 1000;

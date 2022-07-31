@@ -1,4 +1,4 @@
-export const HOST = "https://testing2.ttechr.com/";
+export const HOST = "https://test.ttechr.com/";
 
 export const EXTERNAL_LINKS = {
   twitter: "https://twitter.com/HighScoreWM",

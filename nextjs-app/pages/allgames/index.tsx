@@ -20,7 +20,6 @@ const AllGames: NextPage = () => {
 	return (
 		<DefaultPage
 			body={
-				// <h1>Hello World</h1>
 				<AllGamesTemplate  />
 			}
 		/>

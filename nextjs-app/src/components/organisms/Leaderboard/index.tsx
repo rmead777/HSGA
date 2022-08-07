@@ -22,7 +22,7 @@ function createTableRow1(score: ScoreRecord,idx: number) {
   return (
     <tr className={cx( (idx ==0) ? "neonText textyellow" : styles.allStars)} key={`${score}`}>
       <td>{idx + 1}. </td>
-      <td>{score.username}</td>
+      <td>{score.username.indexOf("* ") != -1 ? <span style={{'color': '#05bed6'}}>* </span> : ''} {score.username.indexOf("* ") != -1 ? score.username.substr(2) : score.username}</td>
       <td>{score.score}</td>
     </tr>
   );

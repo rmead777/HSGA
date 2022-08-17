@@ -145,6 +145,18 @@ a {
   font-weight: bold;
   font-size: 20px;
 }
+
+.allGameDetails{
+    margin-bottom: 0.5em;
+}
+
+.allGameDesc,.allGamePrize{
+    text-align: left;
+}
+
+.allGamePrize span{
+    color: #05bed6;
+}
         .allGameItem{
         
          
@@ -157,12 +169,14 @@ a {
         .sliderItem{
         
           width: 160px !important;
-        
           border: 3px solid #05bed6 !important;
           /* text-align: "center" !important; */
           /* line-height: 240px !important; */
           box-sizing: border-box !important;
           margin: 10px !important
+        }
+        div.sliderItem{
+          height: 160px;
         }
         .carouselContainer > div > div {
           max-width: 550px  !important;
@@ -176,7 +190,7 @@ a {
         .moreGames{
           color: #05bed6 !important;
           font-weight: bold;
-          text-align: start;
+          /*text-align: start;*/
           max-width: 50%;
           margin: auto;
         }

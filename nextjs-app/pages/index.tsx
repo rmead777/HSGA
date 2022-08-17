@@ -8,7 +8,20 @@ import { GameInfo, UserInfo } from "../src/clients/HSWM/types";
 const POLL_FREQUENCY = 5 * 1000;
 
 const Home: NextPage = () => {
-	const [featuredGameInfo, setGameInfo] = useState<GameInfo>();
+	const [featuredGameInfo, setGameInfo] = useState<GameInfo>(
+        {
+            "id": "{$featuregameID}",
+            "title": "High Score Wins Money",
+            "description": "Loading Game...",
+            "author": "",
+            "image": "https://hswm.imgix.net/images/HS_reverse_icon.jpg?auto=format&auto=compress",
+            "uri": "/thegames/{$featuregameID}/index.html",
+            "aspect_ratio": "2",
+            "enabled": true,
+            "interval": "Every Day",
+            "prize": "$100"
+        }
+    );
 	const [userInfo, setUserInfo] = useState<UserInfo>();
 	const [pollCount, setPollCount] = useState(0);
 

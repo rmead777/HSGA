@@ -88,4 +88,20 @@
   iframe {
     border: 2px solid var(--primary-2);
   }
+
+.titleText{
+  color: #05bed6 !important;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  text-align: left;
+  max-width: 100%;
+}
+
+.lowerGame{
+  justify-content: space-between !important;
+  display: flex;
+  width: 800px;
+  margin: auto;
+  max-width: 100%;
+}
 }

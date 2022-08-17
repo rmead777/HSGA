@@ -11,95 +11,57 @@ export default function MultiCarousel() {
   const [userRank, setUserRank] = useState({ score: 0, place: 0 });
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [data, setData] = useState([
-    {
-      id: "b8a49556-d0c5-11ec-ab4d-6aaca1cbf7ce",
-      title: "Zombies are Overrated",
-      description: "This is a brief description. Bla bla bla bla bla. ",
-      author: "Omar The Man",
-      image:
-        "https://hswm.imgix.net/images/b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce.png",
-      uri: "/thegames/b8a49556-d0c5-11ec-ab4d-6aaca1cbf7ce/index.html",
-    },
+      {
+          "id": "6bee5ce3-0471-11ed-8af0-0aad822255c7",
+          "title": "Break Invaders",
+          "description": "Part Space Invaders and part Breakeout. Protect earth with a paddle and a ball.",
+          "author": "Victor Varnado",
+          "image": "https://hswm.imgix.net/images/HS_reverse_icon.jpg",
+          "uri": "/thegames/6bee5ce3-0471-11ed-8af0-0aad822255c7/index.html",
+          "aspect_ratio": 2,
+          "enabled": true,
+          "interval": "Every Day",
+          "prize": "$100"
+      }
   ]);
 
   let testData = [
-    {
-      id: "b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce",
-      title: "Test Game",
-      description:
-        "This is a brief description. Bla bla bla bla bla. First game test",
-      author: "Victor Varnado",
-      image:
-        "https://hswm.imgix.net/images/b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce.png",
-      uri: "/thegames/b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce/index.html",
-    },
-    {
-      id: "b8a49479-d0c5-11ec-ab4d-6aaca1cbf7ce",
-      title: "I Ate My Zombies",
-      description:
-        "This is a brief description. Bla bla bla bla bla. Second game test",
-      author: "Will Brierly",
-      image:
-        "https://hswm.imgix.net/images/b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce.png",
-      uri: "/thegames/b8a49479-d0c5-11ec-ab4d-6aaca1cbf7ce/index.html",
-    },
-    {
-      id: "b8a49556-d0c5-11ec-ab4d-6aaca1cbf7ce",
-      title: "Zombies are Overrated",
-      description: "This is a brief description. Bla bla bla bla bla. ",
-      author: "Omar The Man",
-      image:
-        "https://hswm.imgix.net/images/b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce.png",
-      uri: "/thegames/b8a49556-d0c5-11ec-ab4d-6aaca1cbf7ce/index.html",
-    },
-    {
-      id: "d22e8553-d0ce-11ec-ab4d-6aaca1cbf7ce",
-      title: "Test Game",
-      description: "This is a brief description. Bla bla bla bla bla. ",
-      author: "None",
-      image:
-        "https://hswm.imgix.net/images/b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce.png",
-      uri: "/thegames/d22e8553-d0ce-11ec-ab4d-6aaca1cbf7ce/index.html",
-    },
-    {
-      id: "b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce",
-      title: "Test Game",
-      description:
-        "This is a brief description. Bla bla bla bla bla. First game test",
-      author: "Victor Varnado",
-      image:
-        "https://hswm.imgix.net/images/b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce.png",
-      uri: "/thegames/b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce/index.html",
-    },
-    {
-      id: "b8a49479-d0c5-11ec-ab4d-6aaca1cbf7ce",
-      title: "I Ate My Zombies",
-      description:
-        "This is a brief description. Bla bla bla bla bla. Second game test",
-      author: "Will Brierly",
-      image:
-        "https://hswm.imgix.net/images/b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce.png",
-      uri: "/thegames/b8a49479-d0c5-11ec-ab4d-6aaca1cbf7ce/index.html",
-    },
-    {
-      id: "b8a49556-d0c5-11ec-ab4d-6aaca1cbf7ce",
-      title: "Zombies are Overrated",
-      description: "This is a brief description. Bla bla bla bla bla. ",
-      author: "Omar The Man",
-      image:
-        "https://hswm.imgix.net/images/b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce.png",
-      uri: "/thegames/b8a49556-d0c5-11ec-ab4d-6aaca1cbf7ce/index.html",
-    },
-    {
-      id: "d22e8553-d0ce-11ec-ab4d-6aaca1cbf7ce",
-      title: "Test Game",
-      description: "This is a brief description. Bla bla bla bla bla. ",
-      author: "None",
-      image:
-        "https://hswm.imgix.net/images/b755af28-d3a0-11ec-ab4d-6aaca1cbf7ce.png",
-
-      uri: "/thegames/d22e8553-d0ce-11ec-ab4d-6aaca1cbf7ce/index.html",
-    },
+      {
+          "id": "6bee5ce3-0471-11ed-8af0-0aad822255c7",
+          "title": "Break Invaders",
+          "description": "Part Space Invaders and part Breakeout. Protect earth with a paddle and a ball.",
+          "author": "Victor Varnado",
+          "image": "https://hswm.imgix.net/images/HS_reverse_icon.jpg",
+          "uri": "/thegames/6bee5ce3-0471-11ed-8af0-0aad822255c7/index.html",
+          "aspect_ratio": 2,
+          "enabled": true,
+          "interval": "Every Day",
+          "prize": "$100"
+      },
+      {
+          "id": "b3f30836-1cb7-11ed-8af0-0aad822255c7",
+          "title": "Berserkr",
+          "description": "You are trapped in the woods in an endless onslaught of enemies. See if you can survive this action game inspired by the file The Northman.",
+          "author": "Victor Varnado",
+          "image": "https://hswm.imgix.net/images/HS_reverse_icon.jpg",
+          "uri": "/thegames/b3f30836-1cb7-11ed-8af0-0aad822255c7/index.html",
+          "aspect_ratio": 2,
+          "enabled": true,
+          "interval": null,
+          "prize": null
+      },
+      {
+          "id": "a5a2076e-1cba-11ed-8af0-0aad822255c7",
+          "title": "Point the Points",
+          "description": "Tap on the screen or the space-bar to get as many points as you can.",
+          "author": "Will Brierly",
+          "image": "https://hswm.imgix.net/images/HS_reverse_icon.jpg",
+          "uri": "/thegames/a5a2076e-1cba-11ed-8af0-0aad822255c7/index.html",
+          "aspect_ratio": 0,
+          "enabled": true,
+          "interval": null,
+          "prize": null
+      }
   ];
 
   useEffect(() => {
@@ -149,7 +111,7 @@ export default function MultiCarousel() {
       {data?.map((item, index) => (
         <div className="sliderItem" key={index}>
           <button onClick={() => handleNavigation(item)}>
-            <img src={item.image} />
+            <img src={item.image + "?auto=format&auto=compress"} />
           </button>
         </div>
       ))}

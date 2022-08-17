@@ -57,7 +57,8 @@ function Countdown() {
 				</span>
 				<span>seconds</span>
 			</div>
-			<div>UNTIL NEXT WINNER IS CHOSEN AND LEADERBOARD RESETS</div>
+            <div>UNTIL NEXT WINNER IS CHOSEN AND LEADERBOARD RESETS</div>
+            <div style={{color: '#05bed6', fontSize: '1.25em'}}>ABSOLUTELY NO PURCHASE NECESSARY!</div>
 		</div>
 	) : null;
 }

@@ -14,6 +14,7 @@ import { useRouter } from "next/router";
 
 type PropTypes = {
   gameInfo?: GameInfo;
+  parentCallback: any;
 };
 function FeaturedImage(props: PropTypes) {
   const router = useRouter()
@@ -79,6 +80,7 @@ function FeaturedImage(props: PropTypes) {
     if (showFeaturedImage) {
       Logger.logEvent(LoggableEvents.CLICKED_HOMEPAGE_FEATURED_IMAGE);
       setShowFeaturedImage(false);
+      props.parentCallback(false);
     }
   };
 
@@ -106,7 +108,7 @@ function FeaturedImage(props: PropTypes) {
           !showFeaturedImage && "invisible",
           styles["featured-image"]
         )}
-        src={ gameInfo?.image }
+        src={ gameInfo?.image + "?auto=format&auto=compress" }
         // src={gameInfo?.image}
         alt="featured-image"
         // width={1000}
@@ -118,8 +120,13 @@ function FeaturedImage(props: PropTypes) {
       </div>
       <div className={cx(showFeaturedImage && "invisible", styles.game)}>
         <iframe width="100%" height={height} src={gameInfo?.uri}></iframe>
+          <div className={styles.lowerGame}>
+              <div className={styles.titleText } >{gameInfo?.title}</div>
+              <div className={styles.titleText } >By {gameInfo?.author}</div>
+          </div>
       </div>
     </div>
+
   );
 }
 

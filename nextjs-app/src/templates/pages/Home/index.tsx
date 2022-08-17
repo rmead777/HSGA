@@ -1,5 +1,6 @@
 import cx from "classnames";
 import styles from "./styles.module.css";
+import Leaderstyles from "../../../components/organisms/Leaderboard/styles.module.scss";
 import fonts from "../../../../styles/fonts.module.css";
 import Leaderboard from "../../../components/organisms/Leaderboard";
 import Link from "../../../components/atoms/Link";
@@ -38,6 +39,13 @@ const HomePage = (props: PropTypes) => {
   
    
   }, [featuredGameInfo])
+
+    const [showFeaturedImage, setShowFeaturedImage] = useState(true);
+
+    const featuredImageCallback = (callbackState: boolean) => {
+        setShowFeaturedImage(callbackState);
+    }
+
   console.log("Game info From Home Index", featuredGameInfo)
   return (
     <main
@@ -55,25 +63,24 @@ const HomePage = (props: PropTypes) => {
       <div className={styles.playersCount } >{`${count} Players`}</div>
       </div>
 
-      <FeaturedImage gameInfo={featuredGameInfo} />
+      <FeaturedImage gameInfo={featuredGameInfo} parentCallback ={featuredImageCallback} />
 
-      {/* HERE will be Carousel */}
-      <div className="carouselContainer">
-
-      <p className="moreGames" >
-          <Link href="/allgames">MORE GAMES</Link>
-        </p>
-<MultiCarousel  />
-      </div>
-
-
-        <div className="mb-10 max-w-md mx-auto">
-            <b className="font-black">Title:</b> {featuredGameInfo?.title}<br />
-            <b className="font-black">Author:</b> {featuredGameInfo?.author}<br />
-            <b className="font-black">Description:</b> {featuredGameInfo?.description}<br />
-            <b className="font-black">Interval:</b> {featuredGameInfo?.interval}<br />
-            <b className="font-black">Prize:</b> {featuredGameInfo?.prize}<br />
+        <div className={cx(showFeaturedImage && styles.gameDescriptionBefore, styles.gameDescription)} style={{width: '800px'}}>
+            {featuredGameInfo?.description}
         </div>
+
+
+
+        {(() => {
+            if (featuredGameInfo?.prize != null) {
+                console.log("Prize is ", featuredGameInfo?.prize);
+                return (
+                    <div className="mb-10 max-w-md mx-auto" style={{fontSize: '2em', marginBottom: '0em', marginTop: '1.5em'}}>
+                        <b style={{fontWeight: '501', color: '#05bed6'}}>Prize:</b> <span style={{fontWeight: '501', color: 'white'}}>{featuredGameInfo?.prize}</span><br />
+                    </div>
+                )
+            }
+        })()}
 
       {/*<div className="mb-10 max-w-md mx-auto">
           {featuredGameInfo?.description}High Score Wins Money is a place where you can play unique games made by
@@ -81,9 +88,28 @@ const HomePage = (props: PropTypes) => {
         <b className="font-black">we will give you $100 US.</b>
       </div>*/}
 
-      <div className="mb-7">
+      <div className="mb-7" style={{marginTop: '3.5em', marginBottom: '4em'}}>
         <Countdown />
       </div>
+        <div className={cx(
+            "container",
+            Leaderstyles["table-wrapper"],
+            "lg:max-w-3xl mx-auto pt-20"
+        )}
+             style={{
+                 margin: '0',
+                 padding: '0',
+                 marginBottom: '4rem',
+             }}
+        ></div>
+        {/* HERE will be Carousel */}
+        <div className="carouselContainer">
+            <p className="moreGames" >
+                <Link href="/allgames">MORE GAMES</Link>
+            </p>
+            <MultiCarousel  />
+        </div>
+
       {/* {currentUserInfo && (
         <CurrentHighScoreBlock {...currentUserInfo.user_rank} />
       )} */}

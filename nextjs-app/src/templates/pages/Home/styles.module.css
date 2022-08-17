@@ -126,3 +126,19 @@ max-width: 100%;
 margin: auto;
 }
 
+.gameDescription{
+  justify-content: space-between !important;
+  display: flex;
+  width: 100%;
+  margin: auto;
+  max-width: 100%;
+  font-weight: bold;
+  color: white;
+  margin-top: 2.5em;
+  padding-left: 1.1em;
+}
+
+.gameDescriptionBefore{
+  margin-top: -1.1em !important;
+  padding-left: 0 !important;
+}

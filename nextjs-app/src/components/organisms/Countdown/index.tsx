@@ -58,7 +58,13 @@ function Countdown() {
 				<span>seconds</span>
 			</div>
             <div>UNTIL NEXT WINNER IS CHOSEN AND LEADERBOARD RESETS</div>
-            <div style={{color: '#05bed6', fontSize: '1.25em'}}>ABSOLUTELY NO PURCHASE NECESSARY!</div>
+            {(() => {
+                const message = "ABSOLUTELY NO PURCHASE NECESSARY!";
+                return (
+                	<div style={{color: '#05bed6', fontSize: '1.25em'}}>{message}</div>
+				)
+            })()}
+
 		</div>
 	) : null;
 }

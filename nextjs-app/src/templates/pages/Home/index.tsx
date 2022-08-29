@@ -58,6 +58,40 @@ const HomePage = (props: PropTypes) => {
         "max-w-7xl"
       )}
     >
+
+        {(() => {
+            const message = "[[main_page_message]]";
+            if (message!="[["+"main_page_message"+"]]"){
+                return (
+                    <div className="mb-10 max-w-md mx-auto"
+                         style={{borderStyle: "solid",
+                             borderWidth: "3px",
+                             borderColor: "#09bfd5",
+                         }}
+                    >{message}
+                    </div>
+                )
+            }
+        })()}
+        {(() => {
+            const message = "[[all_page_message]]";
+            if (message!="[["+"all_page_message"+"]]"){
+                return (
+                    <div className="mb-10 max-w-md mx-auto"
+                         style={{borderStyle: "solid",
+                             borderWidth: "3px",
+                             borderColor: "#09bfd5",
+                         }}
+                    >{message}
+                    </div>
+                )
+            }
+        })()}
+
+
+        {
+            /* <div style={{height: "95px", marginBottom: "18px"}}><a href="https://itch.io/jam/high-score-wins-money-jam"><img src="https://hswm.imgix.net/images/gamejam.png?auto=format&auto=compress?auto=format&auto=compress" style={{marginLeft: 'auto', marginRight: 'auto'}} width="550px" /></a></div> */
+        }
       <div className={styles.upperGame}>
       <a href={`${router.basePath + featuredGameInfo?.uri}`} className={styles.playersCount } >FULL SCREEN</a>
       <div className={styles.playersCount } >{`${count} Players`}</div>

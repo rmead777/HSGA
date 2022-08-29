@@ -88,6 +88,54 @@ export enum Paths {
 }
 */
 
+
+/*
+//  For if back end is installed on wamp server, uncomment this block, and comment everything before it
+
+export enum Paths {
+    // This endpoint takes a slug
+    CONTACT_FORM = "http://localhost/hswm/test2/users/jsoncontactform",
+    POST_CONTACT_FORM = "http://localhost/hswm/test2/users/jsoncontactform",
+    GET_CONTACT_FORM = "http://localhost/hswm/test2/users/jsoncontactform",
+    GET_PLAYERS_COUNT = "http://localhost/hswm/test2/games/jsonnumplayersforgame",
+    POST_PLAYERS_COUNT = "http://localhost/hswm/test2/games/jsonnumplayersforgame",
+    GET_RATIO = "http://localhost/hswm/test2/games/jsonaspectratio",
+    GET_CAROUSEL_DATA = "http://localhost/hswm/test2/games/jsongamescarousel",
+    GET_ALL_GAMES = "http://localhost/hswm/test2/games/jsongames",
+    GET_FIRST_HIGHSCORE = "http://localhost/hswm/test2/highscores/jsonchampionsforgame",
+
+    GET_HIGHSCORES = "http://localhost/hswm/test2/highscores/forgame",
+
+    // Gets the info needed for the form
+    GET_LOGIN_FORMDATA = "http://localhost/hswm/test2/users/jsonloginform",
+    POST_LOGIN = "http://localhost/hswm/test2/users/jsonloginform",
+
+    GET_ALL_GAMES_INFO = "http://localhost/hswm/test2/games/jsongames",
+
+    // GET_USER_INFO = "http://localhost/hswm/test2/users/jsoncurrentuserinfo",
+    GET_USER_INFO = "http://localhost/hswm/test2/users/jsoncurrentuserinfo",
+
+    // Gets the info needed for the form
+    GET_SIGNUP_FORMDATA = "http://localhost/hswm/test2/users/jsonsignupform",
+    POST_SIGNUP = "http://localhost/hswm/test2/users/jsonsignupform",
+
+    // Paypal
+    GET_UPDATE_PAYPAL_FORMDATA = "http://localhost/hswm/test2/accounts/jsonupdatepaypal",
+    POST_UPDATE_PAYPAL_FORMDATA = "http://localhost/hswm/test2/accounts/jsonupdatepaypal",
+
+    // Password
+    GET_UPDATE_PASSWORD_FORMDATA = "http://localhost/hswm/test2/users/jsonchangepw",
+    POST_UPDATE_PASSWORD = "http://localhost/hswm/test2/users/jsonchangepw",
+
+    // Reset Password
+    GET_RESET_PASSWORD_FORMDATA = "http://localhost/hswm/test2/users/jsonresetpw",
+    POST_RESET_PASSWORD = "http://localhost/hswm/test2/users/jsonresetpw",
+
+    // Featured game info
+    GET_FEATURED_GAME_INFO = "http://localhost/hswm/test2/games/jsonfeature",
+}
+*/
+
 export type ScoreRecord = {
 	username: string;
 	score: number;

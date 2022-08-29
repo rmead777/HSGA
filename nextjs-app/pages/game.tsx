@@ -12,12 +12,12 @@ const Home: NextPage = () => {
 	const router = useRouter()
 	const [featuredGameInfo, setGameInfo] = useState<GameInfo>(
         {
-            "id": "{$gameID}",
+            "id": "76d9bfe8-2576-11ed-8af0-0aad822255c7",
             "title": "High Score Wins Money",
             "description": "Loading Game...",
             "author": "",
             "image": "https://hswm.imgix.net/images/HS_reverse_icon.jpg?auto=format&auto=compress",
-            "uri": "/thegames/{$gameID}/index.html",
+            "uri": "/thegames/76d9bfe8-2576-11ed-8af0-0aad822255c7/index.html",
             "aspect_ratio": "2",
             "enabled": true,
             "interval": "Every Day",

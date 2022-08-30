@@ -30,16 +30,67 @@ body {
   color: var(--white);
 }
 
-body > div:first-of-type {
+body>div:first-of-type {
   flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+.container {
+  max-width: 85%;
+  margin: auto;
 }
 
 main {
   flex: 1;
 }
 
+.main-title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.random-code {
+  font-size: 2rem;
+  padding: 10px 20px;
+  border: 4px solid cyan;
+  font-weight: 500;
+}
+
+.desc {
+  max-width: 330px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin: 25px auto;
+}
+.rendom-input-con{
+  max-width: 400px;
+  margin:25px auto;
+  display: flex;
+  align-items: baseline;
+}
+.rendom-input {
+  background-color: rgb(100, 100, 100);
+  border: 4px solid cyan;
+  font-size: 2rem;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 5px 10px;
+}
+.rendom-input + button{
+  color: cyan;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.submit-btn{
+  background-color: cyan;
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #000;
+  padding: 8px 12px;
+  cursor: pointer;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -71,14 +122,17 @@ a {
   position: relative;
   /* top: -2px; */
 }
-.hover-white:hover{
+
+.hover-white:hover {
   color: white !important;
 }
-.fwbold{
+
+.fwbold {
   font-size: 1.125rem;
-    line-height: 1.75rem;
-    font-weight: bold;
+  line-height: 1.75rem;
+  font-weight: bold;
 }
+
 @keyframes flicker {
   0%, 18%, 22%, 25%, 53%, 57%, 100% {
     text-shadow:
@@ -91,19 +145,22 @@ a {
       0 0 14px rgb(255, 200, 0),
       0 0 16px #ff8e06;
   }
-  20%, 24%, 55% {       
+
+  20%, 24%, 55% {
     text-shadow: none;
   }
 }
+
 @keyframes flashy {
- 
+
   from {
     color: white;
   }
+
   to {
     color: #ff8e06;
   }
- 
+
 }
 
 /* .neonText {
@@ -113,26 +170,32 @@ a {
 
 @keyframes blink-animation {
   from {
-    color: #ff8e06 ;
+    color: #ff8e06;
   }
+
   to {
-    color: white ;
+    color: white;
   }
 }
+
 @-webkit-keyframes blink-animation {
   from {
-    color: #ff8e06 ;
+    color: #ff8e06;
   }
+
   to {
-    color: white ;
+    color: white;
   }
 }
-.textwhite{
-  color: white!important;
+
+.textwhite {
+  color: white !important;
 }
-.textyellow{
+
+.textyellow {
   color: #ff8e06 !important;
 }
+
 /* .neonText{
   color: #ff8e06 ;
           animation: blink-animation 1s steps(2, end) infinite !important;
@@ -140,103 +203,116 @@ a {
         } */
 
 
-.allGameTitle{
+.allGameTitle {
   color: #05bed6;
   font-weight: bold;
   font-size: 20px;
 }
 
-.allGameDetails{
-    margin-bottom: 0.5em;
+.allGameDetails {
+  margin-bottom: 0.5em;
 }
 
-.allGameDesc,.allGamePrize{
-    text-align: left;
+.allGameDesc, .allGamePrize {
+  text-align: left;
 }
 
-.allGamePrize span{
-    color: #05bed6;
+.allGamePrize span {
+  color: #05bed6;
 }
-        .allGameItem{
-        
-         
-          border: 3px solid #05bed6 !important;
-          text-align: "center" !important;
-          line-height: 240px !important;
-          box-sizing: border-box !important;
-          margin: 10px !important
-        }
-        .sliderItem{
-        
-          width: 160px !important;
-          border: 3px solid #05bed6 !important;
-          /* text-align: "center" !important; */
-          /* line-height: 240px !important; */
-          box-sizing: border-box !important;
-          margin: 10px !important
-        }
-        div.sliderItem{
-          height: 160px;
-        }
-        .carouselContainer > div > div {
-          max-width: 550px  !important;
-        }
-        .carouselContainer > div  {
-          width: 64%;
-          justify-content: space-between;
-          user-select: text;
-          margin: auto;
-        }
-        .moreGames{
-          color: #05bed6 !important;
-          font-weight: bold;
-          /*text-align: start;*/
-          max-width: 50%;
-          margin: auto;
-        }
-        .text-theme{
-          color:#05bed6;
-        }
-        .fw-bold{
-          font-weight: bold;
-        }
-        .ms-auto{
-          margin-left: auto;
-        }
-        .d-flex{
-          display: flex;
-        }
-        
-        
-        @media only screen and     (max-width:992px) {
-          .carouselContainer > div  {
-            width: 100%;
-            justify-content: space-between;
-            user-select: text;
-            margin: auto;
-          }
 
-        }
+.allGameItem {
 
-        @media only screen and     (max-width:768px) {
-          .carouselContainer > div > div {
-            max-width: 365px  !important;
-          }
-          .carouselInner{
-            width: 100%;
-            justify-content: space-between;
-            user-select: text;
-            margin: auto;
-          }
-          .fwbold{
-            font-size: 1.125rem;
-              line-height: 1.75rem;
-              font-weight: normal;
-          }
-          .d-sm-none{
-            display: none;
-          }
-        }
+
+  border: 3px solid #05bed6 !important;
+  text-align: "center" !important;
+  line-height: 240px !important;
+  box-sizing: border-box !important;
+  margin: 10px !important
+}
+
+.sliderItem {
+
+  width: 160px !important;
+  border: 3px solid #05bed6 !important;
+  /* text-align: "center" !important; */
+  /* line-height: 240px !important; */
+  box-sizing: border-box !important;
+  margin: 10px !important
+}
+
+div.sliderItem {
+  height: 160px;
+}
+
+.carouselContainer>div>div {
+  max-width: 550px !important;
+}
+
+.carouselContainer>div {
+  width: 64%;
+  justify-content: space-between;
+  user-select: text;
+  margin: auto;
+}
+
+.moreGames {
+  color: #05bed6 !important;
+  font-weight: bold;
+  /*text-align: start;*/
+  max-width: 50%;
+  margin: auto;
+}
+
+.text-theme {
+  color: #05bed6;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
+.ms-auto {
+  margin-left: auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+
+@media only screen and (max-width:992px) {
+  .carouselContainer>div {
+    width: 100%;
+    justify-content: space-between;
+    user-select: text;
+    margin: auto;
+  }
+
+}
+
+@media only screen and (max-width:768px) {
+  .carouselContainer>div>div {
+    max-width: 365px !important;
+  }
+
+  .carouselInner {
+    width: 100%;
+    justify-content: space-between;
+    user-select: text;
+    margin: auto;
+  }
+
+  .fwbold {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: normal;
+  }
+
+  .d-sm-none {
+    display: none;
+  }
+}
 
 
 @media screen(sm) {
@@ -466,14 +542,16 @@ a {
   margin-left: auto !important;
 }
 
-.search{
+.search {
   color: black !important;
   padding: 5px;
   width: 250px;
 }
-.justify-content-between{
+
+.justify-content-between {
   justify-content: space-between;
 }
+
 .fs-1 {
   font-size: calc(1.375rem + 1.5vw) !important;
 }
@@ -497,6 +575,3 @@ a {
 .fs-6 {
   font-size: 1rem !important;
 }
-
-
-

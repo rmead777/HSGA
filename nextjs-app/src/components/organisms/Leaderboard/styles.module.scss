@@ -16,6 +16,21 @@ $name-col-max-width: 34rem;
   // the logo.
   margin-top: $logo-height / 2;
 }
+.select-score{
+  position: absolute;
+  top: -28px;
+  left: 0px;
+  // min-width: 120px;
+  background-color: transparent;
+  outline: 0px;
+  border: 0px;
+  cursor: pointer;
+}
+.select-score-option{
+  background-color: black;
+  border: 0px;
+  left: 0px;
+}
 
 .logo {
   position: absolute;
@@ -74,7 +89,7 @@ $name-col-max-width: 34rem;
   .table-wrapper {
     // Reset
     border-width: 0;
-    border-top-width: 2px;
+    border-width: 2px;
   }
 }
 
@@ -112,8 +127,10 @@ $name-col-max-width: 34rem;
   border-color: #05bed6;
     border-width: 1px;
     width: 75%;
-    margin-left: 10%;
+    // margin-left: 10%;
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     // margin-right: auto;
     // font-weight: bold;
 }

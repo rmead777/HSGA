@@ -32,6 +32,7 @@ function SettingsPageTemplate() {
         <RedomInput />
         <RedomInput />
         <RedomInput />
+        <RedomInput />
         <button type="submit" className='submit-btn'>Save</button>
       </div>
     </div>

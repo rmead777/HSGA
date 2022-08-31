@@ -8,6 +8,7 @@ import $ from 'jquery';
 import FormErrors from "../forms/FormErrors";
 import client from "src/clients/HSWM";
 import { useEffect, useState } from "react";
+import CustomReactSelectDropDown from "../../CustomSelectDropDown/index";
 
 function createTableRow(score: ScoreRecord, idx: number) {
   return (
@@ -78,14 +79,15 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
         "lg:max-w-3xl mx-auto pt-20"
       )}
     >
-      <select name="" id="" className={styles["select-score"]}>
+      {/* <select name="" id="" className={styles["select-score"]}>
         <option value="1" className={styles["select-score-option"]}>aaa</option>
         <option value="1" className={styles["select-score-option"]}>aaa</option>
         <option value="1" className={styles["select-score-option"]}>aaa</option>
         <option value="1" className={styles["select-score-option"]}>aaa</option>
         <option value="1" className={styles["select-score-option"]}>aaa</option>
         <option value="1" className={styles["select-score-option"]}>aaa</option>
-      </select>
+      </select> */}
+      <CustomReactSelectDropDown />
       <Image
         className={styles.logo}
         // src={RoutesService.getImagePath("HS_reverse_horiz.png")}

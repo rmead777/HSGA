@@ -64,12 +64,14 @@ main {
   text-transform: capitalize;
   margin: 25px auto;
 }
-.rendom-input-con{
+
+.rendom-input-con {
   max-width: 400px;
-  margin:25px auto;
+  margin: 25px auto;
   display: flex;
   align-items: baseline;
 }
+
 .rendom-input {
   background-color: rgb(100, 100, 100);
   border: 4px solid cyan;
@@ -78,12 +80,14 @@ main {
   outline: none !important;
   padding: 5px 10px;
 }
-.rendom-input + button{
+
+.rendom-input+button {
   color: cyan;
   margin-left: 15px;
   cursor: pointer;
 }
-.submit-btn{
+
+.submit-btn {
   background-color: cyan;
   font-size: 1.7rem;
   font-weight: bold;
@@ -91,6 +95,7 @@ main {
   padding: 8px 12px;
   cursor: pointer;
 }
+
 a {
   color: inherit;
   text-decoration: none;
@@ -574,4 +579,21 @@ div.sliderItem {
 
 .fs-6 {
   font-size: 1rem !important;
+}
+
+.tr-auto {
+  transition: all 1.5s !important;
+}
+
+.hide-select-list {
+  max-height: 0px;
+  visibility: hidden;
+  overflow: hidden;
+  transition: all 1.5s !important;
+}
+
+.show-select-list {
+  transition: all 1.5s !important;
+  max-height: 200px;
+  visibility: visible;
 }

@@ -21,6 +21,7 @@ const CustomReactSelectDropDown = () => {
   font-weight: 500;
   font-size: 1.3rem;
   color: cyan;
+  cursor:pointer;
 `;
 
   const DropDownListContainer = styled("div")`
@@ -39,6 +40,7 @@ const CustomReactSelectDropDown = () => {
   color: cyan;
   font-size: 1.3rem;
   font-weight: 500;
+  transition:all 1s;
   &:first-child {
     padding-top: 10px;
   }
@@ -59,7 +61,8 @@ const CustomReactSelectDropDown = () => {
   width:15px;
   height:15px;
   background-color:cyan;
-  clip-path:polygon(0 0 , 100% 0% , 50% 100%)
+  clip-path:polygon(0 0 , 100% 0% , 50% 100%);
+  transition:all 1s;
 `;
 
   const options = ["Mangoes", "Apples", "Oranges"];
@@ -79,19 +82,19 @@ const CustomReactSelectDropDown = () => {
     // <Main>
     <DropDownContainer>
       <DropDownHeader onClick={toggling}>
-        <ArrowDown />  {selectedOption || "Mangoes"}
+        <ArrowDown style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(180deg)' }} />  {selectedOption || "Select"}
       </DropDownHeader>
-      {isOpen && (
-        <DropDownListContainer>
-          <DropDownList>
-            {options.map(option => (
-              <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
-                {option}
-              </ListItem>
-            ))}
-          </DropDownList>
-        </DropDownListContainer>
-      )}
+      {/* {isOpen && ( */}
+      <DropDownListContainer className={isOpen ? 'show-select-list tr-auto' : 'hide-select-list tr-auto'} style={{ transition: 'all 1s' }} >
+        <DropDownList >
+          {options.map(option => (
+            <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
+              {option}
+            </ListItem>
+          ))}
+        </DropDownList>
+      </DropDownListContainer>
+      {/* )} */}
     </DropDownContainer>
     // </Main>
   );

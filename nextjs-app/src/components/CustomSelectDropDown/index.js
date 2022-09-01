@@ -82,7 +82,7 @@ const CustomReactSelectDropDown = () => {
     // <Main>
     <DropDownContainer>
       <DropDownHeader onClick={toggling}>
-        <ArrowDown style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(180deg)' }} />  {selectedOption || "Select"}
+        <ArrowDown style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(270deg)' }} />  {selectedOption || "Select"}
       </DropDownHeader>
       {/* {isOpen && ( */}
       <DropDownListContainer className={isOpen ? 'show-select-list tr-auto' : 'hide-select-list tr-auto'} style={{ transition: 'all 1s' }} >

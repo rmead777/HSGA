@@ -9,19 +9,19 @@ const POLL_FREQUENCY = 5 * 1000;
 
 const Home: NextPage = () => {
 	const [featuredGameInfo, setGameInfo] = useState<GameInfo>(
-        {
-            "id": "76d9bfe8-2576-11ed-8af0-0aad822255c7",
-            "title": "High Score Wins Money",
-            "description": "Loading Game...",
-            "author": "",
-            "image": "https://hswm.imgix.net/images/HS_reverse_icon.jpg?auto=format&auto=compress",
-            "uri": "/thegames/76d9bfe8-2576-11ed-8af0-0aad822255c7/index.html",
-            "aspect_ratio": "2",
-            "enabled": true,
-            "interval": "Every Day",
-            "prize": "$100"
-        }
-    );
+		{
+			"id": "76d9bfe8-2576-11ed-8af0-0aad822255c7",
+			"title": "High Score Wins Money",
+			"description": "Loading Game...",
+			"author": "",
+			"image": "https://hswm.imgix.net/images/HS_reverse_icon.jpg?auto=format&auto=compress",
+			"uri": "/thegames/76d9bfe8-2576-11ed-8af0-0aad822255c7/index.html",
+			"aspect_ratio": "2",
+			"enabled": true,
+			"interval": "Every Day",
+			"prize": "$100"
+		}
+	);
 	const [userInfo, setUserInfo] = useState<UserInfo>();
 	const [pollCount, setPollCount] = useState(0);
 
@@ -32,7 +32,8 @@ const Home: NextPage = () => {
 				if (result.data?.length) {
 					const { data } = result;
 					//console.log("Featured Game Data", data);
-					
+					// console.clear()
+					// console.log('my testing data--->>>>', data)
 					setGameInfo(data[0]);
 				}
 			})

@@ -40,13 +40,13 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
   const { data, isLoading, errors } = useHighScores({ gameInfo });
   const [allStars, setAllStars] = useState<ScoreRecord[]>([])
   useEffect(() => {
-    setAllStars([
-      { username: 'Arslan', score: 1234 },
-      { username: 'Arslan', score: 1234 },
-      { username: 'Arslan', score: 1234 },
-      { username: 'Arslan', score: 1234 },
-      { username: 'Arslan', score: 1234 },
-    ])
+    // setAllStars([
+    //   { username: 'Arslan', score: 1234 },
+    //   { username: 'Arslan', score: 1234 },
+    //   { username: 'Arslan', score: 1234 },
+    //   { username: 'Arslan', score: 1234 },
+    //   { username: 'Arslan', score: 1234 },
+    // ])
     setInterval(function () {
       // toggle the class every five second
       $('.neonText').toggleClass('textwhite');
@@ -118,7 +118,9 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
           <div className={styles.highScoreTitle} >Daily High Scores</div>
           <table className={cx(styles.table, "container mb-5")}>
 
-            <tbody>{[{ username: 'Arslan', score: 1234 }, { username: 'Arslan', score: 1234 }].map(createTableRow)}</tbody>
+            <tbody>
+              {/* {[{ username: 'Arslan', score: 1234 }, { username: 'Arslan', score: 1234 }].map(createTableRow)} */}
+            </tbody>
             {/* <tbody>{data.map(createTableRow)}</tbody> */}
           </table>
         </>

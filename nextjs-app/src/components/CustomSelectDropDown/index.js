@@ -85,7 +85,7 @@ const CustomReactSelectDropDown = () => {
         <ArrowDown style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(270deg)' }} />  {selectedOption || "Select"}
       </DropDownHeader>
       {/* {isOpen && ( */}
-      <DropDownListContainer className={isOpen ? 'show-select-list tr-auto' : 'hide-select-list tr-auto'} style={{ transition: 'all 1s' }} >
+      <DropDownListContainer className={isOpen ? 'show-select-list tr-auto' : 'hide-select-list tr-auto'} >
         <DropDownList >
           {options.map(option => (
             <ListItem onClick={onOptionClicked(option)} key={Math.random()}>

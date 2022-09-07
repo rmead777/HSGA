@@ -15,6 +15,10 @@ body {
   font-weight: 300;
 }
 
+.show-on-hover:hover > ul.dropdown-menu {
+  display: block;
+}
+
 html {
   height: 100vh;
 
@@ -61,18 +65,18 @@ main {
   max-width: 330px;
   font-size: 1.2rem;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: uppercase;
   margin: 25px auto;
 }
 
-.rendom-input-con {
-  max-width: 400px;
+.groupcode-input-con {
+  max-width: 425px;
   margin: 25px auto;
   display: flex;
   align-items: baseline;
 }
 
-.rendom-input {
+.groupcode-input {
   background-color: rgb(100, 100, 100);
   border: 4px solid #09BFD5;
   font-size: 2rem;

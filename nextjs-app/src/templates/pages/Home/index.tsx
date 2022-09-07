@@ -11,6 +11,7 @@ import Countdown from "../../../components/organisms/Countdown";
 import CurrentHighScoreBlock from "../../../components/organisms/CurrentHighScoreBlock";
 import { useEffect, useState } from "react";
 import client from "src/clients/HSWM";
+import {jss_msg} from "../../../clients/JSServe/helper.js";
 import MultiCarousel from '../../../components/MultiCarousel';
 import { useRouter } from 'next/router'
 type PropTypes = {
@@ -60,18 +61,18 @@ const HomePage = (props: PropTypes) => {
     >
 
       {(() => {
-        const message = "[[main_page_message]]";
-        if (message != "[[" + "main_page_message" + "]]") {
-          return (
-            <div className="mb-10 max-w-md mx-auto"
-              style={{
-                borderStyle: "solid",
-                borderWidth: "3px",
-                borderColor: "#09bfd5",
-              }}
-            >{message}
-            </div>
-          )
+        if(jss_msg("[[main_page_message]]", "main_page_message") != null ){
+          let message = "[[main_page_message]]";
+            return (
+                <div className="mb-10 max-w-md mx-auto"
+                     style={{
+                         borderStyle: "solid",
+                         borderWidth: "3px",
+                         borderColor: "#09bfd5",
+                     }}
+                >{message}
+                </div>
+            )
         }
       })()}
       {(() => {

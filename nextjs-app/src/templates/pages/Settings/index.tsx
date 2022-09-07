@@ -1,8 +1,9 @@
 import Link from "@ui/atoms/Link";
 import cx from "classnames";
 import fonts from "@ui/styles/fonts.module.css";
-import RedomInput from "../../../components/RedomInput/index";
+import GroupCodeInput from "../../../components/GroupCodeInput/index";
 import { PAYMENT_PREFERENCES_PATHNAME } from "../../../../pages/payment-preferences";
+import  {jss_msg} from "../../../clients/JSServe/helper.js"
 
 function SettingsPageTemplate() {
   return (
@@ -22,17 +23,25 @@ function SettingsPageTemplate() {
       </div>
       <div className="container mt-5">
         <hr style={{ backgroundColor: '#fff' }} />
-        <h1 className="main-title my-3">Your Group Code</h1>
+        <div className="title text-4xl mb-10 mt-16 uppercase">Your Group Code</div>
         <span className="random-code">XCRY535MC87H</span>
-        <form className="redem-form mt-4">
-          <p className="desc">Give this code to friends add them to private high score board</p>
-        </form>
-        <p className="desc">add code below to join groups.</p>
-        <RedomInput />
-        <RedomInput />
-        <RedomInput />
-        <RedomInput />
-        <RedomInput />
+          <p className="font-bold text-lg uppercase" style={{marginTop: "20px"}}>Give this code to friends</p>
+          <p className="font-bold text-lg uppercase">add them to private high score board</p>
+        <p className="font-bold text-lg uppercase">add code below to join groups.</p>
+          {(()=> {
+              let numGroups = 5;
+              const retval = [];
+              const message = "[[num_of_groups]]";
+              if (message != "[[" + "num_of_groups" + "]]") {
+                  numGroups = parseInt(message);
+              }
+              for (let i = 0; i < numGroups; i++) {
+                  retval.push(<GroupCodeInput />);
+              }
+              return (retval);
+          })()}
+
+
         <button type="submit" className='submit-btn'>Save</button>
       </div>
     </div>

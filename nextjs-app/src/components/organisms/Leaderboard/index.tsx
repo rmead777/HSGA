@@ -9,6 +9,7 @@ import FormErrors from "../forms/FormErrors";
 import client from "src/clients/HSWM";
 import { useEffect, useState } from "react";
 import CustomReactSelectDropDown from "../../CustomSelectDropDown/index";
+import  {jss_msg} from "../../../clients/JSServe/helper.js"
 
 function createTableRow(score: ScoreRecord, idx: number) {
   return (
@@ -40,13 +41,6 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
   const { data, isLoading, errors } = useHighScores({ gameInfo });
   const [allStars, setAllStars] = useState<ScoreRecord[]>([])
   useEffect(() => {
-    // setAllStars([
-    //   { username: 'Arslan', score: 1234 },
-    //   { username: 'Arslan', score: 1234 },
-    //   { username: 'Arslan', score: 1234 },
-    //   { username: 'Arslan', score: 1234 },
-    //   { username: 'Arslan', score: 1234 },
-    // ])
     setInterval(function () {
       // toggle the class every five second
       $('.neonText').toggleClass('textwhite');
@@ -79,15 +73,9 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
         "lg:max-w-3xl mx-auto pt-20"
       )}
     >
-      {/* <select name="" id="" className={styles["select-score"]}>
-        <option value="1" className={styles["select-score-option"]}>aaa</option>
-        <option value="1" className={styles["select-score-option"]}>aaa</option>
-        <option value="1" className={styles["select-score-option"]}>aaa</option>
-        <option value="1" className={styles["select-score-option"]}>aaa</option>
-        <option value="1" className={styles["select-score-option"]}>aaa</option>
-        <option value="1" className={styles["select-score-option"]}>aaa</option>
-      </select> */}
+
       <CustomReactSelectDropDown />
+
       <Image
         className={styles.logo}
         // src={RoutesService.getImagePath("HS_reverse_horiz.png")}
@@ -100,13 +88,6 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
         <>
           <div className={styles.allStars} >ALL STARS</div>
           <table className={cx(styles.table, "container mb-5")}>
-            <thead>
-              <tr>
-                <th>Rank</th>
-                <th className={styles["col-name"]}>Name</th>
-                <th style={{ textAlign: 'right' }}>Score</th>
-              </tr>
-            </thead>
             <tbody>
               {allStars.map(createTableRow1)}
             </tbody>
@@ -118,10 +99,7 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
           <div className={styles.highScoreTitle} >Daily High Scores</div>
           <table className={cx(styles.table, "container mb-5")}>
 
-            <tbody>
-              {/* {[{ username: 'Arslan', score: 1234 }, { username: 'Arslan', score: 1234 }].map(createTableRow)} */}
-            </tbody>
-            {/* <tbody>{data.map(createTableRow)}</tbody> */}
+              <tbody>{data.map(createTableRow)}</tbody>
           </table>
         </>
       )

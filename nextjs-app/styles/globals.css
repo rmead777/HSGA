@@ -15,6 +15,10 @@ body {
   font-weight: 300;
 }
 
+.show-on-hover:hover > ul.dropdown-menu {
+  display: block;
+}
+
 html {
   height: 100vh;
 
@@ -53,7 +57,7 @@ main {
 .random-code {
   font-size: 2rem;
   padding: 10px 20px;
-  border: 4px solid cyan;
+  border: 4px solid #09bfd5;
   font-weight: 500;
 }
 
@@ -61,34 +65,34 @@ main {
   max-width: 330px;
   font-size: 1.2rem;
   font-weight: 400;
-  text-transform: capitalize;
+  text-transform: uppercase;
   margin: 25px auto;
 }
 
-.rendom-input-con {
-  max-width: 400px;
+.groupcode-input-con {
+  max-width: 425px;
   margin: 25px auto;
   display: flex;
   align-items: baseline;
 }
 
-.rendom-input {
+.groupcode-input {
   background-color: rgb(100, 100, 100);
-  border: 4px solid cyan;
+  border: 4px solid #09bfd5;
   font-size: 2rem;
   box-shadow: none !important;
   outline: none !important;
   padding: 5px 10px;
 }
 
-.rendom-input+button {
-  color: cyan;
+.groupcode-input+button {
+  color: #09bfd5;
   margin-left: 15px;
   cursor: pointer;
 }
 
 .submit-btn {
-  background-color: cyan;
+  background-color: #09bfd5;
   font-size: 1.7rem;
   font-weight: bold;
   color: #000;

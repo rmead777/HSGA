@@ -1,4 +1,4 @@
-
+/*
 export enum Paths {
 	// This endpoint takes a slug
 	CONTACT_FORM = "/users/jsoncontactform",
@@ -40,7 +40,8 @@ export enum Paths {
 	// Featured game info
 	GET_FEATURED_GAME_INFO = "/games/jsonfeature",
 }
-/*
+*/
+
 
 //  For local environment, uncomment this block, and comment everything before it
 
@@ -86,7 +87,7 @@ export enum Paths {
     // Featured game info
     GET_FEATURED_GAME_INFO = "https://test.ttechr.com/games/jsonfeature",
 }
-*/
+
 
 
 /*

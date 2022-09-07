@@ -57,7 +57,7 @@ main {
 .random-code {
   font-size: 2rem;
   padding: 10px 20px;
-  border: 4px solid #09bfd5;
+  border: 4px solid #09BFD5;
   font-weight: 500;
 }
 
@@ -78,21 +78,21 @@ main {
 
 .groupcode-input {
   background-color: rgb(100, 100, 100);
-  border: 4px solid #09bfd5;
+  border: 4px solid #09BFD5;
   font-size: 2rem;
   box-shadow: none !important;
   outline: none !important;
   padding: 5px 10px;
 }
 
-.groupcode-input+button {
-  color: #09bfd5;
+.rendom-input+button {
+  color: #09BFD5;
   margin-left: 15px;
   cursor: pointer;
 }
 
 .submit-btn {
-  background-color: #09bfd5;
+  background-color: #09BFD5;
   font-size: 1.7rem;
   font-weight: bold;
   color: #000;
@@ -600,4 +600,20 @@ div.sliderItem {
   transition: all 1.5s !important;
   max-height: 200px;
   visibility: visible;
+}
+
+.show-select-list {
+  animation: max-height-anim 2.5s forwards;
+  max-height: 0px;
+  overflow: hidden;
+}
+
+@keyframes max-height-anim {
+  from {
+    max-height: 0px;
+  }
+
+  to {
+    max-height: 1000px;
+  }
 }

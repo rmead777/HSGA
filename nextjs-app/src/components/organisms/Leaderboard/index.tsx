@@ -100,13 +100,13 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
         <>
           <div className={styles.allStars} >ALL STARS</div>
           <table className={cx(styles.table, "container mb-5")}>
-            <thead>
+            {/* <thead>
               <tr>
                 <th>Rank</th>
                 <th className={styles["col-name"]}>Name</th>
                 <th style={{ textAlign: 'right' }}>Score</th>
               </tr>
-            </thead>
+            </thead> */}
             <tbody>
               {allStars.map(createTableRow1)}
             </tbody>

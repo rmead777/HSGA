@@ -89,7 +89,7 @@ $name-col-max-width: 34rem;
   .table-wrapper {
     // Reset
     border-width: 0;
-    border-width: 2px;
+    border-top-width: 2px;
   }
 }
 
@@ -127,10 +127,10 @@ $name-col-max-width: 34rem;
   border-color: #05bed6;
     border-width: 1px;
     width: 75%;
-    // margin-left: 10%;
+  margin-left: 10%;                      //   THIS LINE WAS COMMENTED BY IDIOT ARSL, FOR NO REASON
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    //left: 50%;                         //   I DON'T KNOW WTF THESE
+    //transform: translateX(-50%);       //   TWO LINES ARE. ADDED BY IDIOT DEVELOPER ARS. IF MISTAKE WILL UNCOMMENT
     // margin-right: auto;
     // font-weight: bold;
 }

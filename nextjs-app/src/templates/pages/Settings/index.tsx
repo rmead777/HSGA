@@ -4,8 +4,63 @@ import fonts from "@ui/styles/fonts.module.css";
 import GroupCodeInput from "../../../components/GroupCodeInput/index";
 import { PAYMENT_PREFERENCES_PATHNAME } from "../../../../pages/payment-preferences";
 import  {jss_msg} from "../../../clients/JSServe/helper.js"
+import {useEffect, useState} from "react";
+import client, {ContactUsParams, SyncUserSquadsParams} from "../../../clients/HSWM";
+import { SquadInfo } from "../../../clients/HSWM/types";
+import FormErrors from "@ui/organisms/forms/FormErrors";
+import FormSuccess from "@ui/organisms/forms/FormSuccess";
+import Button from "@ui/atoms/Button/index";
+import useForm from "../../../hooks/useForm";
+import Form from "@ui/organisms/forms/Form";
+import styles from "./styles.module.css";
 
-function SettingsPageTemplate() {
+interface PropTypes {
+    errors: string[];
+    success: string[];
+    onSubmit(values: SyncUserSquadsParams): void;
+}
+
+function SettingsPageTemplate({ errors, onSubmit, success }: PropTypes) {
+
+
+    const { isValid, isDirty, validateForm, handleSubmit, handleFormChange } =
+        useForm({
+            onSubmit: (values) =>
+                onSubmit(values as unknown as SyncUserSquadsParams),
+        });
+
+    const [options, setOptions] = useState([]);
+    const [ownHash, setOwnHash] = useState([]);
+
+    useEffect(() => {
+        client
+            .getSquads('yes')
+            .then((result) => {
+                if (result.data?.length) {
+                    const { data } = result;
+                    setOptions(data);
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }, []);
+
+    useEffect(() => {
+        client
+            .getOwnHash()
+            .then((result) => {
+                if (result.data?.length) {
+                    const { data } = result;
+                    setOwnHash(data);
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }, []);
+
+
   return (
     <div className="flex-1 text-center">
       <div className="title text-4xl mb-10 mt-16">SETTINGS</div>
@@ -23,26 +78,65 @@ function SettingsPageTemplate() {
       </div>
       <div className="container mt-5">
         <hr style={{ backgroundColor: '#fff' }} />
-        <div className="title text-4xl mb-10 mt-16 uppercase">Your Group Code</div>
-        <span className="random-code">XCRY535MC87H</span>
+        <div className="title text-4xl mb-10 mt-16 uppercase">Your Squad Code</div>
+        <span className="random-code">{ownHash}</span>
           <p className="font-bold text-lg uppercase" style={{marginTop: "20px"}}>Give this code to friends</p>
-          <p className="font-bold text-lg uppercase">add them to private high score board</p>
-        <p className="font-bold text-lg uppercase">add code below to join groups.</p>
+          <p className="font-bold text-lg uppercase">to add them to your private high score board</p>
+          <br />
+        <p className="font-bold text-lg uppercase">add code below to join squad</p>
+          <Form
+              onSubmit={handleSubmit}
+              acceptCharset="utf-8"
+              onChange={handleFormChange}
+              showInvalidFields={isDirty}
+          >
+          {options.map((option: SquadInfo, idx: number) =>
+          {
+              const squadName = option.name.replace("'s Squad", "");
+              return (
+                  <GroupCodeInput inpid={"group_code"+option.hash} placeholdr={option.name+"("+option.hash+")"} value={option.hash} name={idx} />
+              );
+          })}
           {(()=> {
+
               let numGroups = 5;
               const retval = [];
               const message = "[[num_of_groups]]";
               if (message != "[[" + "num_of_groups" + "]]") {
                   numGroups = parseInt(message);
               }
+
+              numGroups = numGroups - options.length;
+              if(numGroups < 0)
+                  numGroups = 0;
+
+
               for (let i = 0; i < numGroups; i++) {
-                  retval.push(<GroupCodeInput />);
+                  retval.push(<GroupCodeInput inpid={"group_code"+i} name={i+options.length} />);
               }
               return (retval);
           })()}
 
 
-        <button type="submit" className='submit-btn'>Save</button>
+          <FormErrors errors={errors} />
+          <FormSuccess success={success} />
+        <button
+            type="submit"
+            className={cx(styles.button, "submit-btn mb-3 save-btn")}
+            style={{
+                marginLeft: '0 !important',
+                marginRight: '0 !important'
+            }}
+        >Save</button>
+              <div
+                  style={{fontSize: '2em', color: 'var(--primary-2)'}}
+                  className={cx(
+                      fonts.button,
+                      "text-primary-1 mb-5 text-lg font-size-3 cancel-button"
+                  )}
+              ><a href={'/'}>Cancel</a></div>
+
+          </Form>
       </div>
     </div>
   );

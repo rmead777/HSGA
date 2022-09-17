@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, {useEffect, useState } from "react";
 import styled from "styled-components";
+import client from "../../clients/HSWM";
 
-const CustomReactSelectDropDown = () => {
+const CustomReactSelectDropDown = (props) => {
   //     const Main = styled("div")`
   //   font-family: sans-serif;
   //   background: #f0f0f0;
@@ -40,7 +41,7 @@ const CustomReactSelectDropDown = () => {
   color: cyan;
   font-size: 1.3rem;
   font-weight: 500;
-  transition:all 1s;
+  transition:all .1s;
   &:first-child {
     padding-top: 10px;
   }
@@ -62,21 +63,24 @@ const CustomReactSelectDropDown = () => {
   height:15px;
   background-color:cyan;
   clip-path:polygon(0 0 , 100% 0% , 50% 100%);
-  transition:all 1s;
+  transition:all .1s;
 `;
 
-  const options = ["Mangoes", "Apples", "Oranges"];
+
 
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
   const toggling = () => setIsOpen(!isOpen);
 
-  const onOptionClicked = value => () => {
-    setSelectedOption(value);
+  const onOptionClicked = option => () => {
+    setSelectedOption(option.name);
     setIsOpen(false);
-    console.log(selectedOption);
+    // props.parentCallback('4814dea');
+    props.parentCallback(option.hash);
   };
+
+    const options = props.options;
 
   return (
     // <Main>
@@ -87,11 +91,18 @@ const CustomReactSelectDropDown = () => {
       {/* {isOpen && ( */}
       <DropDownListContainer className={isOpen ? 'show-select-list tr-auto' : 'hide-select-list tr-auto'} >
         <DropDownList >
-          {options.map(option => (
-            <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
-              {option}
+            <ListItem onClick={onOptionClicked('Main')} key={Math.random()} value={'main'}>
+                Main
             </ListItem>
-          ))}
+          {options.map(option =>
+          {
+              const squadName = option.name.replace("'s Squad", "");
+              return (
+            <ListItem onClick={onOptionClicked(option)} key={Math.random()} value={option.hash}>
+              {squadName}
+            </ListItem>
+          )
+          })}
         </DropDownList>
       </DropDownListContainer>
       {/* )} */}

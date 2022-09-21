@@ -2,6 +2,7 @@ import Link from "@ui/atoms/Link";
 import cx from "classnames";
 import fonts from "@ui/styles/fonts.module.css";
 import GroupCodeInput from "../../../components/GroupCodeInput/index";
+import Leaderstyles from "../../../components/organisms/Leaderboard/styles.module.scss";
 import { PAYMENT_PREFERENCES_PATHNAME } from "../../../../pages/payment-preferences";
 import  {jss_msg} from "../../../clients/JSServe/helper.js"
 import {useEffect, useState} from "react";
@@ -76,8 +77,21 @@ function SettingsPageTemplate({ errors, onSubmit, success }: PropTypes) {
           href="/change-password"
         >{`> Change password ?`}</Link>
       </div>
-      <div className="container mt-5">
-        <hr style={{ backgroundColor: '#fff' }} />
+      <div className="mt-5">
+          <div className={cx(
+              "container",
+              Leaderstyles["table-wrapper"],
+              "lg:max-w-3xl mx-auto pt-20"
+          )}
+               style={{
+                   margin: '0',
+                   padding: '0',
+                   marginBottom: '4rem',
+                   borderLeft: '0 !important',
+                   borderRight: '0 !important',
+                   borderBottom: '0 !important'
+               }}
+          ></div>
         <div className="title text-4xl mb-10 mt-16 uppercase">Your Squad Code</div>
         <span className="random-code">{ownHash}</span>
           <p className="font-bold text-lg uppercase" style={{marginTop: "20px"}}>Give this code to friends</p>

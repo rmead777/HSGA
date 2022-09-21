@@ -128,17 +128,17 @@ const HomePage = (props: PropTypes) => {
       <div className="mb-7" style={{ marginTop: '3.5em', marginBottom: '4em' }}>
         <Countdown />
       </div>
-      <div className={cx(
-        "container",
-        Leaderstyles["table-wrapper"],
-        "lg:max-w-3xl mx-auto pt-20"
-      )}
-        style={{
-          margin: '0',
-          padding: '0',
-          marginBottom: '4rem',
-        }}
-      ></div>
+        <div className={cx(
+            "container",
+            Leaderstyles["table-wrapper"],
+            "lg:max-w-3xl mx-auto pt-20"
+        )}
+             style={{
+                 margin: '0',
+                 padding: '0',
+                 marginBottom: '4rem',
+             }}
+        ></div>
       {/* HERE will be Carousel */}
       <div className="carouselContainer">
         <p className="moreGames" >

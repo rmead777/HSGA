@@ -71,13 +71,17 @@ const CustomReactSelectDropDown = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
-  const toggling = () => setIsOpen(!isOpen);
+  const toggling = () => {
+      setIsOpen(!isOpen);
+      props.menuIsOpenCallback(!isOpen);
+  }
 
   const onOptionClicked = option => () => {
     setSelectedOption(option.name);
     setIsOpen(false);
     // props.parentCallback('4814dea');
     props.parentCallback(option.hash);
+      props.menuIsOpenCallback(!isOpen);
   };
 
     const options = props.options;
@@ -86,7 +90,7 @@ const CustomReactSelectDropDown = (props) => {
     // <Main>
     <DropDownContainer>
       <DropDownHeader onClick={toggling}>
-        <ArrowDown style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(270deg)' }} />  {selectedOption || "Select"}
+        <ArrowDown style={{ transform: isOpen ? 'rotate(0deg)' : 'rotate(270deg)' }} />  {selectedOption || "Select Squad"}
       </DropDownHeader>
       {/* {isOpen && ( */}
       <DropDownListContainer className={isOpen ? 'show-select-list tr-auto' : 'hide-select-list tr-auto'} >

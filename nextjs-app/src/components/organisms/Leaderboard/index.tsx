@@ -39,6 +39,7 @@ interface PropTypes {
 export default function Leaderboard({ className, gameInfo }: PropTypes) {
   // const {id} = gameInfo || ""
     const [group, setGroup] = useState('main');
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const { data, isLoading, errors } = useHighScores({ gameInfo }, group);
   const [allStars, setAllStars] = useState<ScoreRecord[]>([]);
   const [options, setOptions] = useState([]);
@@ -57,6 +58,10 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
               //
           });
   }
+
+    const menuIsOpenCallback = (menuVal: boolean) => {
+      setMenuOpen(menuVal);
+    }
 
   useEffect(() => {
     setInterval(function () {
@@ -108,7 +113,7 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
         {(() => {
             if(Array.isArray(options) && options.length != 0 ){
                 return (
-                    <CustomReactSelectDropDown parentCallback={changeGroupCallback} options={options}/>
+                    <CustomReactSelectDropDown parentCallback={changeGroupCallback} menuIsOpenCallback={menuIsOpenCallback} options={options}/>
                 )
             }
         })()}

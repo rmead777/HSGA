@@ -61,6 +61,20 @@ main {
   font-weight: 500;
 }
 
+.squad-link{
+  margin-top: 20px;
+}
+
+span.squad-link{
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+div.squad-link{
+  font-size: 1.5rem;
+  margin-bottom: 15px
+}
+
 .desc {
   max-width: 330px;
   font-size: 1.2rem;

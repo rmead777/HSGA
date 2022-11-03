@@ -72,7 +72,7 @@ function PaymentPreferenceTemplate({ onSubmit, errors }: PropTypes) {
                 "text-primary-1 mb-2 text-lg font-size-3"
               )}
             >
-              <Link href="/">SKIP</Link>
+              <Link href="/invite/main">COMPLETE LATER</Link>
             </div>
           </div>
         </Form>

@@ -5,6 +5,7 @@ import fonts from "../../../../styles/fonts.module.css";
 import Leaderboard from "../../../components/organisms/Leaderboard";
 import Link from "../../../components/atoms/Link";
 import Button from "../../../components/atoms/Button";
+import { IMGIX_HOST } from "../../../constants";
 import FeaturedImage from "../../../components/organisms/FeaturedImage";
 import { GameInfo, ScoreRecord, UserInfo } from "../../../clients/HSWM/types";
 import Countdown from "../../../components/organisms/Countdown";
@@ -91,10 +92,8 @@ const HomePage = (props: PropTypes) => {
         }
       })()}
 
+      <div style={{height: "95px", marginBottom: "18px"}}><a href="https://wikilisten.com/"><img src={IMGIX_HOST+"images/WIki-Banner.png?auto=format&auto=compress?auto=format&auto=compress"} style={{marginLeft: 'auto', marginRight: 'auto'}} width="550px" /></a></div>
 
-      {
-        /* <div style={{height: "95px", marginBottom: "18px"}}><a href="https://itch.io/jam/high-score-wins-money-jam"><img src="https://hswm.imgix.net/images/gamejam.png?auto=format&auto=compress?auto=format&auto=compress" style={{marginLeft: 'auto', marginRight: 'auto'}} width="550px" /></a></div> */
-      }
       <div className={styles.upperGame}>
         <a href={`${router.basePath + featuredGameInfo?.uri}`} className={styles.playersCount} >FULL SCREEN</a>
         <div className={styles.playersCount} >{`${count} Players`}</div>

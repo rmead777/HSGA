@@ -10,9 +10,9 @@ export const PAYMENT_PREFERENCES_PATHNAME = "/payment-preferences";
 
 function goNext() {
   if (document.referrer.includes(SIGNUP_PATH)) {
-    window.location.href = "/";
+    window.location.href = "/invite/main";
   } else {
-    window.location.href = "/settings";
+    window.location.href = "/invite/main";
   }
 }
 

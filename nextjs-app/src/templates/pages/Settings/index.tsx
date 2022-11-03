@@ -92,9 +92,27 @@ function SettingsPageTemplate({ errors, onSubmit, success }: PropTypes) {
                    borderBottom: '0 !important'
                }}
           ></div>
+          {(() => {
+              if(jss_msg("[[squad_message]]", "squad_message") != null ){
+                  let message = "[[squad_message]]";
+                  return (
+                      <div className="mb-10 max-w-md mx-auto"
+                           style={{
+                               borderStyle: "solid",
+                               borderWidth: "3px",
+                               borderColor: "#09bfd5",
+                           }}
+                      >{message}
+                      </div>
+                  )
+              }
+          })()}
         <div className="title text-4xl mb-10 mt-16 uppercase">Your Squad Code</div>
         <span className="random-code">{ownHash}</span>
-          <p className="font-bold text-lg uppercase" style={{marginTop: "20px"}}>Give this code to friends</p>
+        <div className="title text-4xl mb-10 mt-16 uppercase squad-link">Your Invite Link</div>
+        <span className="random-code squad-link">https://highscorewinsmoney.com/invite/{ownHash}</span>
+          <p className="font-bold text-lg uppercase" style={{marginTop: "45px"}}>Give this code to friends</p>
+          <p className="font-bold text-lg uppercase">Or send them the invite link</p>
           <p className="font-bold text-lg uppercase">to add them to your private high score board</p>
           <br />
         <p className="font-bold text-lg uppercase">add code below to join squad</p>

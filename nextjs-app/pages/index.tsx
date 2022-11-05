@@ -10,12 +10,12 @@ const POLL_FREQUENCY = 5 * 1000;
 const Home: NextPage = () => {
 	const [featuredGameInfo, setGameInfo] = useState<GameInfo>(
 		{
-			"id": "76d9bfe8-2576-11ed-8af0-0aad822255c7",
+			"id": "[[game-id]]",
 			"title": "High Score Wins Money",
 			"description": "Loading Game...",
 			"author": "",
 			"image": "https://hswm.imgix.net/images/HS_reverse_icon.jpg?auto=format&auto=compress",
-			"uri": "/thegames/76d9bfe8-2576-11ed-8af0-0aad822255c7/index.html",
+			"uri": "/thegames/[[game-id]]/index.html",
 			"aspect_ratio": "2",
 			"enabled": true,
 			"interval": "Every Day",

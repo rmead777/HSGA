@@ -41,7 +41,7 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
     const [group, setGroup] = useState('main');
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const { data, isLoading, errors } = useHighScores({ gameInfo }, group);
-  const [allStars, setAllStars] = useState<ScoreRecord[]>([]);
+  const [allStars, setAllStars] = useState<ScoreRecord[]>([{"username":"[[champion-high-scores]]","score":0}]);
   const [options, setOptions] = useState([]);
 
   const changeGroupCallback = (groupVal: string) => {

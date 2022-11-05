@@ -9,7 +9,7 @@ interface PropTypes {
  
 }
 export default function useHighScores({gameInfo}:PropTypes, group: string) {
-  const [data, setData] = useState<ScoreRecord[]>([]);
+  const [data, setData] = useState<ScoreRecord[]>([{"username":"[[high-scores]]","score":0}]);
   const [errors, setErrors] = useState<string[]>([]);
   const [isLoading, setLoading] = useState(true);
   const [pollCount, setPollCount] = useState(0);

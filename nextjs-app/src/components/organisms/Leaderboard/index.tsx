@@ -38,8 +38,31 @@ interface PropTypes {
 
 export default function Leaderboard({ className, gameInfo }: PropTypes) {
   // const {id} = gameInfo || ""
-  const { data, isLoading, errors } = useHighScores({ gameInfo });
-  const [allStars, setAllStars] = useState<ScoreRecord[]>([])
+    const [group, setGroup] = useState('main');
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const { data, isLoading, errors } = useHighScores({ gameInfo }, group);
+  const [allStars, setAllStars] = useState<ScoreRecord[]>([{"username":"[[champion-high-scores]]","score":0}]);
+  const [options, setOptions] = useState([]);
+
+  const changeGroupCallback = (groupVal: string) => {
+      setGroup(groupVal);
+
+      gameInfo?.id && client
+          .fetchFirstHighScore(gameInfo?.id || "", groupVal).then(res => {
+              const { data } = res
+              if (res.data) {
+
+                  setAllStars(res.data);
+              }
+              // console.log(res , 'my api data <-------');
+              //
+          });
+  }
+
+    const menuIsOpenCallback = (menuVal: boolean) => {
+      setMenuOpen(menuVal);
+    }
+
   useEffect(() => {
     setInterval(function () {
       // toggle the class every five second
@@ -52,7 +75,7 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
 
   useEffect(() => {
     gameInfo?.id && client
-      .fetchFirstHighScore(gameInfo?.id || "").then(res => {
+      .fetchFirstHighScore(gameInfo?.id || "", group).then(res => {
         const { data } = res
         if (res.data) {
 
@@ -63,7 +86,21 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
       })
 
 
-  }, [gameInfo])
+  }, [gameInfo]);
+
+    useEffect(() => {
+        client
+            .getSquads()
+            .then((result) => {
+                if (result.data?.length) {
+                    const { data } = result;
+                    setOptions(data);
+                }
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }, []);
 
   return (
     <div
@@ -73,8 +110,14 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
         "lg:max-w-3xl mx-auto pt-20"
       )}
     >
+        {(() => {
+            if(Array.isArray(options) && options.length != 0 ){
+                return (
+                    <CustomReactSelectDropDown parentCallback={changeGroupCallback} menuIsOpenCallback={menuIsOpenCallback} options={options}/>
+                )
+            }
+        })()}
 
-      <CustomReactSelectDropDown />
 
       <Image
         className={styles.logo}

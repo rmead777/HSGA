@@ -5,6 +5,7 @@ import fonts from "../../../../styles/fonts.module.css";
 import Leaderboard from "../../../components/organisms/Leaderboard";
 import Link from "../../../components/atoms/Link";
 import Button from "../../../components/atoms/Button";
+import { IMGIX_HOST } from "../../../constants";
 import FeaturedImage from "../../../components/organisms/FeaturedImage";
 import { GameInfo, ScoreRecord, UserInfo } from "../../../clients/HSWM/types";
 import Countdown from "../../../components/organisms/Countdown";
@@ -91,10 +92,8 @@ const HomePage = (props: PropTypes) => {
         }
       })()}
 
+      <div style={{height: "95px", marginBottom: "18px"}}><a href="https://wikilisten.com/"><img src={IMGIX_HOST+"images/WIki-Banner.png?auto=format&auto=compress?auto=format&auto=compress"} style={{marginLeft: 'auto', marginRight: 'auto'}} width="550px" /></a></div>
 
-      {
-        /* <div style={{height: "95px", marginBottom: "18px"}}><a href="https://itch.io/jam/high-score-wins-money-jam"><img src="https://hswm.imgix.net/images/gamejam.png?auto=format&auto=compress?auto=format&auto=compress" style={{marginLeft: 'auto', marginRight: 'auto'}} width="550px" /></a></div> */
-      }
       <div className={styles.upperGame}>
         <a href={`${router.basePath + featuredGameInfo?.uri}`} className={styles.playersCount} >FULL SCREEN</a>
         <div className={styles.playersCount} >{`${count} Players`}</div>
@@ -128,17 +127,17 @@ const HomePage = (props: PropTypes) => {
       <div className="mb-7" style={{ marginTop: '3.5em', marginBottom: '4em' }}>
         <Countdown />
       </div>
-      <div className={cx(
-        "container",
-        Leaderstyles["table-wrapper"],
-        "lg:max-w-3xl mx-auto pt-20"
-      )}
-        style={{
-          margin: '0',
-          padding: '0',
-          marginBottom: '4rem',
-        }}
-      ></div>
+        <div className={cx(
+            "container",
+            Leaderstyles["table-wrapper"],
+            "lg:max-w-3xl mx-auto pt-20"
+        )}
+             style={{
+                 margin: '0',
+                 padding: '0',
+                 marginBottom: '4rem',
+             }}
+        ></div>
       {/* HERE will be Carousel */}
       <div className="carouselContainer">
         <p className="moreGames" >

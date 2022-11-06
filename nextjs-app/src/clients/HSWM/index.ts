@@ -9,15 +9,15 @@ import {
 } from "./types";
 
 async function fetchHighScores(
-	gameId: string
+	gameId: string, group: string
 ): Promise<ApiResult<ScoreRecord[]>> {
-	const path = `${Paths.GET_HIGHSCORES}/${gameId}`;
+	const path = `${Paths.GET_HIGHSCORES}/${gameId}/${group}`;
 	return myGet<ScoreRecord[]>(path);
 }
 async function fetchFirstHighScore(
-	gameId: string
+	gameId: string, group: string
 ): Promise<ApiResult<ScoreRecord[]>> {
-	const path = `${Paths.GET_FIRST_HIGHSCORE}/${gameId}`;
+	const path = `${Paths.GET_FIRST_HIGHSCORE}/${gameId}/${group}`;
 	return myGet<ScoreRecord[]>(path);
 }
 async function getPlayersCount(
@@ -36,6 +36,16 @@ async function getCarouselData(): Promise<ApiResult<RatioType[]>> {
 }
 async function getAllGames(): Promise<ApiResult<RatioType[]>> {
 	const path = `${Paths.GET_ALL_GAMES}`;
+	return myGet<[]>(path);
+}
+//export type SquadType = { name: string; hash: string };
+async function getSquads(settingspage: string = ''): Promise<ApiResult<[]>> {
+	const path = `${Paths.GET_SQUADS + '/' +settingspage}`;
+	return myGet<[]>(path);
+}
+//export type SquadType = { name: string; hash: string };
+async function getOwnHash(): Promise<ApiResult<[]>> {
+	const path = `${Paths.GET_OWN_SQUAD_HASH}`;
 	return myGet<[]>(path);
 }
 
@@ -71,6 +81,18 @@ async function contactUs(values: ContactUsParams) {
 		Paths.GET_CONTACT_FORM,
 		Paths.POST_CONTACT_FORM
 	);
+}
+
+
+export type SyncUserSquadsParams = {
+    squads: string;
+};
+async function syncUserSquads(values: SyncUserSquadsParams) {
+    return complexFormSubmit(
+        values,
+        Paths.GET_SQUAD_SYNC_FORM,
+        Paths.POST_SQUAD_SYNC_FORM
+    );
 }
 
 async function fetchCurrentUserInfo() {
@@ -133,6 +155,9 @@ const client = {
 	getRatio,
 	getCarouselData,
 	getAllGames,
+    getSquads,
+    syncUserSquads,
+    getOwnHash,
 };
 
 export default client;

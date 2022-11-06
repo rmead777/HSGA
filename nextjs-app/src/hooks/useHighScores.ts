@@ -8,10 +8,10 @@ interface PropTypes {
   id?: string;
  
 }
-export default function useHighScores({gameInfo}:PropTypes) {
-  const [data, setData] = useState<ScoreRecord[]>([]);
+export default function useHighScores({gameInfo}:PropTypes, group: string) {
+  const [data, setData] = useState<ScoreRecord[]>([{"username":"[[high-scores]]","score":0}]);
   const [errors, setErrors] = useState<string[]>([]);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [pollCount, setPollCount] = useState(0);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function useHighScores({gameInfo}:PropTypes) {
 console.log("Game Info fetchHighScore", gameInfo);
 
   gameInfo?.id &&  client
-      .fetchHighScores(gameInfo?.id || "")
+      .fetchHighScores(gameInfo?.id || "", group || "main")
       .then((result) => {
         if (result.data) setData(result.data);
         if (result.errors) setErrors(result.errors);

@@ -10,6 +10,7 @@ import client from "../../clients/HSWM";
 import styles from "./styles.module.css";
 import { builtinModules } from "module";
 import { IMGIX_HOST } from "../../constants";
+import {jss_msg} from "../../clients/JSServe/helper";
 
 const POLL_FREQUENCY = 5000;
 
@@ -199,6 +200,23 @@ export default function Footer() {
 					</Link>
 				</div>
 			</header>
+            {(() => {
+                if(jss_msg("[[header_message]]", "header_message") != null ){
+                    let message = "[[header_message]]";
+                    return (
+                        <div className="mb-10 max-w-md mx-auto"
+                             style={{
+                                 borderStyle: "solid",
+                                 borderWidth: "3px",
+                                 borderColor: "#09bfd5",
+                             }}
+                        >{message}
+                        </div>
+                    )
+                }
+            })()}
 		</div>
+
+
 	);
 }

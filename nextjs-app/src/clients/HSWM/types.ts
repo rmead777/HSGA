@@ -1,4 +1,4 @@
-/*
+
 export enum Paths {
 	// This endpoint takes a slug
 	CONTACT_FORM = "/users/jsoncontactform",
@@ -9,6 +9,10 @@ export enum Paths {
 	GET_RATIO = "/games/jsonaspectratio",
 	GET_CAROUSEL_DATA = "/games/jsongamescarousel",
     GET_ALL_GAMES = "/games/jsongames",
+    GET_SQUADS = "/squads/jsongetcurrentusersquads",
+    GET_OWN_SQUAD_HASH = "/squads/jsongetownhash",
+    GET_SQUAD_SYNC_FORM = "/squads/jsonupdateusersquads",
+    POST_SQUAD_SYNC_FORM = "/squads/jsonupdateusersquads",
     GET_FIRST_HIGHSCORE = "/highscores/jsonchampionsforgame",
 
 	GET_HIGHSCORES = "/highscores/forgame",
@@ -40,11 +44,11 @@ export enum Paths {
 	// Featured game info
 	GET_FEATURED_GAME_INFO = "/games/jsonfeature",
 }
-*/
+
 
 
 //  For local environment, uncomment this block, and comment everything before it
-
+/*
 export enum Paths {
     // This endpoint takes a slug
     CONTACT_FORM = "https://test.ttechr.com/users/jsoncontactform",
@@ -55,6 +59,10 @@ export enum Paths {
     GET_RATIO = "https://test.ttechr.com/games/jsonaspectratio",
     GET_CAROUSEL_DATA = "https://test.ttechr.com/games/jsongamescarousel",
     GET_ALL_GAMES = "https://test.ttechr.com/games/jsongames",
+    GET_SQUADS = "https://test.ttechr.com/squads/jsongetcurrentusersquads",
+    GET_OWN_SQUAD_HASH = "https://test.ttechr.com/squads/jsongetownhash",
+    GET_SQUAD_SYNC_FORM = "https://test.ttechr.com/squads/jsonupdateusersquads",
+    POST_SQUAD_SYNC_FORM = "https://test.ttechr.com/squads/jsonupdateusersquads",
     GET_FIRST_HIGHSCORE = "https://test.ttechr.com/highscores/jsonchampionsforgame",
 
     GET_HIGHSCORES = "https://test.ttechr.com/highscores/forgame",
@@ -88,7 +96,7 @@ export enum Paths {
     GET_FEATURED_GAME_INFO = "https://test.ttechr.com/games/jsonfeature",
 }
 
-
+*/
 
 /*
 //  For if back end is installed on wamp server, uncomment this block, and comment everything before it
@@ -103,6 +111,10 @@ export enum Paths {
     GET_RATIO = "http://localhost/hswm/test2/games/jsonaspectratio",
     GET_CAROUSEL_DATA = "http://localhost/hswm/test2/games/jsongamescarousel",
     GET_ALL_GAMES = "http://localhost/hswm/test2/games/jsongames",
+    GET_SQUADS = "http://localhost/hswm/test2/squads/jsongetcurrentusersquads",
+    GET_OWN_SQUAD_HASH = "https://localhost/hswm/test2/squads/jsongetownhash",
+    GET_SQUAD_SYNC_FORM = "https://localhost/hswm/test2/squads/jsonupdateusersquads",
+    POST_SQUAD_SYNC_FORM = "https://localhost/hswm/test2/squads/jsonupdateusersquads",
     GET_FIRST_HIGHSCORE = "http://localhost/hswm/test2/highscores/jsonchampionsforgame",
 
     GET_HIGHSCORES = "http://localhost/hswm/test2/highscores/forgame",
@@ -176,6 +188,11 @@ export type GameInfo = {
     enabled: boolean;
     prize: string;
     interval: string;
+};
+
+export type SquadInfo = {
+    hash: string;
+    name: string;
 };
 
 

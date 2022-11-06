@@ -1,11 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-const GroupCodeInput = () => {
-  const [val, setVal] = useState('')
-  return (
+
+
+const GroupCodeInput = (props) => {
+  const [val, setVal] = useState('');
+  const {inpid} = props;
+  const [plr, setPlr] = useState(props.placeholdr);
+  const [hiddenVal, setHiddenVal] = useState(props.value);
+
+    return (
     <div className='groupcode-input-con my-3'>
-      <input type="text" name="" className='groupcode-input' id="" value={val} onChange={e => setVal(e.target.value)} />
-      <button onClick={() => setVal('')}>Clear</button>
+      <input type="hidden" value={hiddenVal} name={"hashes["+props.name+"]"} />
+      <input type="text" className='groupcode-input' id={inpid} value={val} placeholder={plr} onChange={e => {setVal(e.target.value);setHiddenVal(e.target.value); setPlr('');}} />
+      <a
+          style={{marginLeft: '5px', color: 'var(--primary-1)', fontSize: '1.5em', }}
+          className="pointer-item"
+          onClick={() => {
+          setVal('');
+          setPlr('');
+          setHiddenVal('');
+      }}>✖</a>
+
     </div>
   )
 }

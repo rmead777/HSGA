@@ -123,7 +123,7 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
         className={styles.logo}
         // src={RoutesService.getImagePath("HS_reverse_horiz.png")}
         src={"https://hswm.imgix.net/images/HS_reverse_horiz.png?auto=format&auto=compress"}
-        alt="HighScoreWinsMoney Logo"
+        alt="HighScoreGameArcade Logo"
         width={120}
         height={94}
       />

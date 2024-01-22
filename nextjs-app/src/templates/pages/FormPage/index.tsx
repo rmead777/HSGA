@@ -22,7 +22,7 @@ function FormPageTemplate({ form }: PropTypes) {
       <Image
         className={cx("mx-auto mb-3", styles.logo)}
         src={IMGIX_HOST+"images/HS_reverse_portrait.png?auto=format&auto=compress"}
-        alt="HighScoreWinsMoney Logo"
+        alt="HighScoreGameArcade Logo"
         width={120}
         height={94}
         zoom={2.5}

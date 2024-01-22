@@ -170,6 +170,7 @@ export type UserInfo = {
 	paypal_email: string;
 	id: string;
 	paypalemail: string;
+	coins: string;
 	user_rank: {
 		place: number;
 		score: number;

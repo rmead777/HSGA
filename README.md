@@ -1,4 +1,4 @@
-# HighScoreWinsMoney
+# HighScoreGameArcade
 
 ## Status
 

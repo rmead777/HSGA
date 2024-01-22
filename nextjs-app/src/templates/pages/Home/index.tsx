@@ -92,11 +92,18 @@ const HomePage = (props: PropTypes) => {
         }
       })()}
 
-      <div style={{height: "95px", marginBottom: "18px"}}><a href="https://wikilisten.com/"><img src={IMGIX_HOST+"images/WIki-Banner.png?auto=format&auto=compress?auto=format&auto=compress"} style={{marginLeft: 'auto', marginRight: 'auto'}} width="550px" /></a></div>
+      {/*<div style={{height: "95px", marginBottom: "18px"}}><a href="https://nyctalentshow.com/"><img src={IMGIX_HOST+"images/TalentShow-Banner.png?auto=format&auto=compress?auto=format&auto=compress"} style={{marginLeft: 'auto', marginRight: 'auto'}} width="550px" /></a></div>*/}
 
       <div className={styles.upperGame}>
         <a href={`${router.basePath + featuredGameInfo?.uri}`} className={styles.playersCount} >FULL SCREEN</a>
         <div className={styles.playersCount} >{`${count} Players`}</div>
+          {/*{(() => {
+              if(typeof currentUserInfo !== "string" && currentUserInfo?.coins ){
+                  return (
+                      <div className={styles.playersCount} >{`${currentUserInfo?.coins} Coins Available`}</div>
+                  )
+              }
+          })()}*/}
       </div>
 
       <FeaturedImage gameInfo={featuredGameInfo} parentCallback={featuredImageCallback} />
@@ -112,14 +119,18 @@ const HomePage = (props: PropTypes) => {
           console.log("Prize is ", featuredGameInfo?.prize);
           return (
             <div className="mb-10 max-w-md mx-auto" style={{ fontSize: '2em', marginBottom: '0em', marginTop: '1.5em' }}>
-              <b style={{ fontWeight: '501', color: '#05bed6' }}>Prize:</b> <span style={{ fontWeight: '501', color: 'white' }}>{featuredGameInfo?.prize}</span><br />
+              <b style={{ fontWeight: '501', color: '#05bed6' }}>Daily Prize:</b> <span style={{ fontWeight: '501', color: 'white' }}>{featuredGameInfo?.prize}</span><br />
             </div>
           )
         }
       })()}
 
+        <div className="mb-10 max-w-md mx-auto" style={{ fontSize: '2em', marginBottom: '0em', marginTop: '0em' }}>
+            <span className={styles.specialPrize}>February 22, 2024 Winner:</span> <span style={{ fontWeight: '501', color: 'white' }}>$1000</span><br />
+        </div>
+
       {/*<div className="mb-10 max-w-md mx-auto">
-          {featuredGameInfo?.description}High Score Wins Money is a place where you can play unique games made by
+          {featuredGameInfo?.description}High Score Game Arcade is a place where you can play unique games made by
         indie developers. If you get the high score on the game that day,{" "}
         <b className="font-black">we will give you $100 US.</b>
       </div>*/}
@@ -127,7 +138,9 @@ const HomePage = (props: PropTypes) => {
       <div className="mb-7" style={{ marginTop: '3.5em', marginBottom: '4em' }}>
         <Countdown />
       </div>
-        <div className={cx(
+
+        {/*Carousel*/}
+      {/*<div className={cx(
             "container",
             Leaderstyles["table-wrapper"],
             "lg:max-w-3xl mx-auto pt-20"
@@ -138,13 +151,12 @@ const HomePage = (props: PropTypes) => {
                  marginBottom: '4rem',
              }}
         ></div>
-      {/* HERE will be Carousel */}
       <div className="carouselContainer">
         <p className="moreGames" >
           <Link href="/allgames">MORE GAMES</Link>
         </p>
         <MultiCarousel />
-      </div>
+      </div>*/}
 
       {/* {currentUserInfo && (
         <CurrentHighScoreBlock {...currentUserInfo.user_rank} />

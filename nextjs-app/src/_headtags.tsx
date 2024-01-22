@@ -93,7 +93,7 @@ const headtags = [
   <meta
     key="description"
     name="description"
-    content="High Score Wins Money is a place where you can play unique games made by indie developers. If you get the high score on the game that day, we will give you $100 US."
+    content="High Score Game Arcade is a place where you can play unique games made by indie developers. If you get the high score on the game that day, we will give you $100 US."
   />,
   <link
     key="favicon"

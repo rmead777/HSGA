@@ -142,3 +142,10 @@ margin: auto;
   margin-top: -1.1em !important;
   padding-left: 0 !important;
 }
+
+.specialPrize{
+  color: #ff8e06 !important;
+  font-size: .85em;
+  font-weight: bold;
+  margin-top: 2rem;
+}

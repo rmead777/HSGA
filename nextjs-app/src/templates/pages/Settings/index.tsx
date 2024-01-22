@@ -110,7 +110,7 @@ function SettingsPageTemplate({ errors, onSubmit, success }: PropTypes) {
         <div className="title text-4xl mb-10 mt-16 uppercase">Your Squad Code</div>
         <span className="random-code">{ownHash}</span>
         <div className="title text-4xl mb-10 mt-16 uppercase squad-link">Your Invite Link</div>
-        <span className="random-code squad-link">https://highscorewinsmoney.com/invite/{ownHash}</span>
+        <span className="random-code squad-link">https://highscoreGameArcade.com/invite/{ownHash}</span>
           <p className="font-bold text-lg uppercase" style={{marginTop: "45px"}}>Give this code to friends</p>
           <p className="font-bold text-lg uppercase">Or send them the invite link</p>
           <p className="font-bold text-lg uppercase">to add them to your private high score board</p>

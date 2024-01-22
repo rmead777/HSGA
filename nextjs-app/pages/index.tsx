@@ -11,7 +11,7 @@ const Home: NextPage = () => {
 	const [featuredGameInfo, setGameInfo] = useState<GameInfo>(
 		{
 			"id": "[[game-id]]",
-			"title": "High Score Wins Money",
+			"title": "High Score Game Arcade",
 			"description": "Loading Game...",
 			"author": "",
 			"image": "https://hswm.imgix.net/images/HS_reverse_icon.jpg?auto=format&auto=compress",
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 			"aspect_ratio": "2",
 			"enabled": true,
 			"interval": "Every Day",
-			"prize": "$100"
+			"prize": "$5"
 		}
 	);
 	const [userInfo, setUserInfo] = useState<UserInfo>();

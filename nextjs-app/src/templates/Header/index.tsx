@@ -181,15 +181,15 @@ export default function Footer() {
 				>
 					<Link href="/"  className="text-lg fwbold text-black hover-white  " >
 						HOME
-					</Link>
+					</Link>{/*
 					<span className={styles.divider}>{` | `}</span>
 					<Link href="/allgames" className="text-lg fwbold text-black hover-white  " >
 						GAMES
-					</Link>
+					</Link>TalentShow
 					<span className={styles.divider}>{` | `}</span>
 					<a href="https://www.store.highscorewm.com/" className="text-lg fwbold text-black hover-white  " >
 						STORE
-					</a>
+					</a>*/}
 					<span className={styles.divider}>{` | `}</span>
 					<Link className="text-black hover-white fwbold" href="/about">
 						About

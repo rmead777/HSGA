@@ -1,8 +1,8 @@
 export const HOST = "https://test.ttechr.com/";
 
 export const EXTERNAL_LINKS = {
-  twitter: "https://twitter.com/HighScoreWM",
-  instagram: "https://www.instagram.com/highscorewm/",
+  twitter: "https://twitter.com/highscorega",
+  instagram: "https://www.instagram.com/highscorega/",
   discord: "https://discord.gg/tkP6mWkMt7",
 };
 

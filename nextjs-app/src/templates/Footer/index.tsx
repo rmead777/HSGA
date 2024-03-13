@@ -14,7 +14,7 @@ export default function Footer() {
         "flex justify-between container p-3 max-w-7xl mx-auto text-xs"
       )}
     >
-      <span>&copy; HighScoreWinsMoney 2022</span>
+      <span>&copy; HighScoreGameArcade 2022</span>
       <div>
       <Link className="text-white text-uppercase font-bold text-lg " href="/terms">TERMS AND CONDITIONS</Link>
 

@@ -49,7 +49,7 @@ function SignupTemplate({ errors, onSubmit }: PropTypes) {
               maxLength={255}
               label="Email"
             />
-            <PasswordInput />
+            {/* <PasswordInput /> */}
             <FormErrors errors={errors} />
             <Button disabled={!isValid} type="submit" onClick={validateForm}>
               Register

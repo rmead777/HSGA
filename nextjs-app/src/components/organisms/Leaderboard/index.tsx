@@ -15,7 +15,7 @@ function createTableRow(score: ScoreRecord, idx: number) {
   return (
     <tr key={`${idx}${score}`}>
       <td>{idx + 1}. </td>
-      <td>{score.username}</td>
+      <td className="sm:pr-[10px] pr-3">{score.username}</td>
       <td>{score.score}</td>
     </tr>
   );
@@ -107,7 +107,7 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
       className={cx(
         className,
         styles["table-wrapper"],
-        "lg:max-w-3xl mx-auto pt-20"
+        "lg:max-w-3xl mx-auto pt-20 !px-4 !md:px-8"
       )}
     >
         {(() => {

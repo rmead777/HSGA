@@ -92,7 +92,7 @@ const HomePage = (props: PropTypes) => {
         }
       })()}
 
-      <div style={{height: "170px", marginBottom: "18px"}}><a href="https://gamejolt.com/c/gamedev/grandjam"><img src={IMGIX_HOST+"images/GAME-JOLT-BANNERV2.png?auto=format&auto=compress?auto=format&auto=compress"} style={{marginLeft: 'auto', marginRight: 'auto'}} width="550px" /></a></div>
+      <div style={{height: "170px", marginBottom: "18px"}}><a href="https://iframe-mdm.99brandparty.com/flavorite/"><img src={IMGIX_HOST+"images/Sazerac-Web-Ad.png?auto=format&auto=compress?auto=format&auto=compress"} style={{marginLeft: 'auto', marginRight: 'auto'}} width="550px" /></a></div>
 
       <div className={styles.upperGame}>
         <a href={`${router.basePath + featuredGameInfo?.uri}`} className={styles.playersCount} >FULL SCREEN</a>
@@ -125,8 +125,10 @@ const HomePage = (props: PropTypes) => {
         }
       })()}
 
-        <div className="mb-10 max-w-md mx-auto" style={{ fontSize: '2em', marginBottom: '0em', marginTop: '0em' }}>
-            <span className={styles.specialPrize}>New Game coming March 20, 2024</span> {/*<span style={{ fontWeight: '501', color: 'white' }}>$1000</span>*/}<br />
+        <div className="mb-10 max-w-md mx-auto" style={{ fontSize: '2em', marginBottom: '0em', marginTop: '0em', maxWidth: '60rem' }}>
+            <span style={{ fontWeight: '501', color: 'white' }}>Fruits and Dragons World Wide High Score prizes</span><br />
+            <span className={styles.specialPrize}>September 29, 2024 Winner:</span> <span style={{ fontWeight: '501', color: 'white' }}>$ 99.99</span><br />
+            <span className={styles.specialPrize}>October 19, 2024 Winner:</span> <span style={{ fontWeight: '501', color: 'white' }}>$ 999.99</span><br />
         </div>
 
       {/*<div className="mb-10 max-w-md mx-auto">
@@ -140,7 +142,7 @@ const HomePage = (props: PropTypes) => {
       </div>
 
         {/*Carousel*/}
-      {/*<div className={cx(
+      <div className={cx(
             "container",
             Leaderstyles["table-wrapper"],
             "lg:max-w-3xl mx-auto pt-20"
@@ -156,7 +158,7 @@ const HomePage = (props: PropTypes) => {
           <Link href="/allgames">MORE GAMES</Link>
         </p>
         <MultiCarousel />
-      </div>*/}
+      </div>
 
       {/* {currentUserInfo && (
         <CurrentHighScoreBlock {...currentUserInfo.user_rank} />

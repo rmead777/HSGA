@@ -114,6 +114,7 @@ function FeaturedImage(props: PropTypes) {
         // width={1000}
         // zoom={1}
         onClick={handleImageClick}
+        style={{height: 'auto'}}
       />
       <div className={cx(styles.loading, showFeaturedImage && "invisible")}>
         Loading ...

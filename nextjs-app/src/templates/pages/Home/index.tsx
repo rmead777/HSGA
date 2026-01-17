@@ -92,7 +92,7 @@ const HomePage = (props: PropTypes) => {
         }
       })()}
 
-      <div style={{height: "170px", marginBottom: "18px"}}><a href="https://iframe-mdm.99brandparty.com/flavorite/"><img src={IMGIX_HOST+"images/Sazerac-Web-Ad.png?auto=format&auto=compress?auto=format&auto=compress"} style={{marginLeft: 'auto', marginRight: 'auto'}} width="550px" /></a></div>
+      {/*<div style={{height: "170px", marginBottom: "18px"}}><a href="https://iframe-mdm.99brandparty.com/flavorite/"><img src={IMGIX_HOST+"images/Sazerac-Web-Ad.png?auto=format&auto=compress?auto=format&auto=compress"} style={{marginLeft: 'auto', marginRight: 'auto'}} width="550px" /></a></div>*/}
 
       <div className={styles.upperGame}>
         <a href={`${router.basePath + featuredGameInfo?.uri}`} className={styles.playersCount} >FULL SCREEN</a>
@@ -125,11 +125,11 @@ const HomePage = (props: PropTypes) => {
         }
       })()}
 
-        <div className="mb-10 max-w-md mx-auto" style={{ fontSize: '2em', marginBottom: '0em', marginTop: '0em', maxWidth: '60rem' }}>
-            <span style={{ fontWeight: '501', color: 'white' }}>Fruits and Dragons World Wide High Score prizes</span><br />
-            <span className={styles.specialPrize}>September 29, 2024 Winner:</span> <span style={{ fontWeight: '501', color: 'white' }}>$ 99.99</span><br />
-            <span className={styles.specialPrize}>October 19, 2024 Winner:</span> <span style={{ fontWeight: '501', color: 'white' }}>$ 999.99</span><br />
-        </div>
+        {/*<div className="mb-10 max-w-md mx-auto" style={{ fontSize: '2em', marginBottom: '0em', marginTop: '0em', maxWidth: '60rem' }}>*/}
+        {/*    <span style={{ fontWeight: '501', color: 'white' }}>Fruits and Dragons World Wide High Score prizes</span><br />*/}
+        {/*    <span className={styles.specialPrize}>September 29, 2024 Winner:</span> <span style={{ fontWeight: '501', color: 'white' }}>$ 99.99</span><br />*/}
+        {/*    <span className={styles.specialPrize}>October 19, 2024 Winner:</span> <span style={{ fontWeight: '501', color: 'white' }}>$ 999.99</span><br />*/}
+        {/*</div>*/}
 
       {/*<div className="mb-10 max-w-md mx-auto">
           {featuredGameInfo?.description}High Score Game Arcade is a place where you can play unique games made by

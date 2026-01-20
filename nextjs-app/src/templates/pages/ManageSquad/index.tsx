@@ -68,7 +68,8 @@ function ManageSquadPageTemplate({ errors, onSubmit, success }: PropTypes) {
 
   return (
     <div className="flex-1 text-center">
-      <div className="title text-4xl mb-10 mt-16">Manage Squad</div>
+      <div className="title text-4xl mb-1 mt-16">Manage Squad</div>
+        <div className="title text-1xl mb-10 mt-0" style={{marginLeft: 'auto', marginRight: '130px' }}><Link href='/settings'><span style={{ fontFamily: 'Arial, sans-serif', fontWeight: 'bold'}}>&laquo;&laquo;</span> Back to Settings</Link></div>
       <div className="mt-5">
           <div className={cx(
               "container",

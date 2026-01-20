@@ -116,14 +116,29 @@ const UserListItem = (props) => {
               <button
                 type="button"
                 onClick={cancelConfirm}
+                style={{
+                  background: '#fff',
+                  color: '#000',
+                  border: '1px solid var(--primary-3)',
+                  padding: '0.0rem 0.6rem',
+                  borderRadius: 4,
+                  cursor: 'pointer'
+                }}
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 ref={confirmBtnRef}
-                // make Confirm the default so Enter/Space triggers it
                 autoFocus
+                style={{
+                  background: '#fff',
+                  color: '#000',
+                  border: '1px solid var(--primary-3)',
+                  padding: '0.0rem 0.6rem',
+                  borderRadius: 4,
+                  cursor: 'pointer'
+                }}
               >
                 Confirm
               </button>

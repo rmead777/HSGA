@@ -108,7 +108,39 @@ function SettingsPageTemplate({ errors, onSubmit, success }: PropTypes) {
               }
           })()}
         <div className="title text-4xl mb-10 mt-16 uppercase">Your Squad Code</div>
-          <p className="font-bold text-lg uppercase mb-4" style={{marginTop: "-50px"}} ><Link href='/manage-squad'>(Manage Your Squad)</Link></p>
+          <p className="font-bold text-lg uppercase mb-4" style={{marginTop: "-50px"}} >
+              <a
+                href='/manage-squad'
+                style={{
+                  backgroundColor: 'rgb(227, 132, 16)',
+                  color: '#ffffff',
+                  padding: '0.25rem 0.5rem',
+                  borderRadius: '4px',
+                  display: 'inline-block',
+                  marginTop: '20px',
+                  textDecoration: 'none',
+                  transition: 'background-color 150ms ease, color 150ms ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgb(245, 169, 101)'; // lighter
+                  e.currentTarget.style.color = '#000';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgb(227, 132, 16)';
+                  e.currentTarget.style.color = '#ffffff';
+                }}
+                onFocus={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgb(245, 169, 101)';
+                  e.currentTarget.style.color = '#000';
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.backgroundColor = 'rgb(227, 132, 16)';
+                  e.currentTarget.style.color = '#ffffff';
+                }}
+              >
+                Manage Your Squad
+              </a>
+          </p>
         <span className="random-code">{ownHash}</span>
         <div className="title text-4xl mb-10 mt-16 uppercase squad-link">Your Invite Link</div>
         <span className="random-code squad-link">https://highscoreGameArcade.com/invite/{ownHash}</span>

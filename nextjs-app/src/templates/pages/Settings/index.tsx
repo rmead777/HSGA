@@ -109,8 +109,8 @@ function SettingsPageTemplate({ errors, onSubmit, success }: PropTypes) {
           })()}
         <div className="title text-4xl mb-10 mt-16 uppercase">Your Squad Code</div>
           <p className="font-bold text-lg uppercase mb-4" style={{marginTop: "-50px"}} >
-              <a
-                href='/manage-squad'
+              <Link
+                href="/manage-squad"
                 style={{
                   backgroundColor: 'rgb(227, 132, 16)',
                   color: '#ffffff',
@@ -121,25 +121,25 @@ function SettingsPageTemplate({ errors, onSubmit, success }: PropTypes) {
                   textDecoration: 'none',
                   transition: 'background-color 150ms ease, color 150ms ease',
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgb(245, 169, 101)'; // lighter
-                  e.currentTarget.style.color = '#000';
+                onMouseEnter={(e: React.MouseEvent<HTMLElement>) => {
+                  (e.currentTarget as HTMLElement).style.backgroundColor = 'rgb(245, 169, 101)';
+                  (e.currentTarget as HTMLElement).style.color = '#000';
                 }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgb(227, 132, 16)';
-                  e.currentTarget.style.color = '#ffffff';
+                onMouseLeave={(e: React.MouseEvent<HTMLElement>) => {
+                  (e.currentTarget as HTMLElement).style.backgroundColor = 'rgb(227, 132, 16)';
+                  (e.currentTarget as HTMLElement).style.color = '#ffffff';
                 }}
-                onFocus={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgb(245, 169, 101)';
-                  e.currentTarget.style.color = '#000';
+                onFocus={(e: React.FocusEvent<HTMLElement>) => {
+                  (e.currentTarget as HTMLElement).style.backgroundColor = 'rgb(245, 169, 101)';
+                  (e.currentTarget as HTMLElement).style.color = '#000';
                 }}
-                onBlur={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgb(227, 132, 16)';
-                  e.currentTarget.style.color = '#ffffff';
+                onBlur={(e: React.FocusEvent<HTMLElement>) => {
+                  (e.currentTarget as HTMLElement).style.backgroundColor = 'rgb(227, 132, 16)';
+                  (e.currentTarget as HTMLElement).style.color = '#ffffff';
                 }}
               >
                 Manage Your Squad
-              </a>
+              </Link>
           </p>
         <span className="random-code">{ownHash}</span>
         <div className="title text-4xl mb-10 mt-16 uppercase squad-link">Your Invite Link</div>

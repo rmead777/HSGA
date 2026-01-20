@@ -43,6 +43,11 @@ async function getSquads(settingspage: string = ''): Promise<ApiResult<[]>> {
 	const path = `${Paths.GET_SQUADS + '/' +settingspage}`;
 	return myGet<[]>(path);
 }
+//export type OwnSquadUsers = { name: string; hash: string };
+async function getOwnSquadUsers(): Promise<ApiResult<[]>> {
+	const path = `${Paths.GET_OWN_SQUAD_USERS}`;
+	return myGet<[]>(path);
+}
 //export type SquadType = { name: string; hash: string };
 async function getOwnHash(): Promise<ApiResult<[]>> {
 	const path = `${Paths.GET_OWN_SQUAD_HASH}`;
@@ -92,6 +97,17 @@ async function syncUserSquads(values: SyncUserSquadsParams) {
         values,
         Paths.GET_SQUAD_SYNC_FORM,
         Paths.POST_SQUAD_SYNC_FORM
+    );
+}
+
+export type DeleteUserFromOwnSquadsParams = {
+	uuid: string;
+}
+async function deleteUserFromOwnSquads(values: DeleteUserFromOwnSquadsParams) {
+    return complexFormSubmit(
+        values,
+        Paths.GET_DELETE_USER_FROM_OWN_SQUAD,
+        Paths.POST_DELETE_USER_FROM_OWN_SQUAD
     );
 }
 
@@ -158,6 +174,8 @@ const client = {
     getSquads,
     syncUserSquads,
     getOwnHash,
+	getOwnSquadUsers,
+	deleteUserFromOwnSquads,
 };
 
 export default client;

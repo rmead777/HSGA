@@ -108,6 +108,7 @@ function SettingsPageTemplate({ errors, onSubmit, success }: PropTypes) {
               }
           })()}
         <div className="title text-4xl mb-10 mt-16 uppercase">Your Squad Code</div>
+          <p className="font-bold text-lg uppercase mb-4" style={{marginTop: "-50px"}} ><Link href='/manage-squad'>(Manage Your Squad)</Link></p>
         <span className="random-code">{ownHash}</span>
         <div className="title text-4xl mb-10 mt-16 uppercase squad-link">Your Invite Link</div>
         <span className="random-code squad-link">https://highscoreGameArcade.com/invite/{ownHash}</span>

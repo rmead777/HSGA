@@ -13,13 +13,15 @@ type ValidIcons =
   | "twitter"
   | "hswm"
   | "eye-open"
-  | "eye-closed";
+  | "eye-closed"
+  | "envelope";
 
 type ValidImages =
   | "HS_reverse_horiz.png"
   | "HS_reverse_portrait.png"
   | "featured_game_image--point_the_points.png"
-  | "featured-game-image.jpg";
+  | "featured-game-image.jpg"
+  | "HS_logo.png";
 
 const ROOT = "/";
 
@@ -34,15 +36,19 @@ function getIconPath(name: ValidIcons) {
     return "/assets/icons/" + filename;
   }
 
-  return IMGIX_HOST + "icons/" + filename;
+  return createImgixPath("icons/" + filename);
 }
 
 function getImagePath(filename: ValidImages) {
-  if (TURN_OFF_IMGIX) {
+  if (!TURN_OFF_IMGIX) {
     return "/assets/images/" + filename;
   }
 
-  return IMGIX_HOST + "images/" + filename;
+  return createImgixPath("images/" + filename);
+}
+
+function createImgixPath(path: string) {
+  return IMGIX_HOST + path + "?auto=format&auto=compress";
 }
 
 const RoutesService = {

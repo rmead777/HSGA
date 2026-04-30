@@ -103,3 +103,49 @@
     transform: rotate(360deg);
   }
 }
+
+.playersCount{
+  color: #05bed6 !important;
+  font-weight: bold;
+ /* text-align: center; */
+ /* width: 800px; */
+ /* margin: auto; */
+ margin-bottom: 0.25rem;
+ max-width: 100%;
+}
+.upperGame{
+  justify-content: space-between !important;
+  display: flex;
+  width: 800px;
+  margin: auto;
+  max-width: 100%;
+}
+.w-800{
+  width: 500px;
+max-width: 100%;
+margin: auto;
+}
+
+.gameDescription{
+  justify-content: space-between !important;
+  display: flex;
+  width: 100%;
+  margin: auto;
+  max-width: 100%;
+  font-weight: bold;
+  color: white;
+  margin-top: 2.5em;
+  padding-left: 1.1em;
+}
+
+.gameDescriptionBefore{
+  margin-top: -1.1em !important;
+  padding-left: 0 !important;
+}
+
+.specialPrize{
+  color: #ff8e06 !important;
+  font-size: .85em;
+  font-weight: bold;
+  margin-top: 2rem;
+}

@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 
 interface PropTypes {
   errors: string[];
+
 }
 
 function FormErrors({ errors }: PropTypes) {
@@ -13,5 +14,6 @@ function FormErrors({ errors }: PropTypes) {
     </ul>
   );
 }
+
 
 export default FormErrors;

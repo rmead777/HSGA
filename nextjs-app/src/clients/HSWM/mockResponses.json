@@ -97,9 +97,11 @@
     }
   ],
   "/users/jsoncurrentuserinfo": {
-    "username": "string",
-    "email": "string",
-    "paypal_email": "string"
+    "username": "test123@test123.com",
+    "email": "test123@test123.com",
+    "id": "11ecd030-c194-e3e4-ab4d-6aaca1cbf7ce",
+    "paypalemail": "test123@test123.com",
+    "user_rank": { "place": 2, "score": 7892 }
   },
   "/accounts/jsonupdatepaypal": [
     {

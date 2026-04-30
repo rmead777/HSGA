@@ -58,6 +58,7 @@ export async function myGet<T>(url: string) {
 
 async function fetchFormData(url: string) {
   const { data, errors } = await myGet<RequiredFormData>(url);
+ // console.log("GET Request Res 1", data)
 
   if (data) {
     return {
@@ -80,11 +81,11 @@ export async function complexFormSubmit<T>(
   if (errors) {
     return { errors };
   }
-
   const data = {
     ...values,
     ...formData,
   };
+ // console.log("GET Request Res 22", data)
 
   return await axios
     .post(postFormDataUrl, {

@@ -1,38 +1,47 @@
 import { useState, useEffect } from "react";
-import { useQuery } from "react-query";
 import client from "../clients/HSWM";
-import { ScoreRecord } from "../clients/HSWM/types";
+import { GameInfo, ScoreRecord } from "../clients/HSWM/types";
 
-function validateData(data?: ScoreRecord[]) {
-  if (!Array.isArray(data) || data[0].username !== "string") {
-    throw new Error("Invalid highscores");
-  }
+const POLL_FREQUENCY = 5 * 1000;
+interface PropTypes {
+  gameInfo?: GameInfo;
+  id?: string;
+ 
 }
-
-export default function useHighScores(gameId = "1") {
+export default function useHighScores({gameInfo}:PropTypes, group: string) {
+  const [data, setData] = useState<ScoreRecord[]>([{"username":"[[high-scores]]","score":0}]);
   const [errors, setErrors] = useState<string[]>([]);
-  const {
-    isLoading,
-    error,
-    data: result,
-  } = useQuery("highscores", () => client.fetchHighScores(gameId));
+  const [isLoading, setLoading] = useState(true);
+  const [pollCount, setPollCount] = useState(0);
 
   useEffect(() => {
-    if (error || !result) {
-      setErrors([
-        "Failed to load highscores. Please check your internet connection.",
-      ]);
-    } else if (result.errors) {
-      setErrors(result.errors);
-      return;
-    } else {
-      validateData(result.data);
+    // Only set loading once
+    if (!data?.length) {
+      setLoading(true);
     }
-  }, [error, result]);
+console.log("Game Info fetchHighScore", gameInfo);
+
+  gameInfo?.id &&  client
+      .fetchHighScores(gameInfo?.id || "", group || "main")
+      .then((result) => {
+        if (result.data) setData(result.data);
+        if (result.errors) setErrors(result.errors);
+      })
+      .catch(() => {
+        setErrors([
+          "Failed to load highscores. Please check your internet connection.",
+        ]);
+      })
+      .finally(() => {
+        setLoading(false);
+        setTimeout(() => setPollCount(pollCount + 1), POLL_FREQUENCY);
+      });
+    }, [gameInfo?.id, pollCount, data?.length]);
+    //  }, []);
 
   return {
+    data,
     errors,
-    highscores: result?.data,
     isLoading,
   };
 }

@@ -1,9 +1,10 @@
-export const HOST = "https://testing2.ttechr.com/";
+export const HOST = "https://test.ttechr.com/";
 
 export const EXTERNAL_LINKS = {
-  twitter: "https://twitter.com/HighScoreWM",
-  instagram: "https://www.instagram.com/highscorewm/",
-  discord: "https://discord.gg/CtjkeXSb",
+  twitter: "https://twitter.com/highscorega",
+  instagram: "https://www.instagram.com/highscorega/",
+  discord: "https://discord.gg/tkP6mWkMt7",
+  blog: "https://hsga.beehiiv.com/",
 };
 
 export const IMGIX_HOST = "https://hswm.imgix.net/";

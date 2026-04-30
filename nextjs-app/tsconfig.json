@@ -46,7 +46,7 @@
     "**/*.tsx",
     "src/newrelic/browser_monitoring_tag.tsx",
     "src/newrelic/raw_script_tag.js"
-  ],
+, "src/templates/pages/AllGames/index.jsx"  ],
   "exclude": [
     "node_modules"
   ]

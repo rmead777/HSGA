@@ -62,7 +62,7 @@ $name-col-max-width: 34rem;
 
   // Rank col
   tr td:first-of-type {
-    width: 10%;
+    width: 18%;
     text-align: left;
   }
 
@@ -78,6 +78,9 @@ $name-col-max-width: 34rem;
   tr td:last-of-type {
     width: 30%;
     text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   td + td {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import client from "../clients/HSWM";
-import { ScoreRecord } from "../clients/HSWM/types";
+import { GameInfo, ScoreRecord } from "../clients/HSWM/types";
 
 function validateData(data?: unknown): asserts data is ScoreRecord[] {
   if (!Array.isArray(data)) {
@@ -16,16 +16,27 @@ function validateData(data?: unknown): asserts data is ScoreRecord[] {
   }
 }
 
-export default function useHighScores(gameId = 1) {
-  const [data, setData] = useState<ScoreRecord[]>([]);
+const POLL_FREQUENCY = 5 * 1000;
+interface PropTypes {
+  gameInfo?: GameInfo;
+  id?: string;
+ 
+}
+export default function useHighScores({gameInfo}:PropTypes, group: string) {
+  const [data, setData] = useState<ScoreRecord[]>([{"username":"[[high-scores]]","score":0}]);
   const [errors, setErrors] = useState<string[]>([]);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
+  const [pollCount, setPollCount] = useState(0);
 
   useEffect(() => {
-    setLoading(true);
+    // Only set loading once
+    if (!data?.length) {
+      setLoading(true);
+    }
+console.log("Game Info fetchHighScore", gameInfo);
 
-    client
-      .fetchHighScores(gameId)
+  gameInfo?.id &&  client
+      .fetchHighScores(gameInfo?.id || "", group || "main")
       .then((result) => {
         const { data } = result;
         if (result.errors) {
@@ -46,8 +57,10 @@ export default function useHighScores(gameId = 1) {
       })
       .finally(() => {
         setLoading(false);
+        setTimeout(() => setPollCount(pollCount + 1), POLL_FREQUENCY);
       });
-  }, [gameId]);
+    }, [gameInfo?.id, pollCount, data?.length]);
+    //  }, []);
 
   return {
     errors,

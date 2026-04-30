@@ -20,6 +20,8 @@ const Login: NextPage = () => {
     client
       .loginUser(values)
       .then((res) => {
+     //   console.log("Log in Response",res);
+        
         if (res.errors?.length) {
           setErrors([
             "Username or password is incorrect. Please check and try again.",
@@ -38,7 +40,9 @@ const Login: NextPage = () => {
     client
       .fetchCurrentUserInfo()
       .then((result) => {
-        if (result.data?.username) {
+        const { data } = result;
+// console.log(data)
+        if (typeof data !== "string" && data?.username) {
           setLoggedIn(true);
         } else {
           setLoggedIn(false);

@@ -22,16 +22,17 @@ describe("client", () => {
 
     it("should send GET with correct endpoint", async () => {
       const spy = jest.spyOn(axios, "get");
-      const gameId = 1;
+      const gameId = "1";
       const path = Paths.GET_HIGHSCORES + "/" + gameId;
       await client.fetchHighScores(gameId);
-
+      
       expect(spy).toHaveBeenCalledWith(path);
     });
-
+    
     it("should return highscores", async () => {
+      const gameId = "1";
       jest.spyOn(axios, "get").mockResolvedValue({ data: value });
-      const result = await client.fetchHighScores(1);
+      const result = await client.fetchHighScores(gameId);
       expect(result.data).toBe(value);
     });
   });

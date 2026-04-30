@@ -3,28 +3,73 @@ import HomePage from "../src/templates/pages/Home";
 import DefaultPage from "../src/Default";
 import { useEffect, useState } from "react";
 import client from "../src/clients/HSWM";
-import { GameInfo } from "../src/clients/HSWM/types";
+import { GameInfo, UserInfo } from "../src/clients/HSWM/types";
+
+const POLL_FREQUENCY = 5 * 1000;
 
 const Home: NextPage = () => {
-  const [featuredGameInfo, setGameInfo] = useState<GameInfo>();
+	const [featuredGameInfo, setGameInfo] = useState<GameInfo>(
+		{
+			"id": "[[game-id]]",
+			"title": "High Score Game Arcade",
+			"description": "Loading Game...",
+			"author": "",
+			"image": "https://hswm.imgix.net/images/HS_reverse_icon.jpg?auto=format&auto=compress",
+			"uri": "/thegames/[[game-id]]/index.html",
+			"aspect_ratio": "2",
+			"enabled": true,
+			"interval": "Every Day",
+			"prize": "$5"
+		}
+	);
+	const [userInfo, setUserInfo] = useState<UserInfo>();
+	const [pollCount, setPollCount] = useState(0);
 
-  useEffect(() => {
-    client
-      .fetchFeaturedGameInfo()
-      .then((result) => {
-        if (result.data?.length) {
-          const { data } = result;
-          setGameInfo(data[0]);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
+	useEffect(() => {
+		client
+			.fetchFeaturedGameInfo()
+			.then((result) => {
+				if (result.data?.length) {
+					const { data } = result;
+					//console.log("Featured Game Data", data);
+					// console.clear()
+					// console.log('my testing data--->>>>', data)
+					setGameInfo(data[0]);
+				}
+			})
+			.catch((err) => {
+				console.error(err);
+			});
+	}, []);
 
-  return (
-    <DefaultPage body={<HomePage featuredGameInfo={featuredGameInfo} />} />
-  );
+	useEffect(() => {
+		client
+			.fetchCurrentUserInfo()
+			.then((result) => {
+				const { data } = result;
+
+				if (typeof data !== "string" && data?.id) {
+					setUserInfo(data);
+				} else {
+					setUserInfo(undefined);
+				}
+			})
+			.catch((err) => {
+				console.error(err);
+				setUserInfo(undefined);
+			});
+	}, [pollCount]);
+
+	return (
+		<DefaultPage
+			body={
+				<HomePage
+					featuredGameInfo={featuredGameInfo}
+					currentUserInfo={userInfo}
+				/>
+			}
+		/>
+	);
 };
 
 export default Home;

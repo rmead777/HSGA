@@ -2,6 +2,17 @@
   font-family: GALACTIC VANGUARDIAN NCV;
 }
 
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.dashboardLogo {
+  max-width: 100%;
+  height: auto;
+}
+
 .button {
   border: 2px solid var(--white);
   color: var(--primary-2);

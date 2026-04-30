@@ -5,6 +5,7 @@ import fonts from "../../../../styles/fonts.module.css";
 import Leaderboard from "../../../components/organisms/Leaderboard";
 import Link from "../../../components/atoms/Link";
 import Button from "../../../components/atoms/Button";
+import Image from "../../../components/atoms/Image";
 import { IMGIX_HOST } from "../../../constants";
 import FeaturedImage from "../../../components/organisms/FeaturedImage";
 import { GameInfo, ScoreRecord, UserInfo } from "../../../clients/HSWM/types";
@@ -60,6 +61,18 @@ const HomePage = (props: PropTypes) => {
         "max-w-7xl"
       )}
     >
+
+      <div className={styles.logoWrapper}>
+        <Link href="/">
+          <Image
+            src={IMGIX_HOST + "images/HS_reverse_horiz.png?auto=format&auto=compress"}
+            alt="High Score Game Arcade Logo"
+            width={300}
+            height={100}
+            className={styles.dashboardLogo}
+          />
+        </Link>
+      </div>
 
       {(() => {
         if(jss_msg("[[main_page_message]]", "main_page_message") != null ){

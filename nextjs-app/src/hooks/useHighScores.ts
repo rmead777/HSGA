@@ -2,6 +2,20 @@ import { useState, useEffect } from "react";
 import client from "../clients/HSWM";
 import { GameInfo, ScoreRecord } from "../clients/HSWM/types";
 
+function validateData(data?: unknown): asserts data is ScoreRecord[] {
+  if (!Array.isArray(data)) {
+    throw new Error("Invalid highscores");
+  }
+
+  if (data.length === 0) {
+    return;
+  }
+
+  if (data.some((record) => typeof record?.username !== "string")) {
+    throw new Error("Invalid highscores");
+  }
+}
+
 const POLL_FREQUENCY = 5 * 1000;
 interface PropTypes {
   gameInfo?: GameInfo;
@@ -24,8 +38,17 @@ console.log("Game Info fetchHighScore", gameInfo);
   gameInfo?.id &&  client
       .fetchHighScores(gameInfo?.id || "", group || "main")
       .then((result) => {
-        if (result.data) setData(result.data);
-        if (result.errors) setErrors(result.errors);
+        const { data } = result;
+        if (result.errors) {
+          setErrors(result.errors);
+          return;
+        }
+        try {
+          validateData(data);
+          setData(data);
+        } catch (e) {
+          setErrors([e instanceof Error ? e.message : "Invalid highscores"]);
+        }
       })
       .catch(() => {
         setErrors([

@@ -42,6 +42,9 @@ install_dependencies:
     - yarn install --frozen-lockfile
   # only:
   #   - main
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
 lint:
   stage: test
@@ -51,6 +54,10 @@ lint:
     - yarn lint
   # only:
   #   - main
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
+    - when: never
 
 build:
   stage: build
@@ -63,6 +70,10 @@ build:
       - $NEXT_APP_BUILD_DIR
   # only:
   #   - main
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+    - when: never
 
 deploy-to-staging:
   stage: staging

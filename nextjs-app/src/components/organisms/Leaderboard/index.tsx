@@ -157,7 +157,7 @@ export default function Leaderboard({ className, gameInfo }: PropTypes) {
           <p className="mt-5">Loading...</p>
         )}
 
-      <FormErrors errors={errors} />
+      {errors && <FormErrors errors={errors} />}
     </div>
   );
 }

@@ -63,8 +63,8 @@ console.log("Game Info fetchHighScore", gameInfo);
     //  }, []);
 
   return {
-    errors,
     data,
+    errors,
     isLoading,
   };
 }

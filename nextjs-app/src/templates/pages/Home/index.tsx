@@ -160,9 +160,9 @@ const HomePage = (props: PropTypes) => {
         <MultiCarousel />
       </div>
 
-      {/* {currentUserInfo && (
+      {currentUserInfo && (
         <CurrentHighScoreBlock {...currentUserInfo.user_rank} />
-      )} */}
+      )}
       <Leaderboard gameInfo={featuredGameInfo} className="container" />
     </main>
   );

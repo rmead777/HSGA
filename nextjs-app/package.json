@@ -23,13 +23,14 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.31.0",
+    "react-query": "^3.39.0",
     "react-simply-carousel": "^8.3.5",
     "sass": "^1.51.0",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.1.1",
+    "@testing-library/react": "^13.2.0",
     "@types/jest": "^27.4.1",
     "@types/jquery": "^3.5.14",
     "@types/lodash": "^4.14.182",

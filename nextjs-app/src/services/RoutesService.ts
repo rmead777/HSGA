@@ -13,7 +13,8 @@ type ValidIcons =
   | "twitter"
   | "hswm"
   | "eye-open"
-  | "eye-closed";
+  | "eye-closed"
+  | "envelope";
 
 type ValidImages =
   | "HS_reverse_horiz.png"

@@ -10,6 +10,9 @@ export enum Paths {
 	GET_CAROUSEL_DATA = "/games/jsongamescarousel",
     GET_ALL_GAMES = "/games/jsongames",
     GET_SQUADS = "/squads/jsongetcurrentusersquads",
+    GET_OWN_SQUAD_USERS = "/squads/jsongetownsquadusers",
+    GET_DELETE_USER_FROM_OWN_SQUAD = "/squads/jsondeleteuserfromownsquad",
+    POST_DELETE_USER_FROM_OWN_SQUAD = "/squads/jsondeleteuserfromownsquad",
     GET_OWN_SQUAD_HASH = "/squads/jsongetownhash",
     GET_SQUAD_SYNC_FORM = "/squads/jsonupdateusersquads",
     POST_SQUAD_SYNC_FORM = "/squads/jsonupdateusersquads",
@@ -60,6 +63,9 @@ export enum Paths {
     GET_CAROUSEL_DATA = "https://test.ttechr.com/games/jsongamescarousel",
     GET_ALL_GAMES = "https://test.ttechr.com/games/jsongames",
     GET_SQUADS = "https://test.ttechr.com/squads/jsongetcurrentusersquads",
+    GET_OWN_SQUAD_USERS = "https://test.ttechr.com/squads/jsongetownsquadusers",
+    GET_DELETE_USER_FROM_OWN_SQUAD = "https://test.ttechr.com/squads/jsondeleteuserfromownsquad",
+    POST_DELETE_USER_FROM_OWN_SQUAD = "https://test.ttechr.com/squads/jsondeleteuserfromownsquad",
     GET_OWN_SQUAD_HASH = "https://test.ttechr.com/squads/jsongetownhash",
     GET_SQUAD_SYNC_FORM = "https://test.ttechr.com/squads/jsonupdateusersquads",
     POST_SQUAD_SYNC_FORM = "https://test.ttechr.com/squads/jsonupdateusersquads",
@@ -112,6 +118,9 @@ export enum Paths {
     GET_CAROUSEL_DATA = "http://localhost/hswm/test2/games/jsongamescarousel",
     GET_ALL_GAMES = "http://localhost/hswm/test2/games/jsongames",
     GET_SQUADS = "http://localhost/hswm/test2/squads/jsongetcurrentusersquads",
+    GET_OWN_SQUAD_USERS = "https://localhost/squads/jsongetownsquadusers",
+    GET_DELETE_USER_FROM_OWN_SQUAD = "https://localhost/squads/jsondeleteuserfromownsquad",
+    POST_DELETE_USER_FROM_OWN_SQUAD = "https://localhost/squads/jsondeleteuserfromownsquad",
     GET_OWN_SQUAD_HASH = "https://localhost/hswm/test2/squads/jsongetownhash",
     GET_SQUAD_SYNC_FORM = "https://localhost/hswm/test2/squads/jsonupdateusersquads",
     POST_SQUAD_SYNC_FORM = "https://localhost/hswm/test2/squads/jsonupdateusersquads",
@@ -194,6 +203,11 @@ export type GameInfo = {
 export type SquadInfo = {
     hash: string;
     name: string;
+};
+
+export type OwnSquadUsers = {
+    uuid: string;
+    username: string;
 };
 
 

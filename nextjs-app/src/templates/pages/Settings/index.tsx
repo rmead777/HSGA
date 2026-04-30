@@ -137,6 +137,43 @@ function SettingsPageTemplate({ errors, onSubmit, success }: PropTypes) {
         <div className="title text-4xl mb-10 mt-16 uppercase">
           Your Squad Code
         </div>
+        <p className="font-bold text-lg uppercase mb-4" style={{ marginTop: "-50px" }}>
+          <Link
+            href="/manage-squad"
+            style={{
+              backgroundColor: "rgb(227, 132, 16)",
+              color: "#ffffff",
+              padding: "0.25rem 0.5rem",
+              borderRadius: "4px",
+              display: "inline-block",
+              marginTop: "20px",
+              textDecoration: "none",
+              transition: "background-color 150ms ease, color 150ms ease",
+            }}
+            onMouseEnter={(e: React.MouseEvent<HTMLElement>) => {
+              (e.currentTarget as HTMLElement).style.backgroundColor =
+                "rgb(245, 169, 101)";
+              (e.currentTarget as HTMLElement).style.color = "#000";
+            }}
+            onMouseLeave={(e: React.MouseEvent<HTMLElement>) => {
+              (e.currentTarget as HTMLElement).style.backgroundColor =
+                "rgb(227, 132, 16)";
+              (e.currentTarget as HTMLElement).style.color = "#ffffff";
+            }}
+            onFocus={(e: React.FocusEvent<HTMLElement>) => {
+              (e.currentTarget as HTMLElement).style.backgroundColor =
+                "rgb(245, 169, 101)";
+              (e.currentTarget as HTMLElement).style.color = "#000";
+            }}
+            onBlur={(e: React.FocusEvent<HTMLElement>) => {
+              (e.currentTarget as HTMLElement).style.backgroundColor =
+                "rgb(227, 132, 16)";
+              (e.currentTarget as HTMLElement).style.color = "#ffffff";
+            }}
+          >
+            Manage Your Squad
+          </Link>
+        </p>
         <div className="random-code flex justify-center items-center w-[180px] mx-auto h-[60px]">
           {ownHash.length > 0 ? ownHash : "74f7b13"}
         </div>

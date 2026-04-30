@@ -112,6 +112,18 @@ export default function Footer() {
 							height={24}
 						/>
 					</a>
+					<a
+						href={EXTERNAL_LINKS.blog}
+						target="_blank"
+						rel="noreferrer"
+					>
+						<Image
+							src={RoutesService.getIconPath("envelope")}
+							alt="envelope-icon"
+							width={24}
+							height={24}
+						/>
+					</a>
 				</div>
 				{username ? (
 					<span className="flex space-x-2">
@@ -195,7 +207,7 @@ export default function Footer() {
 						About
 					</Link>
 					<span className={styles.divider}>{` | `}</span>
-					<Link className="text-black hover-white fwbold" href="/contactus">
+					<Link className="text-black hover-white fwbold" href="https://worldwidehighscore.com">
 						Contact <span className="d_sm_none" >Us</span>
 					</Link>
 				</div>
